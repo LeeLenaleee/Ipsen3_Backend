@@ -1,2 +1,6 @@
 /target/
 /nbproject/
+/idea/
+.idea/
+.idea
+idea/
