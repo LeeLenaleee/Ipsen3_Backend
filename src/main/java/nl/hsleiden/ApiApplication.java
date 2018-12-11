@@ -13,9 +13,12 @@ import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.util.EnumSet;
 import javax.servlet.DispatcherType;
+import javax.servlet.FilterRegistration;
+
 import nl.hsleiden.model.User;
 import nl.hsleiden.service.AuthenticationService;
 import org.eclipse.jetty.servlet.FilterHolder;
+import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +61,18 @@ public class ApiApplication extends Application<ApiConfiguration>
         
         setupAuthentication(environment);
         configureClientFilter(environment);
+        enableCorsHeaders(environment);
+    }
+
+    private void enableCorsHeaders( Environment environment){
+        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+
+        filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+        filter.setInitParameter("allowedOrigins", "*");    // allowed origins comma separated
+        filter.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
+        filter.setInitParameter("allowedMethods", "GET,PUT,POST,DELETE,OPTIONS");
+        filter.setInitParameter("preflightMaxAge", "5184000"); // 2 months
+        filter.setInitParameter("allowCredentials", "true");
     }
     
     private GuiceBundle createGuiceBundle(Class<ApiConfiguration> configurationClass, Module module)
