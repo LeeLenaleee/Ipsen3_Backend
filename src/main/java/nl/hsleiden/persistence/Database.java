@@ -120,22 +120,27 @@ public class Database
     public void connectFromConfig() throws Exception {
         //InputStream in = ClassLoader.getSystemResourceAsStream("config.properties");
 
-        Properties prop = new Properties();
-        try {
-            File jarpath = new File(Database.class.getProtectionDomain().getCodeSource().getLocation().getPath());
-            String propertiesPath = jarpath.getParentFile().getAbsolutePath();
-            prop.load(new FileInputStream(propertiesPath+"/config.properties"));
-        }catch (IOException e){
-            e.printStackTrace();
-            //deze in is alleen maar zodat wij het bestand niet hoeven te verplaatsen
-            InputStream in = ClassLoader.getSystemResourceAsStream("config.properties");
-            prop.load(in);
-        }
+//        Properties prop = new Properties();
+//        try {
+//            File jarpath = new File(Database.class.getProtectionDomain().getCodeSource().getLocation().getPath());
+//            String propertiesPath = jarpath.getParentFile().getAbsolutePath();
+//            prop.load(new FileInputStream(propertiesPath+"/config.properties"));
+//        }catch (IOException e){
+//            e.printStackTrace();
+//            //deze in is alleen maar zodat wij het bestand niet hoeven te verplaatsen
+//            InputStream in = ClassLoader.getSystemResourceAsStream("config.properties");
+//            prop.load(in);
+//        }
 
-        String host = prop.getProperty("hostname");
-        String name = prop.getProperty("dbname");
-        String user = prop.getProperty("username");
-        String password = prop.getProperty("password");
+//        String host = prop.getProperty("hostname");
+//        String name = prop.getProperty("dbname");
+//        String user = prop.getProperty("username");
+//        String password = prop.getProperty("password");
+
+        String host = "localhost";
+        String name = "wat";
+        String user = "postgres";
+        String password = "postgres";
 
         connect(host, name, user, password);
     }

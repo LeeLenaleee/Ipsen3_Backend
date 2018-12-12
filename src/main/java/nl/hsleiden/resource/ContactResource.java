@@ -3,15 +3,13 @@ package nl.hsleiden.resource;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
 import nl.hsleiden.View;
+import nl.hsleiden.model.Bedrijf;
 import nl.hsleiden.model.Contact;
 import nl.hsleiden.service.ContactService;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.Collection;
 import java.util.Optional;
@@ -30,15 +28,28 @@ public class ContactResource
     }
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-//    @GET
-//    @JsonView(View.Public.class)
+    @JsonView(View.Public.class)
 //    @RolesAllowed("GUEST")
-//    public Collection<Contact> retrieveAll()
-//    {
-//        return service.getAll();
-//    }
-    public String werktDit() {
-        return "dit zou moeten werken?";
+    public Collection<Contact> retrieveAll()
+    {
+        return service.getAll();
+    }
+
+    @GET
+    @Path("/{id}")
+    @JsonView(View.Public.class)
+//    @RolesAllowed("GUEST")
+    public Contact retrieve(@PathParam("id") int id)
+    {
+        return service.get(id);
+    }
+
+    @GET
+    @Path("/bedrijven")
+    @JsonView(View.Public.class)
+//    @RolesAllowed("GUEST")
+    public Collection<Bedrijf> retrieveBedrijven()
+    {
+        return service.getBedrijven();
     }
 }

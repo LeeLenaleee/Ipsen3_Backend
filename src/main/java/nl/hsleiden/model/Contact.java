@@ -29,13 +29,13 @@ public class Contact {
     @JsonView(View.Public.class)
     private String company;
 
-    @NotEmpty
-    @Length(min = 1)
+//    @NotEmpty
+//    @Length(min = 1)
     @JsonView(View.Public.class)
     private ArrayList<String> phoneNumbers = new ArrayList<>();
 
-    @NotEmpty
-    @Length(min = 1)
+//    @NotEmpty
+//    @Length(min = 1)
     @JsonView(View.Public.class)
     private ArrayList<String> emails = new ArrayList<>();
 
@@ -53,6 +53,9 @@ public class Contact {
     @Length(min = 4)
     @JsonView(View.Public.class)
     private String website;
+
+    public Contact() {
+    }
 
     public Contact(Integer contactId, String voornaam, String achternaam, String company,
                    ArrayList<String> phoneNumbers, ArrayList<String> emails,

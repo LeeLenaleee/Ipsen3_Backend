@@ -27,6 +27,9 @@ public class Plaats {
     @JsonView(View.Public.class)
     private String country;
 
+    public Plaats() {
+    }
+
     public Plaats(String streetName, String postCode, String woonPlaats, String country) {
         this.streetName = streetName;
         this.postCode = postCode;
