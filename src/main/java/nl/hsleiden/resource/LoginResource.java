@@ -53,7 +53,7 @@ public class LoginResource {
     {
         System.out.println(loginUser.getEmail());
         if(loginUser.getPassword().equals(this.userDAO.getByEmailAddress(loginUser.getEmail()).getPassword())){
-            return this.userDAO.getByEmailAddress("first@user.com");
+            return this.userDAO.getByEmailAddress(loginUser.getEmail());
         }
         else {
             //TODO hier een 400 bad request returnen
