@@ -9,14 +9,22 @@ import io.dropwizard.auth.AuthDynamicFeature;
 import io.dropwizard.auth.AuthValueFactoryProvider;
 import io.dropwizard.auth.basic.BasicCredentialAuthFilter;
 import io.dropwizard.bundles.assets.ConfiguredAssetsBundle;
+import io.dropwizard.db.DataSourceFactory;
+import io.dropwizard.db.PooledDataSourceFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import java.util.EnumSet;
 import javax.servlet.DispatcherType;
+
+import nl.hsleiden.model.ContactPerson;
 import nl.hsleiden.model.User;
+import nl.hsleiden.persistence.ContactPersonDAO;
 import nl.hsleiden.service.AuthenticationService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -43,12 +51,12 @@ public class ApiApplication extends Application<ApiConfiguration>
     public void initialize(Bootstrap<ApiConfiguration> bootstrap)
     {
         assetsBundle = (ConfiguredBundle) new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
-        guiceBundle = createGuiceBundle(ApiConfiguration.class, new ApiGuiceModule());
-        
+        guiceBundle = createGuiceBundle(ApiConfiguration.class, new ApiGuiceModule(bootstrap));
+
         bootstrap.addBundle(assetsBundle);
         bootstrap.addBundle(guiceBundle);
     }
-    
+
     @Override
     public void run(ApiConfiguration configuration, Environment environment)
     {
@@ -97,8 +105,17 @@ public class ApiApplication extends Application<ApiConfiguration>
         );
     }
     
-    public static void main(String[] args) throws Exception
+    public static void main(String[] args)
     {
-        new ApiApplication().run(args);
+        if (args.length == 0) {
+            args = new String[] { "server", "configuration.yml" };
+        }
+
+        try {
+            new ApiApplication().run(args);
+        }
+        catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
     }
 }

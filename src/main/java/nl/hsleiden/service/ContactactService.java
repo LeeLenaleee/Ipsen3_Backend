@@ -7,26 +7,11 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class ContactactService extends BaseService<ContactPerson> {
-    private final ContactPersonDAO dao;
+public class ContactactService extends BaseService<ContactPerson, ContactPersonDAO> {
 
     @Inject
     public ContactactService(ContactPersonDAO dao)
     {
-        this.dao = dao;
+        super(dao);
     }
-
-    public ContactPerson get(int id)
-    {
-        return requireResult(dao.get(id));
-    }
-
-    public void add(ContactPerson contactPerson) {
-        dao.add(contactPerson);
-    }
-
-    public void delete(int id) {
-        dao.delete(id);
-    }
-
 }

@@ -15,3 +15,12 @@ server:
   adminConnectors:
     - type: http
       port: 8081
+
+database:
+  driverClass: org.postgresql.Driver
+  url: "jdbc:postgresql://localhost/ipsen3/"
+  user: admin
+  password: password
+  properties:
+    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate.hbm2ddl.auto: update
