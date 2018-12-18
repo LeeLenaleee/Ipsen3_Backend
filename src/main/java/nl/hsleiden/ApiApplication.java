@@ -68,7 +68,7 @@ public class ApiApplication extends Application<ApiConfiguration>
         final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
 
         filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        filter.setInitParameter("allowedOrigins", "http://localhost:4200");    // hier het server ip invullen waar angular op draait
+        filter.setInitParameter("allowedOrigins", "http://localhost:4200");    // hier het server ip invullen waar angular op draait, kan meerdere ips doen door comma gescheiden
         filter.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
         filter.setInitParameter("allowedMethods", "GET,PUT,POST,DELETE,OPTIONS");
         filter.setInitParameter("preflightMaxAge", "5184000"); // 2 months

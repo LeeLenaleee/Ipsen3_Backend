@@ -40,7 +40,7 @@ public class User implements Principal
     @Length(min = 8)
     @JsonView(View.Protected.class)
     private String password;
-    
+
     @JsonView(View.Private.class)
     private String[] roles;
 
