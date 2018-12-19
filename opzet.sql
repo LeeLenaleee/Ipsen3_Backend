@@ -25,7 +25,7 @@ CREATE TABLE emails (
 );
 
 -- als een contact verwijderd wordt, dan wordt ook de opdracht verwijderd??
-CREATE TABLE opdracht (
+CREATE TABLE offerte (
     id                  SERIAL PRIMARY KEY,
     opdracht_omschrijving        TEXT,
     opdracht_afrondingsdatum     DATE,
@@ -33,16 +33,11 @@ CREATE TABLE opdracht (
     contact_id                   integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
-CREATE TABLE kostenpost (
-    id       SERIAL PRIMARY KEY,
-    kostenpost_naam     varchar(15)
-);
-
 CREATE TABLE factuur (
     id             SERIAL PRIMARY KEY,
     factuur_beschrijving   TEXT,
     factuur_status         varchar(25),
-    opdracht_id            integer REFERENCES opdracht(id) ON DELETE SET NULL,
+    offerte_id            integer REFERENCES offerte(id) ON DELETE SET NULL,
     contact_id             integer REFERENCES contactpersoon(id) ON DELETE SET NULL
 );
 
@@ -50,13 +45,15 @@ CREATE TABLE onkosten (
     id              SERIAL PRIMARY KEY,
     onkosten_bedrijf         VARCHAR(50),
     onkosten_datum           DATE,
-    onkosten_prijs           NUMERIC,
+	onkosten_kostenpost 	 VARCHAR(50),
     onkosten_omschrijving    TEXT,
-    onkosten_bruto_cost      NUMERIC,
-    onkosten_btw_percentage  NUMERIC(2),
-    kostenpost_id            integer REFERENCES kostenpost(id) ON DELETE SET NULL
+    onkosten_bruto_kosten    NUMERIC,
+	onkosten_btw_percentage	 NUMERIC,
+	onkosten_btw_kosten		 NUMERIC,
+	onkosten_netto_kosten	 NUMERIC
 );
 
 CREATE TABLE btw_percentage (
-    percentage              NUMERIC(2)
+    btw_percentage_hoog      NUMERIC(2),
+	btw_percentage_laag		 NUMERIC(2)
 );
