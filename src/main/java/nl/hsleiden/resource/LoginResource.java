@@ -9,11 +9,11 @@ import nl.hsleiden.service.LoginService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
-import java.util.Optional;
+import javax.xml.bind.DatatypeConverter;
+import java.security.*;
 
 /**
  * @author Jacco van den Berg
@@ -56,8 +56,7 @@ public class LoginResource {
             return this.userDAO.getByEmailAddress(loginUser.getEmail());
         }
         else {
-            //TODO hier een 400 bad request returnen
-            return null;
+            throw new NotAuthorizedException("Login Credentials are wrong");
         }
     }
 

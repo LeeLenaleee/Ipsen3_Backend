@@ -38,7 +38,7 @@ public class UserDAO
         user3.setPostcode("2568PC");
         user3.setStreetnumber("88");
         user3.setEmailAddress("jaccoberg2281@gmail.com");
-        user3.setPassword("oof");
+        user3.setPassword("b4453d1f9f5386a1846e57a3ec95678f");
         user1.setRoles(new String[] { "GUEST", "ADMIN" });
         
         users = new ArrayList<>();
