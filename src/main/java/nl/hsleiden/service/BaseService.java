@@ -16,7 +16,7 @@ import nl.hsleiden.persistence.BaseDAO;
  */
 public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
 {
-    private final D dao;
+    protected D dao;
 
     @Inject
     public BaseService(D dao)
@@ -57,8 +57,8 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         dao.delete(obj);
     }
 
-    public void update(M obj)
+    public void update(int id, M obj)
     {
-        dao.update(obj);
+        dao.update(id, obj);
     }
 }

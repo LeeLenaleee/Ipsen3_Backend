@@ -19,7 +19,7 @@ public class BaseDAO<T extends BaseModel> {
         this.sessionFactory = sessionFactory;
     }
 
-    private Session currentSession()
+    protected Session currentSession()
     {
         return this.sessionFactory.getCurrentSession();
     }
@@ -39,8 +39,11 @@ public class BaseDAO<T extends BaseModel> {
         currentSession().delete(obj);
     }
 
-    public void update(T obj)
+    public void update(int id, T obj)
     {
-        currentSession().update(obj);
+        Session currentSession = currentSession();
+        T old_obj = currentSession.load(type, id);
+
+        currentSession.update(obj);
     }
 }

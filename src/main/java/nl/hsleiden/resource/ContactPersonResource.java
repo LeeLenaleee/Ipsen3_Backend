@@ -13,6 +13,7 @@ import nl.hsleiden.service.ContactactService;
 import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.List;
 
 @Singleton
 @Path("/contacts")
@@ -34,6 +35,14 @@ public class ContactPersonResource {
         return service.findById(id);
     }
 
+    @GET
+    @Path("/company/{bedrijf}")
+    @UnitOfWork
+    @JsonView(View.Protected.class)
+    public List<ContactPerson> findByBedrijf(@PathParam("bedrijf") String bedrijf) {
+        return service.findByBedrijf(bedrijf);
+    }
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
@@ -50,5 +59,15 @@ public class ContactPersonResource {
     public void delete(@Valid ContactPerson contactPerson)
     {
         service.delete(contactPerson);
+    }
+
+    @PUT
+    @Path("/{id}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @UnitOfWork
+    @JsonView(View.Public.class)
+    public void update(@PathParam("id") int id, @Valid ContactPerson contactPerson)
+    {
+        service.update(id, contactPerson);
     }
 }
