@@ -1,6 +1,5 @@
 package nl.hsleiden.resource;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 
 import com.fasterxml.jackson.annotation.JsonView;
