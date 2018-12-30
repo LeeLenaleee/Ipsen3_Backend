@@ -23,4 +23,4 @@ database:
   password: password
   properties:
     hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.hbm2ddl.auto: update
+    hibernate.hbm2ddl.auto: none

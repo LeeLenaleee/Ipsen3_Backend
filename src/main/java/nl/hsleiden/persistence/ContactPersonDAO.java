@@ -2,11 +2,12 @@ package nl.hsleiden.persistence;
 
 import com.google.inject.Inject;
 import nl.hsleiden.model.ContactPerson;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
+
 import javax.inject.Singleton;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -21,9 +22,13 @@ public class ContactPersonDAO extends BaseDAO<ContactPerson> {
     }
 
     public List<ContactPerson> findByBedrijf(String bedrijf) {
-        Session currentSession = super.currentSession();
-        Criteria cr = currentSession.createCriteria(ContactPerson.class);
-        cr.add(Restrictions.ilike("contact_bedrijf", "%" + bedrijf + "%"));
-        return cr.list();
-    }
+
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+            @Override
+            public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
+                criteriaQuery.where(criteriaBuilder.like(root.get("contact_bedrijf"), "%" + bedrijf + "%"));
+            }
+        };
+
+        return super.findBy(anon);
 }

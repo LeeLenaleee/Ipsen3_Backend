@@ -35,10 +35,9 @@ public class ContactPersonResource {
     }
 
     @GET
-    @Path("/company/{bedrijf}")
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public List<ContactPerson> findByBedrijf(@PathParam("bedrijf") String bedrijf) {
+    public List<ContactPerson> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
         return service.findByBedrijf(bedrijf);
     }
 
