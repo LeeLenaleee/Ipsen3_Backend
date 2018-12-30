@@ -31,4 +31,5 @@ public class ContactPersonDAO extends BaseDAO<ContactPerson> {
         };
 
         return super.findBy(anon);
+    }
 }
