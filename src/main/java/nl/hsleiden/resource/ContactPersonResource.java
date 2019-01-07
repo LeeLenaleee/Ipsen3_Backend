@@ -38,7 +38,14 @@ public class ContactPersonResource {
     @UnitOfWork
     @JsonView(View.Protected.class)
     public List<ContactPerson> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
-        return service.findByBedrijf(bedrijf);
+        List <ContactPerson> results = service.findByBedrijf(bedrijf);
+
+        // Didn't find any matches.
+        if (results.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        return results;
     }
 
     @POST

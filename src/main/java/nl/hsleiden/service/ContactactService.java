@@ -18,13 +18,6 @@ public class ContactactService extends BaseService<ContactPerson, ContactPersonD
     }
 
     public List<ContactPerson> findByBedrijf(String bedrijf) {
-        List<ContactPerson> results = dao.findByBedrijf(bedrijf);
-
-        // Didn't find any matches.
-        if (results.isEmpty()) {
-            throw new NotFoundException();
-        }
-
-        return results;
+        return dao.findByBedrijf(bedrijf);
     }
 }
