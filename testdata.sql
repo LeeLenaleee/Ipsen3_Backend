@@ -5,25 +5,25 @@ VALUES (DEFAULT, 'Park', 'Morris', 'Bake Shop', 'Bazuinpad', '6295AH', 'Leuven',
 (DEFAULT, 'Millar', 'Derek', 'Vogeltre', 'Busken Huetlaan', '0563ZN', 'Zutphen', 'Nederland', 'kennis', 'asdfghj.com'),
 (DEFAULT, 'Blanchard', 'Zavier', 'Notenkoor', 'Weisteeg', '2479KD', 'Deventer', 'Nederland', 'klant', 'dfigovdfjgiv.nl');
 
-INSERT INTO telefoonnummers
-VALUES ('12345678', 1),
-('23456789', 2),
-('34567890', 2),
-('09876543', 3),
-('98765432', 4),
-('87654321', 4),
-('38590215', 4),
-('58653346', 5);
+INSERT INTO telefoonnummer
+VALUES (DEFAULT, '12345678', 1),
+(DEFAULT, '23456789', 2),
+(DEFAULT, '34567890', 2),
+(DEFAULT, '09876543', 3),
+(DEFAULT, '98765432', 4),
+(DEFAULT, '87654321', 4),
+(DEFAULT, '38590215', 4),
+(DEFAULT, '58653346', 5);
 
-INSERT INTO emails
-VALUES ('morris@park.nl', 1),
-('gracie@langley.nl', 2),
-('johnathan@kane.nl', 3),
-('info@trendkoo.nl', 3),
-('johnny@gmail.nl', 3),
-('derek@millar.nl', 4),
-('zavier@blanchard.nl', 5),
-('info@notenkoor.nl', 5);
+INSERT INTO email
+VALUES (DEFAULT, 'morris@park.nl', 1),
+(DEFAULT, 'gracie@langley.nl', 2),
+(DEFAULT, 'johnathan@kane.nl', 3),
+(DEFAULT, 'info@trendkoo.nl', 3),
+(DEFAULT, 'johnny@gmail.nl', 3),
+(DEFAULT, 'derek@millar.nl', 4),
+(DEFAULT, 'zavier@blanchard.nl', 5),
+(DEFAULT, 'info@notenkoor.nl', 5);
 
 INSERT INTO offerte 
 VALUES (DEFAULT, 'Illustratie voor logo van het bedrijf', '2018-08-12', 1.92,0),
@@ -52,4 +52,9 @@ VALUES (DEFAULT, 'hema', '2018-07-17', 'kost', 'tekenpennen rood zwart', 6, 10, 
 (DEFAULT, 'idk', '2018-09-17', 'kost', 'reizen naar klant', 50, 21, 3, 14);
 
 INSERT INTO btw_percentage
-VALUES (21, 6);
+VALUES (DEFAULT, 21, 6);
+
+INSERT INTO gebruiker
+VALUES (DEFAULT, 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 'admin'),
+(DEFAULT, 'test1@test.com', '5a105e8b9d40e1329780d62ea2265d8a', 'user')
+        
