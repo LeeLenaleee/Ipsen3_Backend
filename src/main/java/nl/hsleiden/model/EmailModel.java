@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "emails")
-public class EmailModel {
+public class EmailModel extends BaseModel{
     @Column(name = "email")
     private String email;
 

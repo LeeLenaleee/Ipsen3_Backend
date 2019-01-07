@@ -5,7 +5,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "telefoonnummers")
-public class TelefoonnummersModel {
+public class TelefoonnummersModel extends BaseModel{
     @Column(name = "telnr")
     private String telnr;
 
