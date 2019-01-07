@@ -8,6 +8,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import javax.inject.Singleton;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
@@ -23,14 +26,24 @@ public class OnkostenDAO extends BaseDAO<OnkostenModel> {
     }
 
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
-        Session currentSession = super.currentSession();
-        Criteria cr = currentSession.createCriteria(OnkostenModel.class);
-        cr.add(Restrictions.ilike("onkosten_omschrijving", "%" + omschrijving + "%"));
-        List<OnkostenModel> results = cr.list();
-        if (results.isEmpty()) {
-            throw new NotFoundException();
-        }
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+            @Override
+            public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
+                criteriaQuery.where(criteriaBuilder.like(root.get("onkosten_omschrijving"), "%" + omschrijving + "%"));
+            }
+        };
 
-        return results;
+        return super.findBy(anon);
+
+
+//        Session currentSession = super.currentSession();
+//        Criteria cr = currentSession.createCriteria(OnkostenModel.class);
+//        cr.add(Restrictions.ilike("onkosten_omschrijving", "%" + omschrijving + "%"));
+//        List<OnkostenModel> results = cr.list();
+//        if (results.isEmpty()) {
+//            throw new NotFoundException();
+//        }
+//
+//        return results;
     }
 }
