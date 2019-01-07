@@ -14,7 +14,7 @@ CREATE TABLE contactpersoon (
 -- koppeltabel, een contact kan meerdere telefoonnummers hebben
 CREATE TABLE telefoonnummer (
     id          SERIAL PRIMARY KEY,
-    telnr       varchar(15) PRIMARY KEY,
+    telnr       varchar(15),
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
@@ -22,7 +22,7 @@ CREATE TABLE telefoonnummer (
 -- koppeltabel, een contact kan meerdere emails hebben
 CREATE TABLE email (
     id          SERIAL PRIMARY KEY,
-    email       varchar(60) PRIMARY KEY,
+    email       varchar(60),
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
