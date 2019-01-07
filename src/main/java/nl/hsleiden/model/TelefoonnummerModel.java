@@ -4,8 +4,8 @@ package nl.hsleiden.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "telefoonnummers")
-public class TelefoonnummersModel extends BaseModel{
+@Table(name = "telefoonnummer")
+public class TelefoonnummerModel extends BaseModel{
     @Column(name = "telnr")
     private String telnr;
 

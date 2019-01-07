@@ -3,7 +3,7 @@ package nl.hsleiden.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "emails")
+@Table(name = "email")
 public class EmailModel extends BaseModel{
     @Column(name = "email")
     private String email;
