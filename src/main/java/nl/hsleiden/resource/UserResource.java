@@ -39,14 +39,14 @@ public class UserResource
         this.service = service;
     }
     
-    @GET
+   /* @GET
     @JsonView(View.Public.class)
     @RolesAllowed("GUEST")
     public Collection<User> retrieveAll()
     {
         return service.getAll();
     }
-    
+
     @GET
     @Path("/{id}")
     @JsonView(View.Public.class)
@@ -88,5 +88,5 @@ public class UserResource
     public User authenticate(@Auth User authenticator)
     {
         return authenticator;
-    }
+    }*/
 }
