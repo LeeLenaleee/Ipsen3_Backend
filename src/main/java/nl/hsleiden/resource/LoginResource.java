@@ -31,7 +31,6 @@ public class LoginResource {
     @JsonView(View.Protected.class)
     public User create( LoginUser loginUser)
     {
-        System.err.println(loginUser.getEmail());
         System.err.println(this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0));
         if(loginUser.getPassword().equals(this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0).getPassword())){
             return this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0);
