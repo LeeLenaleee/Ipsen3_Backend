@@ -26,10 +26,10 @@ VALUES ('morris@park.nl', 1),
 ('info@notenkoor.nl', 5);
 
 INSERT INTO offerte 
-VALUES (DEFAULT, 'Illustratie voor logo van het bedrijf', '2018-08-12', 1),
-(DEFAULT, 'Infographics voor taart', '2018-09-15', 1),
-(DEFAULT, 'omschrijving', '2018-10-02', 4),
-(DEFAULT, 'Illustratie van noten', '2018-11-23', 5);
+VALUES (DEFAULT, 'Illustratie voor logo van het bedrijf', '2018-08-12', 1.92),
+(DEFAULT, 'Infographics voor taart', '2018-09-15', 13.12),
+(DEFAULT, 'omschrijving', '2018-10-02', 4.12),
+(DEFAULT, 'Illustratie van noten', '2018-11-23', 55.2);
 
 INSERT INTO factuur
 VALUES (DEFAULT, 'Illustratie logo', 'klant heeft betaald', 1, 1),
