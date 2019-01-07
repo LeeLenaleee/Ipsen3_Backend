@@ -12,8 +12,6 @@ import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
-import javax.xml.bind.DatatypeConverter;
-import java.security.*;
 
 /**
  * @author Jacco van den Berg
@@ -31,21 +29,11 @@ public class LoginResource {
         this.userDAO = userDAO;
     }
 
-    /*@GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String get(@QueryParam("email") Optional<String> email, @QueryParam("password") Optional<String> password) {
-        String displayName;
-        String testMail = "jaccoberg2281@gmail.com";
-        if (email.get().equals(testMail) && password.get().equals("lol")) {
-            displayName = Boolean.toString(true);
-        } else {
-            displayName = Boolean.toString(false);
-        }
-
-        //return "Hello " + displayName;
-        return "[{\"credentials\": \"" + displayName + "\"}]";
-    }*/
-
+    /**
+     *
+     * @param loginUser
+     * @return user or a not authorized exception
+     */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
@@ -60,19 +48,5 @@ public class LoginResource {
         }
     }
 
-    @GET
-    @Consumes(MediaType.APPLICATION_JSON)
-    @JsonView(View.Protected.class)
-    public User get(@QueryParam("email") String email, @QueryParam("password") String password)
-    {
-        if(email.equals(this.userDAO.getByEmailAddress("first@user.com").getEmailAddress())){
-            System.out.println("idk what");
-            return this.userDAO.getByEmailAddress(email);
-        }
-        else {
-            //TODO hier een 400 bad request returnen
-            return null;
-        }
-    }
 
 }

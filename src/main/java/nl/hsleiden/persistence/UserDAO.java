@@ -22,7 +22,7 @@ public class UserDAO
         user1.setPostcode("1234AB");
         user1.setStreetnumber("12");
         user1.setEmailAddress("first@user.com");
-        user1.setPassword("first");
+        user1.setPassword("8b04d5e3775d298e78455efc5ca404d5");
         user1.setRoles(new String[] { "GUEST", "ADMIN" });
         
         User user2 = new User();
@@ -30,7 +30,7 @@ public class UserDAO
         user2.setPostcode("9876ZY");
         user2.setStreetnumber("98");
         user2.setEmailAddress("second@user.com");
-        user2.setPassword("second");
+        user2.setPassword("a9f0e61a137d86aa9db53465e0801612");
         user2.setRoles(new String[] { "GUEST" });
 
         User user3 = new User();
