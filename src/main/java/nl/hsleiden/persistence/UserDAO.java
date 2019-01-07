@@ -4,89 +4,39 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import javax.inject.Singleton;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import javax.ws.rs.NotFoundException;
+
+import com.google.inject.Inject;
 import nl.hsleiden.model.User;
+import org.hibernate.Criteria;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Peter van Vliet
  */
 @Singleton
-public class UserDAO
+public class UserDAO extends BaseDAO<User>
 {
-    private final List<User> users;
-    
-    public UserDAO()
-    {
-        User user1 = new User();
-        user1.setFullName("First user");
-        user1.setPostcode("1234AB");
-        user1.setStreetnumber("12");
-        user1.setEmailAddress("first@user.com");
-        user1.setPassword("first");
-        user1.setRoles(new String[] { "GUEST", "ADMIN" });
-        
-        User user2 = new User();
-        user2.setFullName("Second user");
-        user2.setPostcode("9876ZY");
-        user2.setStreetnumber("98");
-        user2.setEmailAddress("second@user.com");
-        user2.setPassword("second");
-        user2.setRoles(new String[] { "GUEST" });
+    @Inject
+    public UserDAO(SessionFactory factory) {
+        super(User.class, factory);
+    }
 
-        User user3 = new User();
-        user3.setFullName("Jacco van den Berg");
-        user3.setPostcode("2568PC");
-        user3.setStreetnumber("88");
-        user3.setEmailAddress("jaccoberg2281@gmail.com");
-        user3.setPassword("b4453d1f9f5386a1846e57a3ec95678f");
-        user1.setRoles(new String[] { "GUEST", "ADMIN" });
-        
-        users = new ArrayList<>();
-        users.add(user1);
-        users.add(user2);
-        users.add(user3);
-    }
-    
-    public List<User> getAll()
-    {
-        return users;
-    }
-    
-    public User get(int id)
-    {
-        try
-        {
-            return users.get(id);
-        }
-        catch(IndexOutOfBoundsException exception)
-        {
-            return null;
-        }
-    }
-    
-    public User getByEmailAddress(String emailAddress)
-    {
-        Optional<User> result = users.stream()
-            .filter(user -> user.getEmailAddress().equals(emailAddress))
-            .findAny();
-        
-        return result.isPresent()
-            ? result.get()
-            : null;
-    }
-    
-    public void add(User user)
-    {
-        users.add(user);
-    }
-    
-    public void update(int id, User user)
-    {
-        users.set(id, user);
-    }
-    
-    public void delete(int id)
-    {
-        users.remove(id);
+    public List<User> getByEmailAddress(String email) {
+
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+            @Override
+            public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
+                criteriaQuery.where(criteriaBuilder.like(root.get("emailAddress"), "%" + email + "%"));
+            }
+        };
+
+        return super.findBy(anon);
     }
 }

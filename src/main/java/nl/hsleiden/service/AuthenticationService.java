@@ -1,5 +1,6 @@
 package nl.hsleiden.service;
 
+import java.security.Principal;
 import java.util.Optional;
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
@@ -28,7 +29,7 @@ public class AuthenticationService implements Authenticator<BasicCredentials, Us
     @Override
     public Optional<User> authenticate(BasicCredentials credentials) throws AuthenticationException
     {
-        User user = userDAO.getByEmailAddress(credentials.getUsername());
+        User user = userDAO.getByEmailAddress(credentials.getUsername()).get(0);
         
         if (user != null && user.getPassword().equals(credentials.getPassword()))
         {

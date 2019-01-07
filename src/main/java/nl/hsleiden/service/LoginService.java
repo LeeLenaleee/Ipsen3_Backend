@@ -7,7 +7,7 @@ import nl.hsleiden.persistence.UserDAO;
 
 import javax.inject.Inject;
 import java.util.Collection;
-
+/*
 public class LoginService extends BaseService<User>{
     private final LoginDao dao;
     private final UserDAO userDao;
@@ -35,3 +35,4 @@ public class LoginService extends BaseService<User>{
 
     }
 }
+*/
