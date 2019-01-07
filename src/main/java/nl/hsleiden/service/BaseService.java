@@ -5,7 +5,6 @@ import javax.ws.rs.NotFoundException;
 
 import com.google.inject.Inject;
 import nl.hsleiden.model.BaseModel;
-import nl.hsleiden.model.User;
 import nl.hsleiden.persistence.BaseDAO;
 
 /**
@@ -33,14 +32,7 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         
         return model;
     }
-    
-    public void assertSelf(User user1, User user2)
-    {
-        if (!user1.equals(user2))
-        {
-            throw new ForbiddenException();
-        }
-    }
+
 
     public M findById(int id)
     {

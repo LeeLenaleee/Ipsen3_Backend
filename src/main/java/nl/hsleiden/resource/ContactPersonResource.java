@@ -6,8 +6,8 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
-import nl.hsleiden.model.ContactPerson;
-import nl.hsleiden.service.ContactactService;
+import nl.hsleiden.model.ContactPersonModel;
+import nl.hsleiden.service.ContactPersonService;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -18,10 +18,10 @@ import java.util.List;
 @Path("/contacts")
 @Produces(MediaType.APPLICATION_JSON)
 public class ContactPersonResource {
-    private final ContactactService service;
+    private final ContactPersonService service;
 
     @Inject
-    public ContactPersonResource(ContactactService service)
+    public ContactPersonResource(ContactPersonService service)
     {
         this.service = service;
     }
@@ -30,15 +30,15 @@ public class ContactPersonResource {
     @Path("/{id}")
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public ContactPerson findById(@PathParam("id") int id) {
+    public ContactPersonModel findById(@PathParam("id") int id) {
         return service.findById(id);
     }
 
     @GET
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public List<ContactPerson> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
-        List <ContactPerson> results = service.findByBedrijf(bedrijf);
+    public List<ContactPersonModel> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
+        List <ContactPersonModel> results = service.findByBedrijf(bedrijf);
 
         // Didn't find any matches.
         if (results.isEmpty()) {
@@ -52,18 +52,18 @@ public class ContactPersonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid ContactPerson contactPerson)
+    public void create(@Valid ContactPersonModel contactPersonModel)
     {
-        service.create(contactPerson);
+        service.create(contactPersonModel);
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid ContactPerson contactPerson)
+    public void delete(@Valid ContactPersonModel contactPersonModel)
     {
-        service.delete(contactPerson);
+        service.delete(contactPersonModel);
     }
 
     @PUT
@@ -71,8 +71,8 @@ public class ContactPersonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid ContactPerson contactPerson)
+    public void update(@PathParam("id") int id, @Valid ContactPersonModel contactPersonModel)
     {
-        service.update(id, contactPerson);
+        service.update(id, contactPersonModel);
     }
 }

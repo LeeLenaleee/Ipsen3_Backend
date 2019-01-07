@@ -1,7 +1,6 @@
 package nl.hsleiden.persistence;
 
 import nl.hsleiden.model.BaseModel;
-import nl.hsleiden.model.ContactPerson;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

@@ -17,10 +17,10 @@ server:
       port: 8081
 
 database:
-  driverClass: org.postgresql.Driver
-  url: "jdbc:postgresql://localhost/ipsen3/"
-  user: admin
-  password: password
+  driverClass: com.mysql.cj.jdbc.Driver
+  url: "jdbc:mysql://localhost:3306/ipsen3"
+  user: root
+  password: goudvis
   properties:
-    hibernate.dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate.hbm2ddl.auto: none
+      hibernate.dialect:  org.hibernate.dialect.MySQL5Dialect
+      hibernate.hbm2ddl.auto: none

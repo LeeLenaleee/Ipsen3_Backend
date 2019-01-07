@@ -13,93 +13,91 @@ import java.sql.Date;
 public class OnkostenModel extends BaseModel{
 
     @Column(name = "onkosten_bedrijf")
-    private String onkosten_bedrijf;
+    private String onkostenBedrijf;
 
     @Column(name = "onkosten_datum")
-    private Date onkosten_datum;
+    private Date onkostenDatum;
 
     @Column(name = "onkosten_kostenpost")
-    private String onkosten_kostenpost;
+    private String onkostenKostenpost;
 
     @Column(name = "onkosten_omschrijving")
-    private String onkosten_omschrijving;
+    private String onkostenOmschrijving;
 
     @Column(name = "onkosten_bruto_kosten")
-    private int onkosten_bruto_kosten;
+    private int onkostenBrutoKosten;
 
     @Column(name = "onkosten_btw_percentage")
-    private int onkosten_btw_percentage;
+    private int onkostenBtwPercentage;
 
     @Column(name = "onkosten_btw_kosten")
-    private int onkosten_btw_kosten;
+    private int onkostenBtwKosten;
 
     @Column(name = "onkosten_netto_kosten")
-    private int onkosten_netto_kosten;
+    private int onkostenNettoKosten;
 
-    public String getOnkosten_bedrijf() {
-        return onkosten_bedrijf;
+
+    public String getOnkostenBedrijf() {
+        return onkostenBedrijf;
     }
 
-    public void setOnkosten_bedrijf(String onkosten_bedrijf) {
-        this.onkosten_bedrijf = onkosten_bedrijf;
+    public void setOnkostenBedrijf(String onkostenBedrijf) {
+        this.onkostenBedrijf = onkostenBedrijf;
     }
 
-    public Date getOnkosten_datum() {
-        return onkosten_datum;
+    public Date getOnkostenDatum() {
+        return onkostenDatum;
     }
 
-    public void setOnkosten_datum(Date onkosten_datum) {
-        this.onkosten_datum = onkosten_datum;
+    public void setOnkostenDatum(Date onkostenDatum) {
+        this.onkostenDatum = onkostenDatum;
     }
 
-    public String getOnkosten_kostenpost() {
-        return onkosten_kostenpost;
+    public String getOnkostenKostenpost() {
+        return onkostenKostenpost;
     }
 
-    public void setOnkosten_kostenpost(String onkosten_kostenpost) {
-        this.onkosten_kostenpost = onkosten_kostenpost;
+    public void setOnkostenKostenpost(String onkostenKostenpost) {
+        this.onkostenKostenpost = onkostenKostenpost;
     }
 
-    public String getOnkosten_omschrijving() {
-        return onkosten_omschrijving;
+    public String getOnkostenOmschrijving() {
+        return onkostenOmschrijving;
     }
 
-    public void setOnkosten_omschrijving(String onkosten_omschrijving) {
-        this.onkosten_omschrijving = onkosten_omschrijving;
+    public void setOnkostenOmschrijving(String onkostenOmschrijving) {
+        this.onkostenOmschrijving = onkostenOmschrijving;
     }
 
-    public int getOnkosten_bruto_kosten() {
-        return onkosten_bruto_kosten;
+    public int getOnkostenBrutoKosten() {
+        return onkostenBrutoKosten;
     }
 
-    public void setOnkosten_bruto_kosten(int onkosten_bruto_kosten) {
-        this.onkosten_bruto_kosten = onkosten_bruto_kosten;
+    public void setOnkostenBrutoKosten(int onkostenBrutoKosten) {
+        this.onkostenBrutoKosten = onkostenBrutoKosten;
     }
 
-    public int getOnkosten_btw_percentage() {
-        return onkosten_btw_percentage;
+    public int getOnkostenBtwPercentage() {
+        return onkostenBtwPercentage;
     }
 
-    public void setOnkosten_btw_percentage(int onkosten_btw_percentage) {
-        this.onkosten_btw_percentage = onkosten_btw_percentage;
+    public void setOnkostenBtwPercentage(int onkostenBtwPercentage) {
+        this.onkostenBtwPercentage = onkostenBtwPercentage;
     }
 
-    public int getOnkosten_btw_kosten() {
-        return onkosten_btw_kosten;
+    public int getOnkostenBtwKosten() {
+        return onkostenBtwKosten;
     }
 
-    public void setOnkosten_btw_kosten(int onkosten_btw_kosten) {
-        this.onkosten_btw_kosten = onkosten_btw_kosten;
+    public void setOnkostenBtwKosten(int onkostenBtwKosten) {
+        this.onkostenBtwKosten = onkostenBtwKosten;
     }
 
-    public int getOnkosten_netto_kosten() {
-        return onkosten_netto_kosten;
+    public int getOnkostenNettoKosten() {
+        return onkostenNettoKosten;
     }
 
-    public void setOnkosten_netto_kosten(int onkosten_netto_kosten) {
-        this.onkosten_netto_kosten = onkosten_netto_kosten;
+    public void setOnkostenNettoKosten(int onkostenNettoKosten) {
+        this.onkostenNettoKosten = onkostenNettoKosten;
     }
-
-    public OnkostenModel() {}
-
 }
