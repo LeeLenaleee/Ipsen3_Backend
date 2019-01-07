@@ -1,7 +1,7 @@
 package nl.hsleiden.persistence;
 
 import com.google.inject.Inject;
-import nl.hsleiden.model.ContactPerson;
+import nl.hsleiden.model.ContactPersonModel;
 import org.hibernate.SessionFactory;
 
 import javax.inject.Singleton;
@@ -14,14 +14,14 @@ import java.util.List;
  * @author Kasper
  */
 @Singleton
-public class ContactPersonDAO extends BaseDAO<ContactPerson> {
+public class ContactPersonDAO extends BaseDAO<ContactPersonModel> {
 
     @Inject
     public ContactPersonDAO(SessionFactory factory) {
-        super(ContactPerson.class, factory);
+        super(ContactPersonModel.class, factory);
     }
 
-    public List<ContactPerson> findByBedrijf(String bedrijf) {
+    public List<ContactPersonModel> findByBedrijf(String bedrijf) {
 
         TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
