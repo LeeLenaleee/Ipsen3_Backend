@@ -25,12 +25,13 @@ CREATE TABLE emails (
 );
 
 -- als een contact verwijderd wordt, dan wordt ook de opdracht verwijderd??
-INSERT INTO factuur
-VALUES (DEFAULT, 'Illustratie logo', 'klant heeft betaald', 13.5, 1),
-(DEFAULT, 'Infographic taart', 'factuur is verstuurd', 2.3, 1),
-(DEFAULT, 'beschrijving', 'klaar voor factuur', 3.11, 4),
-(DEFAULT, 'Noten', 'Nog niet klaar', 43.4, 5);
-
+CREATE TABLE offerte (
+    id                  SERIAL PRIMARY KEY,
+    opdracht_omschrijving        VARCHAR(250),
+    opdracht_afrondingsdatum     VARCHAR(20),
+    opdracht_kosten              DOUBLE(9,2),
+    contact_id                   integer REFERENCES contactpersoon(id) ON DELETE CASCADE
+);
 
 CREATE TABLE factuur (
     id             SERIAL PRIMARY KEY,
