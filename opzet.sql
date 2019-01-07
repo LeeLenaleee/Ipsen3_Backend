@@ -12,14 +12,16 @@ CREATE TABLE contactpersoon (
 );
 
 -- koppeltabel, een contact kan meerdere telefoonnummers hebben
-CREATE TABLE telefoonnummers (
+CREATE TABLE telefoonnummer (
+    id          SERIAL PRIMARY KEY,
     telnr       varchar(15) PRIMARY KEY,
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
 
 -- koppeltabel, een contact kan meerdere emails hebben
-CREATE TABLE emails (
+CREATE TABLE email (
+    id          SERIAL PRIMARY KEY,
     email       varchar(60) PRIMARY KEY,
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
@@ -54,6 +56,14 @@ CREATE TABLE onkosten (
 );
 
 CREATE TABLE btw_percentage (
+    id          SERIAL PRIMARY KEY,
     btw_percentage_hoog      INT(2),
-	btw_percentage_laag		 INT(2)
+    btw_percentage_laag	     INT(2)
+);
+
+CREATE TABLE gebruiker (
+    id SERIAL PRIMARY KEY,
+    email_adres varchar(25),
+    wachtwoord varchar(64),
+    rol varchar(25)
 );
