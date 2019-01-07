@@ -11,7 +11,7 @@ public class TelefoonnummerModel extends BaseModel{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="contact_id")
-    private ContactPersonModel contactId;
+    private ContactPersoonModel contactId;
 
     public String getTelnr() {
         return telnr;
@@ -21,11 +21,11 @@ public class TelefoonnummerModel extends BaseModel{
         this.telnr = telnr;
     }
 
-    public ContactPersonModel getContactId() {
+    public ContactPersoonModel getContactId() {
         return contactId;
     }
 
-    public void setContactId(ContactPersonModel contactId) {
+    public void setContactId(ContactPersoonModel contactId) {
         this.contactId = contactId;
     }
 }

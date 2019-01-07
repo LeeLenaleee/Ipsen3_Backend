@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 @Entity
 @Table(name = "contactpersoon")
-public class ContactPersonModel extends BaseModel {
+public class ContactPersoonModel extends BaseModel {
     @Column(name = "contact_achternaam")
     private String contactAchternaam;
 

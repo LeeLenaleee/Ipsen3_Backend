@@ -16,7 +16,7 @@ public class OfferteModel extends BaseModel{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name ="contact_id")
-    private ContactPersonModel contactId;
+    private ContactPersoonModel contactId;
 
     public String getOpdrachtOmschrijving() {
         return opdrachtOmschrijving;
@@ -42,11 +42,11 @@ public class OfferteModel extends BaseModel{
         this.opdrachtKosten = opdrachtKosten;
     }
 
-    public ContactPersonModel getContactId() {
+    public ContactPersoonModel getContactId() {
         return contactId;
     }
 
-    public void setContactId(ContactPersonModel contactId) {
+    public void setContactId(ContactPersoonModel contactId) {
         this.contactId = contactId;
     }
 }

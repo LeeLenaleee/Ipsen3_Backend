@@ -10,7 +10,7 @@ public class EmailModel extends BaseModel{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="contact_id")
-    private ContactPersonModel contactId;
+    private ContactPersoonModel contactId;
 
     public String getEmail() {
         return email;
@@ -20,11 +20,11 @@ public class EmailModel extends BaseModel{
         this.email = email;
     }
 
-    public ContactPersonModel getContactId() {
+    public ContactPersoonModel getContactId() {
         return contactId;
     }
 
-    public void setContactId(ContactPersonModel contactId) {
+    public void setContactId(ContactPersoonModel contactId) {
         this.contactId = contactId;
     }
 }

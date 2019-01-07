@@ -8,7 +8,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.security.auth.Subject;
 import java.security.Principal;
 
-public class LoginUser implements Principal {
+public class LoginGebruikerModel implements Principal {
     @NotEmpty
     @Length(min = 3, max = 100)
     @JsonView(View.Public.class)

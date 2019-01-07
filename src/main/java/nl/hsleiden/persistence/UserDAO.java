@@ -1,34 +1,28 @@
 package nl.hsleiden.persistence;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import javax.inject.Singleton;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.ws.rs.NotFoundException;
 
 import com.google.inject.Inject;
-import nl.hsleiden.model.User;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
+import nl.hsleiden.model.GebruikerModel;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 
 /**
  *
  * @author Jacco van den Berg
  */
 @Singleton
-public class UserDAO extends BaseDAO<User>
+public class UserDAO extends BaseDAO<GebruikerModel>
 {
     @Inject
     public UserDAO(SessionFactory factory) {
-        super(User.class, factory);
+        super(GebruikerModel.class, factory);
     }
 
-    public List<User> getByEmailAddress(String email) {
+    public List<GebruikerModel> getByEmailAddress(String email) {
 
         TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override

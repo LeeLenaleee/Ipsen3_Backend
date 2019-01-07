@@ -3,8 +3,8 @@ package nl.hsleiden.resource;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
-import nl.hsleiden.model.LoginUser;
-import nl.hsleiden.model.User;
+import nl.hsleiden.model.LoginGebruikerModel;
+import nl.hsleiden.model.GebruikerModel;
 import nl.hsleiden.persistence.UserDAO;
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -29,11 +29,11 @@ public class LoginResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public User create( LoginUser loginUser)
+    public GebruikerModel create(LoginGebruikerModel loginGebruikerModel)
     {
-        System.err.println(this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0));
-        if(loginUser.getPassword().equals(this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0).getPassword())){
-            return this.userDAO.getByEmailAddress(loginUser.getEmail()).get(0);
+        System.err.println(this.userDAO.getByEmailAddress(loginGebruikerModel.getEmail()).get(0));
+        if(loginGebruikerModel.getPassword().equals(this.userDAO.getByEmailAddress(loginGebruikerModel.getEmail()).get(0).getPassword())){
+            return this.userDAO.getByEmailAddress(loginGebruikerModel.getEmail()).get(0);
         }
         else {
             throw new NotAuthorizedException("Login Credentials are wrong");

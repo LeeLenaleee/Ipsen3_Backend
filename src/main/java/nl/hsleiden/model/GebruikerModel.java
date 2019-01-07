@@ -20,7 +20,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "user")
-public class User extends BaseModel implements Principal
+public class GebruikerModel extends BaseModel implements Principal
 {
     @Column(name = "fullName")
     @NotEmpty
@@ -56,9 +56,9 @@ public class User extends BaseModel implements Principal
     @JsonView(View.Public.class)
     private String role;
 
-    public User() { }
+    public GebruikerModel() { }
 
-    public User(String fullName, String postcode, String streetnumber, String emailAddress, String password, String role) {
+    public GebruikerModel(String fullName, String postcode, String streetnumber, String emailAddress, String password, String role) {
 
         this.fullName = fullName;
         this.postcode = postcode;
@@ -133,7 +133,7 @@ public class User extends BaseModel implements Principal
         return false;
     }
 
-    public boolean equals(User user) {
-        return emailAddress.equals(user.getEmailAddress());
+    public boolean equals(GebruikerModel gebruikerModel) {
+        return emailAddress.equals(gebruikerModel.getEmailAddress());
     }
 }
