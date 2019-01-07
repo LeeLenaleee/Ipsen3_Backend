@@ -19,4 +19,9 @@ public class ContactPersoonService extends BaseService<ContactPersoonModel, Cont
     public List<ContactPersoonModel> findByBedrijf(String bedrijf) {
         return dao.findByBedrijf(bedrijf);
     }
+
+    public void update(ContactPersoonModel user, int userId) {
+        user.setId(userId);
+        super.update(user);
+    }
 }

@@ -7,6 +7,8 @@ import com.google.inject.Inject;
 import nl.hsleiden.model.BaseModel;
 import nl.hsleiden.persistence.BaseDAO;
 
+import java.util.List;
+
 /**
  *
  * @author Peter van Vliet, Kasper
@@ -39,6 +41,11 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         return requireResult(dao.findById(id));
     }
 
+    public List<M> findAll()
+    {
+        return dao.findAll();
+    }
+
     public void create(M obj)
     {
         dao.create(obj);
@@ -49,8 +56,8 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         dao.delete(obj);
     }
 
-    public void update(int id, M obj)
+    public void update(M obj)
     {
-        dao.update(id, obj);
+        dao.update(obj);
     }
 }

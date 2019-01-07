@@ -22,4 +22,9 @@ public class OnkostenService extends BaseService<OnkostenModel, OnkostenDAO> {
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
         return dao.findByOmschrijving(omschrijving);
     }
+
+    public void update(OnkostenModel user, int userId) {
+        user.setId(userId);
+        super.update(user);
+    }
 }

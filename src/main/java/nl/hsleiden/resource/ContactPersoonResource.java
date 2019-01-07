@@ -7,6 +7,7 @@ import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.ContactPersoonModel;
+import nl.hsleiden.model.OnkostenModel;
 import nl.hsleiden.service.ContactPersoonService;
 
 import javax.validation.Valid;
@@ -35,6 +36,7 @@ public class ContactPersoonResource {
     }
 
     @GET
+    @Path("/bedrijf")
     @UnitOfWork
     @JsonView(View.Protected.class)
     public List<ContactPersoonModel> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
@@ -46,6 +48,13 @@ public class ContactPersoonResource {
         }
 
         return results;
+    }
+
+    @GET
+    @UnitOfWork
+    @JsonView(View.Protected.class)
+    public List<ContactPersoonModel> findAll() {
+        return service.findAll();
     }
 
     @POST
@@ -71,8 +80,9 @@ public class ContactPersoonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid ContactPersoonModel contactPersoonModel)
+    public void update(@PathParam("id") int id, @Valid ContactPersoonModel user)
     {
-        service.update(id, contactPersoonModel);
+        service.update(user, id);
     }
+
 }

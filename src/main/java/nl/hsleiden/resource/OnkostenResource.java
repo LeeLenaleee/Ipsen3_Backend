@@ -51,7 +51,7 @@ public class OnkostenResource {
     @JsonView(View.Public.class)
     public void create(@Valid OnkostenModel onkostenModel)
     {
-        System.out.println("hij komt hier niet"); service.create(onkostenModel);
+       service.create(onkostenModel);
     }
 
     @DELETE
@@ -68,8 +68,8 @@ public class OnkostenResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid OnkostenModel onkostenModel)
+    public void update(@PathParam("id") int id, @Valid OnkostenModel user)
     {
-        service.update(id, onkostenModel);
+        service.update(user, id);
     }
 }
