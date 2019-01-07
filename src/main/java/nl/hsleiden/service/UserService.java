@@ -11,7 +11,7 @@ import nl.hsleiden.persistence.UserDAO;
  * @author Peter van Vliet
  */
 @Singleton
-public class UserService extends BaseService<User>
+public class UserService
 {
     private final UserDAO dao;
     
@@ -28,7 +28,7 @@ public class UserService extends BaseService<User>
     
     public User get(int id)
     {
-        return requireResult(dao.get(id));
+        return dao.get(id);
     }
     
     public void add(User user)
@@ -47,7 +47,7 @@ public class UserService extends BaseService<User>
         {
             // Vaststellen dat de geauthenticeerde gebruiker
             // zichzelf aan het aanpassen is
-            assertSelf(authenticator, oldUser);
+            //assertSelf(authenticator, oldUser);
         }
         
         dao.update(id, user);
