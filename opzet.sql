@@ -37,14 +37,14 @@ CREATE TABLE offerte (
 
 CREATE TABLE factuur (
     datum				VARCHAR(12),
-    #id is de factuur nummer
+    #id is het factuur nummer
     id					SERIAL PRIMARY KEY,
     aflever_datum			VARCHAR(12),
-    factuur_omschrijving   		TEXT,
-    bruto_kosten			DOUBLE,
-    btw_percentage			INT,
-    btw_kosten				DOUBLE,
-    netto_kosten			DOUBLE
+    factuur_omschrijving   		VARCHAR(250),
+    bruto_kosten			DOUBLE(9,2),
+    btw_percentage			INT(2),
+    btw_kosten				DOUBLE(9,2),
+    netto_kosten			DOUBLE(9,2)
 );
 
 CREATE TABLE onkosten (
