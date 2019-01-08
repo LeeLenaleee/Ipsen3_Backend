@@ -37,7 +37,7 @@ CREATE TABLE offerte (
 
 CREATE TABLE factuur (
     datum				VARCHAR(12),
-    --id is de factuur nummer
+    #id is de factuur nummer
     id					SERIAL PRIMARY KEY,
     aflever_datum			VARCHAR(12),
     factuur_omschrijving   		TEXT,
