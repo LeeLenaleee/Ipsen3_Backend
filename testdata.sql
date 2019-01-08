@@ -40,17 +40,17 @@ VALUES
 ('08-01-2017', DEFAULT, '08-01-2020', 'winrar gekocht', 5665564.6,21,4645656,554456);
 
 INSERT INTO onkosten
-VALUES (DEFAULT, 'hema', '2018-07-17', 'kost', 'tekenpennen rood zwart', 6, 10, 1, 14),
-(DEFAULT, 'bedrijf', '2018-07-18', 'kost', 'reizen naar klant', 25, 20, 3, 14),
-(DEFAULT, 'vogeltre', '2018-07-19', 'kost', 'ruimte om te tekenen', 55, 18, 5, 14),
-(DEFAULT, 'what', '2018-07-20', 'kost', 'papier', 6, 17, 1, 14),
-(DEFAULT, 'ok', '2018-08-07', 'kost', 'bellen met klant',12, 19, 4, 14),
-(DEFAULT, 'wtf', '2018-08-11', 'kost', 'papier', 9, 30, 1, 14),
-(DEFAULT, 'iets', '2018-08-13', 'kost', 'reizen naar klant',30, 10, 3, 14),
-(DEFAULT, 'vjdfi', '2018-07-18', 'kost', 'koffie met vrouw',10, 10, 2, 14),
-(DEFAULT, 'fjdiv', '2018-07-19', 'kost', 'pennen',13, 21, 1, 14),
-(DEFAULT, 'fjswo', '2018-08-13', 'kost', 'bellen met klant',13, 5, 4, 14),
-(DEFAULT, 'idk', '2018-09-17', 'kost', 'reizen naar klant', 50, 21, 3, 14);
+VALUES (DEFAULT, 'hema', '2018-07-17', 'kost', 'tekenpennen rood zwart', 6, 10, 1, 156),
+(DEFAULT, 'bedrijf', '2018-07-18', 'kost', 'reizen naar klant', 25, 20, 3, 112.3),
+(DEFAULT, 'vogeltre', '2018-07-19', 'kost', 'ruimte om te tekenen', 55, 18, 5, 245.32),
+(DEFAULT, 'what', '2018-07-20', 'kost', 'papier', 6, 17, 1, 3.99),
+(DEFAULT, 'ok', '2018-08-07', 'kost', 'bellen met klant',12, 19, 4, 2),
+(DEFAULT, 'wtf', '2018-08-11', 'kost', 'papier', 9, 30, 1, 1234),
+(DEFAULT, 'iets', '2018-08-13', 'kost', 'reizen naar klant',30, 10, 3, 1094.21),
+(DEFAULT, 'vjdfi', '2018-07-18', 'kost', 'koffie met vrouw',10, 10, 2, 123.1),
+(DEFAULT, 'fjdiv', '2018-07-19', 'kost', 'pennen',13, 21, 1, 92.12),
+(DEFAULT, 'fjswo', '2018-08-13', 'kost', 'bellen met klant',13, 5, 4, 14.12),
+(DEFAULT, 'idk', '2018-09-17', 'kost', 'reizen naar klant', 50, 21, 3, 14.15);
 
 INSERT INTO btw_percentage
 VALUES (DEFAULT, 21, 6);
