@@ -2,16 +2,28 @@ package nl.hsleiden.service;
 
 import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotFoundException;
-import nl.hsleiden.model.User;
+
+import com.google.inject.Inject;
+import nl.hsleiden.model.BaseModel;
+import nl.hsleiden.persistence.BaseDAO;
 
 /**
  *
- * @author Peter van Vliet
- * @param <T>
+ * @author Peter van Vliet, Kasper
+ * @param <M>: Model
+ * @Param <D>: Dao
  */
-public class BaseService<T>
+public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
 {
-    public T requireResult(T model)
+    protected D dao;
+
+    @Inject
+    public BaseService(D dao)
+    {
+        this.dao = dao;
+    }
+
+    public M requireResult(M model)
     {
         if (model == null)
         {
@@ -20,12 +32,25 @@ public class BaseService<T>
         
         return model;
     }
-    
-    public void assertSelf(User user1, User user2)
+
+
+    public M findById(int id)
     {
-        if (!user1.equals(user2))
-        {
-            throw new ForbiddenException();
-        }
+        return requireResult(dao.findById(id));
+    }
+
+    public void create(M obj)
+    {
+        dao.create(obj);
+    }
+
+    public void delete(M obj)
+    {
+        dao.delete(obj);
+    }
+
+    public void update(int id, M obj)
+    {
+        dao.update(id, obj);
     }
 }

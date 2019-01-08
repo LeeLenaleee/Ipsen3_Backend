@@ -6,8 +6,9 @@ import io.dropwizard.bundles.assets.AssetsBundleConfiguration;
 import io.dropwizard.bundles.assets.AssetsConfiguration;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import org.hibernate.validator.constraints.NotEmpty;
 
+import io.dropwizard.db.DataSourceFactory;
+import org.hibernate.validator.constraints.NotEmpty;
 /**
  *
  * @author Peter van Vliet
@@ -21,8 +22,13 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     @Valid
     @NotNull
     @JsonProperty
+    private final DataSourceFactory database = new DataSourceFactory();
+
+    @Valid
+    @NotNull
+    @JsonProperty
     private final AssetsConfiguration assets = new AssetsConfiguration();
-    
+
     public String getApiName()
     {
         return apiName;
@@ -37,5 +43,9 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     public AssetsConfiguration getAssetsConfiguration()
     {
         return assets;
+    }
+
+    public DataSourceFactory getDataSourceFactory() {
+        return database;
     }
 }
