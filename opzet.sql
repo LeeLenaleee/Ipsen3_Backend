@@ -36,11 +36,15 @@ CREATE TABLE offerte (
 );
 
 CREATE TABLE factuur (
-    id             SERIAL PRIMARY KEY,
-    factuur_beschrijving   VARCHAR(250),
-    factuur_status         varchar(25),
-    offerte_id            integer REFERENCES offerte(id) ON DELETE SET NULL,
-    contact_id             integer REFERENCES contactpersoon(id) ON DELETE SET NULL
+    id             			SERIAL PRIMARY KEY,
+    datum				VARCHAR(12),
+    factuur_nummer			INT,
+    aflever_datum			VARCHAR(12),
+    factuur_omschrijving   		TEXT,
+    bruto_kosten			DOUBLE,
+    btw_percentage			INT,
+    btw_kosten				DOUBLE,
+    netto_kosten			DOUBLE
 );
 
 CREATE TABLE onkosten (
