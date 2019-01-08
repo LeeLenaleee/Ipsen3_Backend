@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Singleton
-@Path("/contacts")
+@Path("/contacten")
 @Produces(MediaType.APPLICATION_JSON)
 public class ContactPersoonResource {
     private final ContactPersoonService service;

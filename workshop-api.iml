@@ -10,8 +10,13 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.13" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:fontbox:2.0.13" level="project" />
+    <orderEntry type="library" name="Maven: commons-logging:commons-logging:1.2" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-tools:2.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox-debugger:2.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:xmpbox:2.0.13" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Maven: org.apache.pdfbox:preflight:2.0.13" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.pdfbox:pdfbox:2.0.13" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.3.0" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:8.0.13" level="project" />
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.6.1" level="project" />

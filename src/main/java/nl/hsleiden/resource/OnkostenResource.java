@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
+import nl.hsleiden.model.ContactPersoonModel;
 import nl.hsleiden.model.OnkostenModel;
 import nl.hsleiden.service.OnkostenService;
 
@@ -43,6 +44,13 @@ public class OnkostenResource {
     @JsonView(View.Protected.class)
     public List<OnkostenModel> findByOmschrijving(@PathParam("omschrijving") String omschrijving) {
         return service.findByOmschrijving(omschrijving);
+    }
+
+    @GET
+    @UnitOfWork
+    @JsonView(View.Protected.class)
+    public List<OnkostenModel> findAll() {
+        return service.findAll();
     }
 
     @POST
