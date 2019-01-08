@@ -13,8 +13,8 @@ public class FactuurService {
     @Inject
     public FactuurService(FactuurDAO dao){this.factuurDAO = dao;}
 
-  /*  public Optional<FactuurModel> getById(int factuurId) throws Exception {
+    public Optional<FactuurModel> getById(int factuurId) throws Exception {
         factuur = factuurDAO.getByFactuurId(factuurId).orElseThrow(() -> new Exception());
-        return
-    }*/
+        return null;
+    }
 }
