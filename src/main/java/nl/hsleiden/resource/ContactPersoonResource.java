@@ -53,6 +53,21 @@ public class ContactPersoonResource {
     @GET
     @UnitOfWork
     @JsonView(View.Protected.class)
+    @Path("/naam")
+    public List<ContactPersoonModel> findByNaam(@QueryParam("voornaam") String voornaam, @QueryParam("achternaam") String achternaam) {
+        List <ContactPersoonModel> results = service.findByNaam(voornaam, achternaam);
+
+        // Didn't find any matches.
+        if (results.isEmpty()) {
+            throw new NotFoundException();
+        }
+
+        return results;
+    }
+
+    @GET
+    @UnitOfWork
+    @JsonView(View.Protected.class)
     public List<ContactPersoonModel> findAll() {
         return service.findAll();
     }
