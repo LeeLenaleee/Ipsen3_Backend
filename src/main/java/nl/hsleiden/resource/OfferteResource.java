@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Singleton
-@Path("/email")
+@Path("/offerte")
 @Produces(MediaType.APPLICATION_JSON)
 public class OfferteResource {
     private final OfferteService service;

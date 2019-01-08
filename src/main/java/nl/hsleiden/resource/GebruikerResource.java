@@ -3,8 +3,8 @@ package nl.hsleiden.resource;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
-import nl.hsleiden.model.FactuurModel;
-import nl.hsleiden.service.FactuurService;
+import nl.hsleiden.model.GebruikerModel;
+import nl.hsleiden.service.GebruikerService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -14,26 +14,26 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Singleton
-@Path("/factuur")
+@Path("/gebruiker")
 @Produces(MediaType.APPLICATION_JSON)
-public class FactuurResource {
-    private final FactuurService service;
+public class GebruikerResource {
+    private final GebruikerService service;
 
     @Inject
-    public FactuurResource(FactuurService service) { this.service = service; }
+    public GebruikerResource(GebruikerService service) { this.service = service; }
 
     @GET
     @Path("/{id}")
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public FactuurModel findById(@PathParam("id") int id) {
+    public GebruikerModel findById(@PathParam("id") int id) {
         return service.findById(id);
     }
 
     @GET
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public List<FactuurModel> findAll() {
+    public List<GebruikerModel> findAll() {
         return service.findAll();
     }
 
@@ -41,18 +41,18 @@ public class FactuurResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid FactuurModel FactuurModel)
+    public void create(@Valid GebruikerModel GebruikerModel)
     {
-        service.create(FactuurModel);
+        service.create(GebruikerModel);
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid FactuurModel FactuurModel)
+    public void delete(@Valid GebruikerModel GebruikerModel)
     {
-        service.delete(FactuurModel);
+        service.delete(GebruikerModel);
     }
 
     @PUT
@@ -60,7 +60,7 @@ public class FactuurResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid FactuurModel user)
+    public void update(@PathParam("id") int id, @Valid GebruikerModel user)
     {
         service.update(user, id);
     }

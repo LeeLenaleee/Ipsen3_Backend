@@ -14,7 +14,7 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @Singleton
-@Path("/email")
+@Path("/telefoonnummer")
 @Produces(MediaType.APPLICATION_JSON)
 public class TelefoonnummerResource {
     private final TelefoonnummerService service;
