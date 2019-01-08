@@ -19,27 +19,9 @@ import javax.persistence.Table;
  * @author Peter van Vliet
  */
 @Entity
-@Table(name = "user")
+@Table(name = "gebruiker")
 public class GebruikerModel extends BaseModel implements Principal
 {
-    @Column(name = "fullName")
-    @NotEmpty
-    @Length(min = 3, max = 100)
-    @JsonView(View.Public.class)
-    private String fullName;
-
-    @Column(name = "postcode")
-    @NotEmpty
-    @Length(min = 6, max = 7)
-    @JsonView(View.Public.class)
-    private String postcode;
-
-    @Column(name = "streetnumber")
-    @NotEmpty
-    @Length(min = 1, max = 10)
-    @JsonView(View.Public.class)
-    private String streetnumber;
-
     @Column(name = "emailAddress")
     @NotEmpty
     @Email
@@ -55,43 +37,6 @@ public class GebruikerModel extends BaseModel implements Principal
     @Column(name = "role")
     @JsonView(View.Public.class)
     private String role;
-
-    public GebruikerModel() { }
-
-    public GebruikerModel(String fullName, String postcode, String streetnumber, String emailAddress, String password, String role) {
-
-        this.fullName = fullName;
-        this.postcode = postcode;
-        this.streetnumber = streetnumber;
-        this.emailAddress = emailAddress;
-        this.password = password;
-        this.role = role;
-
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getStreetnumber() {
-        return streetnumber;
-    }
-
-    public void setStreetnumber(String streetnumber) {
-        this.streetnumber = streetnumber;
-    }
 
     public String getEmailAddress() {
         return emailAddress;
@@ -109,18 +54,11 @@ public class GebruikerModel extends BaseModel implements Principal
         this.password = password;
     }
 
-
-    @JsonIgnore
-    public String getName() {
-        return fullName;
-    }
-
     public String getRole() {
         return role;
     }
 
-    public void setRole(String role)
-    {
+    public void setRole(String role) {
         this.role = role;
     }
 
@@ -135,5 +73,10 @@ public class GebruikerModel extends BaseModel implements Principal
 
     public boolean equals(GebruikerModel gebruikerModel) {
         return emailAddress.equals(gebruikerModel.getEmailAddress());
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 }
