@@ -15,7 +15,7 @@ import java.io.*;
  * @author Jacco
  */
 public class PDFWriter {
-    public File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
+   /* public File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
                                    String nettoKosten, String btwPercentage, String factuurNummer,Stage stage) throws IOException {
         File file = new File("nl/hsleiden/pdfFiles/templates/factuurtemplate.pdf");
         PDDocument pdDocument = PDDocument.load(file);
@@ -53,7 +53,7 @@ public class PDFWriter {
 
         }
         return new File(pdDocument);
-    }
+    }*/
 
     public void maakOfferte(String datum, String corespondentieNummer, String naamKlant, String offerteNummer, String uren,
                                    String btwPercentage, String kostenBruto, String kostenBTW, String kostenNetto, Stage stage) throws IOException {
