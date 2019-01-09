@@ -25,11 +25,11 @@ VALUES (DEFAULT, 'morris@park.nl', 1),
 (DEFAULT, 'zavier@blanchard.nl', 5),
 (DEFAULT, 'info@notenkoor.nl', 5);
 
-INSERT INTO offerte 
-VALUES (DEFAULT, 'Illustratie voor logo van het bedrijf', '2018-08-12', 1.92,0),
-(DEFAULT, 'Infographics voor taart', '2018-09-15', 13.12,1),
-(DEFAULT, 'omschrijving', '2018-10-02', 4.12,2),
-(DEFAULT, 'Illustratie van noten', '2018-11-23', 55.2,3);
+insert into offerte values
+(DEFAULT,'03-02-1990','654','piet','55','4','55','9','999'),
+(DEFAULT,'05-12-2000','654','Klaas','555','4','3','9','7'),
+(DEFAULT,'03-05-2136','654','Jan','96','4','74','9','77'),
+(DEFAULT,'22-12-5845','654','Melanie','02','7','8','9','23')
 
 
 INSERT INTO factuur
