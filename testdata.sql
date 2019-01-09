@@ -34,10 +34,10 @@ VALUES (DEFAULT, 'Illustratie voor logo van het bedrijf', '2018-08-12', 1.92,0),
 
 INSERT INTO factuur
 VALUES 
-('12-09-2019', DEFAULT, '16-02-2019', 'Schildering van piethje', 1,6,0.06,1.06),
-('03-04-2019', DEFAULT, '04-01-2019', 'geen zin om te typen dus fancy schilderij', 10,21,2.1,12.1),
-('07-02-2019', DEFAULT, '08-03-2019', 'notapd++ gekocht', 40.1,6,2.4,42.5),
-('08-01-2017', DEFAULT, '08-01-2020', 'winrar gekocht', 5665564.6,21,4645656,554456);
+(DEFAULT, '12-09-2019', '16-02-2019', 'Schildering van piethje', 1,6,0.06,1.06),
+(DEFAULT, '03-04-2019', '04-01-2019', 'geen zin om te typen dus fancy schilderij', 10,21,2.1,12.1),
+(DEFAULT, '07-02-2019', '08-03-2019', 'notapd++ gekocht', 40.1,6,2.4,42.5),
+(DEFAULT, '08-01-2017', '08-01-2020', 'winrar gekocht', 5665564.6,21,4645656,554456);
 
 INSERT INTO onkosten
 VALUES (DEFAULT, 'hema', '2018-07-17', 'kost', 'tekenpennen rood zwart', 6, 10, 1, 156),
@@ -58,4 +58,3 @@ VALUES (DEFAULT, 21, 6);
 INSERT INTO gebruiker
 VALUES (DEFAULT, 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 'admin'),
 (DEFAULT, 'test1@test.com', '5a105e8b9d40e1329780d62ea2265d8a', 'user')
-        
