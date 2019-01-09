@@ -5,7 +5,6 @@ import javax.persistence.*;
 @Entity
 @Table(name = "offerte")
 public class OfferteModel extends BaseModel{
-<<<<<<< HEAD
     @Column(name = "datum")
     private String datum;
 
@@ -66,31 +65,31 @@ public class OfferteModel extends BaseModel{
         return btwPercentage;
     }
 
-    public void setOpdrachtOmschrijving(String opdrachtOmschrijving) {
-        this.opdrachtOmschrijving = opdrachtOmschrijving;
+    public void setBtwPercentage(String btwPercentage) {
+        this.btwPercentage = btwPercentage;
     }
 
-    public String getOpdrachtAfrondingsDatum() {
-        return opdrachtAfrondingsDatum;
+    public String getKostenBruto() {
+        return kostenBruto;
     }
 
-    public void setOpdrachtAfrondingsDatum(String opdrachtAfrondingsDatum) {
-        this.opdrachtAfrondingsDatum = opdrachtAfrondingsDatum;
+    public void setKostenBruto(String kostenBruto) {
+        this.kostenBruto = kostenBruto;
     }
 
-    public double getOpdrachtKosten() {
-        return opdrachtKosten;
+    public String getKostenBTW() {
+        return kostenBTW;
     }
 
-    public void setOpdrachtKosten(double opdrachtKosten) {
-        this.opdrachtKosten = opdrachtKosten;
+    public void setKostenBTW(String kostenBTW) {
+        this.kostenBTW = kostenBTW;
     }
 
-    public ContactPersoonModel getContactId() {
-        return contactId;
+    public String getKostenNetto() {
+        return kostenNetto;
     }
 
-    public void setContactId(ContactPersoonModel contactId) {
-        this.contactId = contactId;
+    public void setKostenNetto(String kostenNetto) {
+        this.kostenNetto = kostenNetto;
     }
 }

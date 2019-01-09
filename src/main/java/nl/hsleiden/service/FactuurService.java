@@ -1,6 +1,6 @@
 package nl.hsleiden.service;
 
-import nl.hsleiden.PDFWriter;
+import nl.hsleiden.utility.PDFWriter;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 
