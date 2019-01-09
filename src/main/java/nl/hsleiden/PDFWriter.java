@@ -23,11 +23,7 @@ public class PDFWriter {
 
    public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
                                    String nettoKosten, String btwPercentage, String factuurNummer) {
-       String a = "C:\\Users\\Jacco School\\IdeaProjects\\Ipsen3_Backend\\src\\main\\java\\nl\\hsleiden\\pdfFiles\\templates\\factuurtemplate.pdf";
-        String b = "./src/main/java/nl/hsleiden/pdfFiles/templates/factuurtemplate.pdf";
-        String c = "nl/hsleiden/pdfFiles/templates/factuurtemplate.pdf";
-        String d = "factuurtemplate.pdf";
-
+       
        File file = new File(template + "factuurtemplate.pdf");
        PDDocument pdDocument = null;
        try {
