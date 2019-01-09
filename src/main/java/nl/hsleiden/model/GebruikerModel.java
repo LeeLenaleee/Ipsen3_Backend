@@ -22,49 +22,49 @@ import javax.persistence.Table;
 @Table(name = "gebruiker")
 public class GebruikerModel extends BaseModel implements Principal
 {
-    @Column(name = "emailAddress")
+    @Column(name = "email_adres")
     @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String emailAdres;
 
-    @Column(name = "password")
+    @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
     @JsonView(View.Protected.class)
-    private String password;
+    private String wachtwoord;
 
-    @Column(name = "role")
+    @Column(name = "rol")
     @JsonView(View.Public.class)
-    private String role;
+    private String rol;
 
-    public String getEmailAddress() {
-        return emailAddress;
+    public String getEmailAdres() {
+        return emailAdres;
     }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
+    public void setEmailAdres(String emailAdres) {
+        this.emailAdres = emailAdres;
     }
 
-    public String getPassword() {
-        return password;
+    public String getWachtwoord() {
+        return wachtwoord;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
     }
 
-    public String getRole() {
-        return role;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public boolean hasRole(String roleName) {
-        if (role != null) {
-            if (roleName.equals(role)) {
+    public boolean hasRol(String rolName) {
+        if (rol != null) {
+            if (rolName.equals(rol)) {
                 return true;
             }
         }
@@ -72,7 +72,7 @@ public class GebruikerModel extends BaseModel implements Principal
     }
 
     public boolean equals(GebruikerModel gebruikerModel) {
-        return emailAddress.equals(gebruikerModel.getEmailAddress());
+        return emailAdres.equals(gebruikerModel.getEmailAdres());
     }
 
     @Override
