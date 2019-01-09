@@ -9,7 +9,6 @@ import javax.ws.rs.NotFoundException;
 import java.io.File;
 import java.util.Optional;
 
-
 public class FactuurService {
     FactuurDAO factuurDAO;
 

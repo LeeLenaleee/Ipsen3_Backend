@@ -1,5 +1,6 @@
 package nl.hsleiden.utility;
 
+import nl.hsleiden.model.BriefModel;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.model.OfferteModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -139,7 +140,7 @@ public final class PDFWriter {
         return temp;
     }
 
-    public static File maakBrief(String datum, String brief, String ontvanger, String adress) {
+    public static File maakBrief(BriefModel brief) {
         File file = new File(template + "brief.pdf");
         try {
             pdDocument = PDDocument.load(file);
@@ -157,10 +158,10 @@ public final class PDFWriter {
             PDField letter = pdAcroForm.getField("text");
 
             try {
-                date.setValue(datum);
-                recierver.setValue(ontvanger);
-                adres.setValue(adress);
-                letter.setValue(brief);
+                date.setValue(brief.getDatum());
+                recierver.setValue(brief.getBetreft());
+                adres.setValue(brief.getAdresering());
+                letter.setValue(brief.getVerhaal());
             } catch (IOException e) {
                 LOGGER.log(Level.FINE,e.toString(),e);
             }

@@ -1,67 +1,51 @@
 package nl.hsleiden.resource;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
-import nl.hsleiden.View;
-import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.service.FactuurService;
-
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.validation.Valid;
 import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import java.util.List;
-/*
+import javax.ws.rs.core.Response;
+import javax.ws.rs.ext.Provider;
+import java.io.File;
+import java.io.FileNotFoundException;
+@Provider
 @Singleton
 @Path("/factuur")
-@Produces(MediaType.APPLICATION_JSON)
 public class FactuurResource {
-    /*private final FactuurService service;
+    private final FactuurService factuurService;
+    private String testPdf = "C:\\Users\\Jacco School\\IdeaProjects\\Ipsen3_Backend\\src\\main\\java\\nl\\hsleiden\\pdfFiles\\facturen\\112.pdf";
 
     @Inject
-    public FactuurResource(FactuurService service) { this.service = service; }
+    public FactuurResource(FactuurService service){this.factuurService = service;}
 
+    //download de pdf file automatish
+    @Path("/pdf1/{id}")
     @GET
-    @Path("/{id}")
-    @UnitOfWork
-    @JsonView(View.Protected.class)
-    public FactuurModel findById(@PathParam("id") int id) {
-        return service.findById(id);
+    @Produces({"application/pdf"})
+    public Response getFile1(@PathParam("id") int id)
+    {
+        File file = new File(testPdf);
+        Response.ResponseBuilder response = Response.ok((Object) file);
+        response.header("Content-Disposition","attachment; filename=test.pdf");
+        return response.build();
+    }
+    //opened de pdf file in de browser dus je moet zelf nog op download klikken
+    @Path("pdf2/{id}")
+    @GET
+    @Produces({"application/pdf"})
+    public File getFile2(@PathParam("id") int id) throws FileNotFoundException {
+        if (id == 1){
+            File file = new File(testPdf);
+            return file;
+        }else throw new FileNotFoundException("file not found");
     }
 
+    @Path("/download")
     @GET
     @UnitOfWork
-    @JsonView(View.Protected.class)
-    public List<FactuurModel> findAll() {
-        return service.findAll();
+    @Produces({"application/pdf"})
+    public File getFile(@QueryParam("id") int id) {
+        return this.factuurService.getById(id);
     }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void create(@Valid FactuurModel FactuurModel)
-    {
-        service.create(FactuurModel);
-    }
-
-    @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void delete(@Valid FactuurModel FactuurModel)
-    {
-        service.delete(FactuurModel);
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid FactuurModel user)
-    {
-        service.update(user, id);
-    }
-}*/
+}
