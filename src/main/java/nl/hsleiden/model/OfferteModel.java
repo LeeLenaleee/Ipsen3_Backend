@@ -6,90 +6,47 @@ import javax.persistence.*;
 @Table(name = "offerte")
 public class OfferteModel extends BaseModel{
     @Column(name = "opdracht_omschrijving")
-    private String datum;
+    private String opdrachtOmschrijving;
 
     @Column(name = "opdracht_afrondingsdatum")
-    private String correspondentienummer;
+    private String opdrachtAfrondingsDatum;
 
     @Column(name = "opdracht_kosten")
-    private String naamklant;
+    private double opdrachtKosten;
 
-    @Column(name ="contact_id2")
-    private String uren;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name ="contact_id")
+    private ContactPersoonModel contactId;
 
-    @Column(name ="contact_id3")
-    private String btwPercentage;
-
-    @Column(name ="contact_id4")
-    private String kostenBruto;
-
-    @Column(name ="contact_id5")
-    private String kostenBTW;
-
-    @Column(name ="contact_id6")
-    private String kostenNetto;
-
-    public String getDatum() {
-        return datum;
+    public String getOpdrachtOmschrijving() {
+        return opdrachtOmschrijving;
     }
 
-    public void setDatum(String datum) {
-        this.datum = datum;
+    public void setOpdrachtOmschrijving(String opdrachtOmschrijving) {
+        this.opdrachtOmschrijving = opdrachtOmschrijving;
     }
 
-    public String getCorrespondentienummer() {
-        return correspondentienummer;
+    public String getOpdrachtAfrondingsDatum() {
+        return opdrachtAfrondingsDatum;
     }
 
-    public void setCorrespondentienummer(String correspondentienummer) {
-        this.correspondentienummer = correspondentienummer;
+    public void setOpdrachtAfrondingsDatum(String opdrachtAfrondingsDatum) {
+        this.opdrachtAfrondingsDatum = opdrachtAfrondingsDatum;
     }
 
-    public String getNaamklant() {
-        return naamklant;
+    public double getOpdrachtKosten() {
+        return opdrachtKosten;
     }
 
-    public void setNaamklant(String naamklant) {
-        this.naamklant = naamklant;
+    public void setOpdrachtKosten(double opdrachtKosten) {
+        this.opdrachtKosten = opdrachtKosten;
     }
 
-    public String getUren() {
-        return uren;
+    public ContactPersoonModel getContactId() {
+        return contactId;
     }
 
-    public void setUren(String uren) {
-        this.uren = uren;
-    }
-
-    public String getBtwPercentage() {
-        return btwPercentage;
-    }
-
-    public void setBtwPercentage(String btwPercentage) {
-        this.btwPercentage = btwPercentage;
-    }
-
-    public String getKostenBruto() {
-        return kostenBruto;
-    }
-
-    public void setKostenBruto(String kostenBruto) {
-        this.kostenBruto = kostenBruto;
-    }
-
-    public String getKostenBTW() {
-        return kostenBTW;
-    }
-
-    public void setKostenBTW(String kostenBTW) {
-        this.kostenBTW = kostenBTW;
-    }
-
-    public String getKostenNetto() {
-        return kostenNetto;
-    }
-
-    public void setKostenNetto(String kostenNetto) {
-        this.kostenNetto = kostenNetto;
+    public void setContactId(ContactPersoonModel contactId) {
+        this.contactId = contactId;
     }
 }
