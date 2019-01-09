@@ -43,6 +43,6 @@ public class FactuurDownloadResource {
     @GET
     @Produces({"application/pdf"})
     public File getFile3() {
-        return PDFWriter.maakFactuur("01-01-2019","ziekenwagen jeweetzelf","5","4","3","2","55");
+        return PDFWriter.maakFactuur("01-01-2019","kasper good joib met auth","5","4","3","2","55");
     }
 }
