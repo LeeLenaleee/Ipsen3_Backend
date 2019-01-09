@@ -1,26 +1,33 @@
 package nl.hsleiden;
 
-import javafx.scene.control.Alert;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
-
 import java.io.*;
+
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
  * @author Jacco
  */
 public class PDFWriter {
-   /* public File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
-                                   String nettoKosten, String btwPercentage, String factuurNummer,Stage stage) throws IOException {
-        File file = new File("nl/hsleiden/pdfFiles/templates/factuurtemplate.pdf");
-        PDDocument pdDocument = PDDocument.load(file);
+    private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
+    private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/";
 
-        PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
+   public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
+                                   String nettoKosten, String btwPercentage, String factuurNummer) {
+
+       File file = new File(template + "factuurtemplate.pdf");
+       PDDocument pdDocument = null;
+       try {
+           pdDocument = PDDocument.load(file);
+       } catch (IOException e) {
+           e.printStackTrace();
+           System.err.println("Tim zecht: aardapel");
+       }
+
+       PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
@@ -33,14 +40,20 @@ public class PDFWriter {
             PDField factuurNummerField = pdAcroForm.getField("factuurNummer");
             PDField datum2Field = pdAcroForm.getField("datum2");
 
-            datumField.setValue(datum);
-            datum2Field.setValue(datum);
-            omschrijvingField.setValue(omschrijving);
-            brutoKostenField.setValue(brutoKosten);
-            btwKostenField.setValue(btwKosten);
-            nettoKostenField.setValue(nettoKosten);
-            btwPercentageField.setValue(btwPercentage);
-            factuurNummerField.setValue(factuurNummer);
+            try {
+
+
+                datumField.setValue(datum);
+                datum2Field.setValue(datum);
+                omschrijvingField.setValue(omschrijving);
+                brutoKostenField.setValue(brutoKosten);
+                btwKostenField.setValue(btwKosten);
+                nettoKostenField.setValue(nettoKosten);
+                btwPercentageField.setValue(btwPercentage);
+                factuurNummerField.setValue(factuurNummer);
+            }catch (IOException e){
+                e.printStackTrace();
+            }
 
             datumField.setReadOnly(true);
             datum2Field.setReadOnly(true);
@@ -52,17 +65,20 @@ public class PDFWriter {
             factuurNummerField.setReadOnly(true);
 
         }
-        return new File(pdDocument);
-    }*/
+        File temp = new File(tempfileLoc + "temp.pdf");
+        try {
+            pdDocument.save(temp);
+            pdDocument.close();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+        return temp;
+    }
 
-    public void maakOfferte(String datum, String corespondentieNummer, String naamKlant, String offerteNummer, String uren,
-                                   String btwPercentage, String kostenBruto, String kostenBTW, String kostenNetto, Stage stage) throws IOException {
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("PDF Files (*.pdf)","*.pdf");
-        fileChooser.getExtensionFilters().add(extensionFilter);
-        fileChooser.setTitle("Open Offerte Template");
-
-        PDDocument pdDocument = PDDocument.load(fileChooser.showOpenDialog(stage));
+    public static File maakOfferte(String datum, String corespondentieNummer, String naamKlant, String offerteNummer, String uren,
+                                   String btwPercentage, String kostenBruto, String kostenBTW, String kostenNetto) throws IOException {
+        File file = new File(template + "offertetemplate.pdf");
+        PDDocument pdDocument = PDDocument.load(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
@@ -99,19 +115,16 @@ public class PDFWriter {
             kostenBrutoField.setReadOnly(true);
             kostenBTWField.setReadOnly(true);
             kostenNettoField.setReadOnly(true);
-
-
-            fileChooser.setTitle("Save Offerte");
-            File file = fileChooser.showSaveDialog(stage);
-
-            pdDocument.save(file);
-            pdDocument.close();
         }
+        File temp = new File(tempfileLoc + "temp.pdf");
+        pdDocument.save(temp);
+        pdDocument.close();
+        return temp;
     }
 
-    public void maakBrief(String datum, String brief, String ontvanger, String adress,Stage stage) throws IOException {
-        InputStream input = getClass().getResourceAsStream("/pdfFiles/templates/brief.pdf");
-        PDDocument pdDocument = PDDocument.load(input);
+    public static File maakBrief(String datum, String brief, String ontvanger, String adress) throws IOException {
+        File file = new File(template + "brief.pdf");
+        PDDocument pdDocument = PDDocument.load(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
@@ -132,23 +145,10 @@ public class PDFWriter {
             adres.setReadOnly(true);
             letter.setReadOnly(true);
         }
-
-        FileChooser fileChooser = new FileChooser();
-        FileChooser.ExtensionFilter extensionFilter =
-                new FileChooser.ExtensionFilter("PDF Files (*.pdf)","*.pdf");
-        fileChooser.getExtensionFilters().add(extensionFilter);
-        fileChooser.setTitle("Save Brief");
-        File file = fileChooser.showSaveDialog(stage);
-
-        try {
-            pdDocument.save(file);
-        }catch (Exception e){
-            Alert alert2 = new Alert(Alert.AlertType.ERROR);
-            alert2.setTitle("Error");
-            alert2.setHeaderText("Er is iets mis gegaan bij het opslaan");
-            alert2.setContentText("Grote kans dat of de template niet gevonden is of dat het opslaan gecaneld is");
-        }
-
+        File temp = new File(tempfileLoc + "temp.pdf");
+        pdDocument.save(temp);
         pdDocument.close();
+        return temp;
     }
+
 }

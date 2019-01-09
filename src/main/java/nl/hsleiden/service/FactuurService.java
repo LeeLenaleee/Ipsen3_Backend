@@ -15,6 +15,10 @@ public class FactuurService extends BaseService<FactuurModel, FactuurDAO> {
         super(dao);
     }
 
+    public Optional<FactuurModel> getById(int factuurId) throws Exception {
+        factuur = factuurDAO.getByFactuurId(factuurId).orElseThrow(() -> new Exception());
+        return null;
+    }
     public void update(FactuurModel user, int userId) {
         user.setId(userId);
         super.update(user);
