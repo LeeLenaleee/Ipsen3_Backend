@@ -1,6 +1,6 @@
 CREATE TABLE contactpersoon (
-    id          SERIAL PRIMARY KEY,
-    contact_achternaam   varchar(25),
+    id 						int not null auto_increment,
+    contact_achternaam  varchar(25),
     contact_voornaam    varchar(25),
     contact_bedrijf     varchar(25),
     contact_straatnaam  varchar(50),
@@ -8,47 +8,53 @@ CREATE TABLE contactpersoon (
     contact_plaats      varchar(25),
     contact_land        varchar(25),
     contact_relatie     varchar(30),
-    contact_website     varchar(100)
+    contact_website     varchar(100),
+    primary key(id)
 );
 
 -- koppeltabel, een contact kan meerdere telefoonnummers hebben
 CREATE TABLE telefoonnummer (
-    id          SERIAL PRIMARY KEY,
+    id 			 int not null auto_increment,
     telnr       varchar(15),
+    primary key(id),
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
+   
 );
 
 
 -- koppeltabel, een contact kan meerdere emails hebben
 CREATE TABLE email (
-    id          SERIAL PRIMARY KEY,
+    id int not null auto_increment,
     email       varchar(60),
+    primary key(id),
     contact_id  integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
 -- als een contact verwijderd wordt, dan wordt ook de opdracht verwijderd??
 CREATE TABLE offerte (
-    id                  SERIAL PRIMARY KEY,
+    id int not null auto_increment,
     opdracht_omschrijving        VARCHAR(250),
     opdracht_afrondingsdatum     VARCHAR(20),
     opdracht_kosten              DOUBLE(9,2),
+    primary key(id),
     contact_id                   integer REFERENCES contactpersoon(id) ON DELETE CASCADE
 );
 
 CREATE TABLE factuur (
+	 id int not null auto_increment,
     datum				VARCHAR(12),
     #id is het factuur nummer
-    id					SERIAL PRIMARY KEY,
     aflever_datum			VARCHAR(12),
     factuur_omschrijving   		VARCHAR(250),
     bruto_kosten			DOUBLE(9,2),
     btw_percentage			INT(2),
     btw_kosten				DOUBLE(9,2),
-    netto_kosten			DOUBLE(9,2)
+    netto_kosten			DOUBLE(9,2),
+    primary key(id)
 );
 
 CREATE TABLE onkosten (
-    id              SERIAL PRIMARY KEY,
+    id int not null auto_increment,
     onkosten_bedrijf         VARCHAR(50),
     onkosten_datum           VARCHAR(20),
 	onkosten_kostenpost 	 VARCHAR(50),
@@ -56,18 +62,21 @@ CREATE TABLE onkosten (
     onkosten_bruto_kosten    DOUBLE(9,2),
 	onkosten_btw_percentage	 INT(2),
 	onkosten_btw_kosten		 DOUBLE(9,2),
-	onkosten_netto_kosten	 DOUBLE(9,2)
+	onkosten_netto_kosten	 DOUBLE(9,2),
+	primary key(id)
 );
 
 CREATE TABLE btw_percentage (
-    id          SERIAL PRIMARY KEY,
+    id int not null auto_increment,
     btw_percentage_hoog      INT(2),
-    btw_percentage_laag	     INT(2)
+    btw_percentage_laag	     INT(2),
+    primary key(id)
 );
 
 CREATE TABLE gebruiker (
-    id SERIAL PRIMARY KEY,
+    id int not null auto_increment,
     email_adres varchar(25),
     wachtwoord varchar(64),
-    rol varchar(25)
+    rol varchar(25),
+    primary key(id)
 );
