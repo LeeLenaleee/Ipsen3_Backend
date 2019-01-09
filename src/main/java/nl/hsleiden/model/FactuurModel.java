@@ -6,49 +6,80 @@ import javax.persistence.*;
 @Entity
 @Table (name = "factuur")
 public class FactuurModel extends BaseModel{
-    @Column(name = "factuur_beschrijving")
-    private String factuurBeschrijving;
+    @Column(name = "datum")
+    private String datum;
 
-    @Column(name = "factuur_status")
-    private String factuurStatus;
+    @Column(name = "aflever_datum")
+    private String aflever_datum;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="offerte_id")
-    private OfferteModel offerteId;
+    @Column(name = "factuur_omschrijving")
+    private String factuur_omschrijving;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="contact_id")
-    private ContactPersoonModel contactId;
+    @Column(name = "bruto_kosten")
+    private double bruto_kosten;
 
-    public String getFactuurBeschrijving() {
-        return factuurBeschrijving;
+    @Column(name = "btw_percentage")
+    private int btw_percentage;
+
+    @Column(name = "btw_kosten")
+    private double btw_kosten;
+
+    @Column(name = "netto_kosten")
+    private double netto_kosten;
+
+    public String getDatum() {
+        return datum;
     }
 
-    public void setFactuurBeschrijving(String factuurBeschrijving) {
-        this.factuurBeschrijving = factuurBeschrijving;
+    public void setDatum(String datum) {
+        this.datum = datum;
     }
 
-    public String getFactuurStatus() {
-        return factuurStatus;
+    public String getAflever_datum() {
+        return aflever_datum;
     }
 
-    public void setFactuurStatus(String factuurStatus) {
-        this.factuurStatus = factuurStatus;
+    public void setAflever_datum(String aflever_datum) {
+        this.aflever_datum = aflever_datum;
     }
 
-    public OfferteModel getOfferteId() {
-        return offerteId;
+    public String getFactuur_omschrijving() {
+        return factuur_omschrijving;
     }
 
-    public void setOfferteId(OfferteModel offerteId) {
-        this.offerteId = offerteId;
+    public void setFactuur_omschrijving(String factuur_omschrijving) {
+        this.factuur_omschrijving = factuur_omschrijving;
     }
 
-    public ContactPersoonModel getContactId() {
-        return contactId;
+    public double getBruto_kosten() {
+        return bruto_kosten;
     }
 
-    public void setContactId(ContactPersoonModel contactId) {
-        this.contactId = contactId;
+    public void setBruto_kosten(double bruto_kosten) {
+        this.bruto_kosten = bruto_kosten;
+    }
+
+    public int getBtw_percentage() {
+        return btw_percentage;
+    }
+
+    public void setBtw_percentage(int btw_percentage) {
+        this.btw_percentage = btw_percentage;
+    }
+
+    public double getBtw_kosten() {
+        return btw_kosten;
+    }
+
+    public void setBtw_kosten(double btw_kosten) {
+        this.btw_kosten = btw_kosten;
+    }
+
+    public double getNetto_kosten() {
+        return netto_kosten;
+    }
+
+    public void setNetto_kosten(double netto_kosten) {
+        this.netto_kosten = netto_kosten;
     }
 }
