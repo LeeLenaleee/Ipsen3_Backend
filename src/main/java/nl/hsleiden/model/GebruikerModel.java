@@ -1,27 +1,17 @@
 package nl.hsleiden.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import java.security.Principal;
 import nl.hsleiden.View;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.security.Principal;
 
-/**
- * Meer informatie over validatie:
- *  http://hibernate.org/validator/
- *
- * @author Peter van Vliet
- */
-@Entity
 @Table(name = "gebruiker")
-public class GebruikerModel extends BaseModel implements Principal
-{
+@Entity
+public class GebruikerModel extends BaseModel implements Principal {
     @Column(name = "email_adres")
     @NotEmpty
     @Email
@@ -34,9 +24,26 @@ public class GebruikerModel extends BaseModel implements Principal
     @JsonView(View.Protected.class)
     private String wachtwoord;
 
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "rol")
     @JsonView(View.Public.class)
-    private String rol;
+    private Role role;
+
+
+    public boolean hasRole(Role role) {
+        return this.role.hasRole(role);
+    }
+
+    public String getName() { return this.emailAdres; }
+
+    public GebruikerModel() {}
+
+    public GebruikerModel(String emailAdres, String wachtwoord, Role role) {
+        this.emailAdres = emailAdres;
+        this.wachtwoord = wachtwoord;
+        this.role = role;
+    }
 
     public String getEmailAdres() {
         return emailAdres;
@@ -54,29 +61,11 @@ public class GebruikerModel extends BaseModel implements Principal
         this.wachtwoord = wachtwoord;
     }
 
-    public String getRol() {
-        return rol;
+    public Role getRole() {
+        return role;
     }
 
-    public void setRol(String rol) {
-        this.rol = rol;
-    }
-
-    public boolean hasRol(String rolName) {
-        if (rol != null) {
-            if (rolName.equals(rol)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean equals(GebruikerModel gebruikerModel) {
-        return emailAdres.equals(gebruikerModel.getEmailAdres());
-    }
-
-    @Override
-    public String getName() {
-        return null;
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

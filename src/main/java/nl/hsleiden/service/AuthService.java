@@ -12,9 +12,8 @@ import io.dropwizard.auth.UnauthorizedHandler;
 import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.model.GebruikerModel;
-import nl.hsleiden.model.LoginGebruikerModel;
-import nl.hsleiden.persistence.LoginGebruikerDAO;
-
+import nl.hsleiden.model.Role;
+import nl.hsleiden.persistence.AuthDAO;
 import java.util.Optional;
 
 /**
@@ -22,35 +21,24 @@ import java.util.Optional;
  * @author Jaccao van den Berg, Kasper van den Berg
  */
 @Singleton
-public class LoginGebruikerService implements Authenticator<BasicCredentials, GebruikerModel>, Authorizer<GebruikerModel>, UnauthorizedHandler {
-    LoginGebruikerDAO dao;
-
-    //public LoginGebruikerService() {}
+public class AuthService implements Authenticator<BasicCredentials, GebruikerModel>, Authorizer<GebruikerModel>, UnauthorizedHandler {
+    AuthDAO dao;
 
     @Inject
-    public LoginGebruikerService(LoginGebruikerDAO dao)
+    public AuthService(AuthDAO dao)
     {
         this.dao = dao;
-    }
-
-    public Optional<GebruikerModel> getByEmailAddress(LoginGebruikerModel loginGebruikerModel) {
-        return dao.getByEmailAddress(loginGebruikerModel);
     }
 
     @UnitOfWork
     @Override
     public Optional<GebruikerModel> authenticate(BasicCredentials credentials) throws AuthenticationException {
-        System.out.println("CREDS:\t" + credentials.getUsername() + credentials.getPassword());
-        LoginGebruikerModel loginGebruikerModel = new LoginGebruikerModel(credentials.getUsername(), credentials.getPassword());
-
-        return getByEmailAddress(loginGebruikerModel);
+        return dao.getByCredentials(credentials);
     }
 
     @Override
     public boolean authorize(GebruikerModel model, String rolname) {
-        System.out.println("CREDS:\t" + model.getFullName() + model.getPassword());
-
-        return model.hasRole(rolname);
+        return model.hasRole(Role.valueOf(rolname));
     }
 
     @Override

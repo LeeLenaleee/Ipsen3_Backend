@@ -4,16 +4,12 @@ import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.GebruikerModel;
-import nl.hsleiden.model.LoginGebruikerModel;
-import nl.hsleiden.persistence.LoginGebruikerDAO;
-import nl.hsleiden.service.LoginGebruikerService;
-
+import nl.hsleiden.service.AuthService;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
-import java.util.Optional;
 
 /**
  * @author Jacco van den Berg
@@ -23,10 +19,10 @@ import java.util.Optional;
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
 public class LoginGebruikerResource {
-    private final LoginGebruikerService service;
+    private final AuthService service;
 
     @Inject
-    public LoginGebruikerResource(LoginGebruikerService service) {
+    public LoginGebruikerResource(AuthService service) {
         this.service = service;
     }
 
@@ -34,10 +30,8 @@ public class LoginGebruikerResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public GebruikerModel get(LoginGebruikerModel loginGebruikerModel)
+    public void get(GebruikerModel gebruikerModel)
     {
-        Optional<GebruikerModel> gebruiker = this.service.getByEmailAddress(loginGebruikerModel);
 
-        return gebruiker.orElseThrow(() -> new NotAuthorizedException("Failed to login."));
     }
 }

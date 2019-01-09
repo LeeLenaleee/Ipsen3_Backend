@@ -1,5 +1,6 @@
 package nl.hsleiden.resource;
 
+import javax.annotation.security.DeclareRoles;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 
@@ -18,6 +19,7 @@ import java.util.List;
 
 @Singleton
 @Path("/contacten")
+@DeclareRoles({"admin", "user"})
 @Produces(MediaType.APPLICATION_JSON)
 public class ContactPersoonResource {
     private final ContactPersoonService service;
@@ -41,6 +43,7 @@ public class ContactPersoonResource {
     @Path("/bedrijf")
     @UnitOfWork
     @JsonView(View.Protected.class)
+    @RolesAllowed("user")
     public List<ContactPersoonModel> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
         List <ContactPersoonModel> results = service.findByBedrijf(bedrijf);
 
@@ -56,6 +59,7 @@ public class ContactPersoonResource {
     @UnitOfWork
     @JsonView(View.Protected.class)
     @Path("/naam")
+    @RolesAllowed("user")
     public List<ContactPersoonModel> findByNaam(@QueryParam("voornaam") String voornaam, @QueryParam("achternaam") String achternaam) {
         List <ContactPersoonModel> results = service.findByNaam(voornaam, achternaam);
 
@@ -70,6 +74,7 @@ public class ContactPersoonResource {
     @GET
     @UnitOfWork
     @JsonView(View.Protected.class)
+    @RolesAllowed("user")
     public List<ContactPersoonModel> findAll() {
         return service.findAll();
     }
@@ -78,6 +83,7 @@ public class ContactPersoonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
+    @RolesAllowed("user")
     public void create(@Valid ContactPersoonModel contactPersoonModel)
     {
         service.create(contactPersoonModel);
@@ -87,6 +93,7 @@ public class ContactPersoonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
+    @RolesAllowed("user")
     public void delete(@Valid ContactPersoonModel contactPersoonModel)
     {
         service.delete(contactPersoonModel);
@@ -97,9 +104,9 @@ public class ContactPersoonResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
+    @RolesAllowed("user")
     public void update(@PathParam("id") int id, @Valid ContactPersoonModel user)
     {
         service.update(user, id);
     }
-
 }

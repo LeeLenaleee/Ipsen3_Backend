@@ -19,10 +19,8 @@ import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 
 import nl.hsleiden.model.GebruikerModel;
-import nl.hsleiden.persistence.LoginGebruikerDAO;
-import nl.hsleiden.service.LoginGebruikerService;
-import org.eclipse.jetty.security.authentication.BasicAuthenticator;
-import org.eclipse.jetty.server.Authentication;
+import nl.hsleiden.persistence.AuthDAO;
+import nl.hsleiden.service.AuthService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -53,11 +51,9 @@ public class ApiApplication extends Application<ApiConfiguration>
     {
 //        assetsBundle = (ConfiguredBundle) new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
 //        guiceBundle = createGuiceBundle(ApiConfiguration.class, new ApiGuiceModule(bootstrap));
-//        apiGuiceModule = new ApiGuiceModule(bootstrap);
 //
 //        bootstrap.addBundle(assetsBundle);
 //        bootstrap.addBundle(guiceBundle);
-//        //bootstrap.addBundle(apiGuiceModule);
 
         assetsBundle = new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
 
@@ -107,26 +103,14 @@ public class ApiApplication extends Application<ApiConfiguration>
 
     private void setupAuthentication(Environment environment)
     {
-//        LoginGebruikerService authenticationService = guiceBundle.getInjector().getInstance(LoginGebruikerService.class);
-//        ApiUnauthorizedHandler unauthorizedHandler = guiceBundle.getInjector().getInstance(ApiUnauthorizedHandler.class);
-//
-//        environment.jersey().register(new AuthDynamicFeature(
-//                new BasicCredentialAuthFilter.Builder<GebruikerModel>()
-//                        .setAuthenticator(authenticationService)
-//                        .setAuthorizer(authenticationService)
-//                        .setRealm("SUPER SECRET STUFF")
-//                        .setUnauthorizedHandler(unauthorizedHandler)
-//                        .buildAuthFilter())
-//        );
-//
-//        environment.jersey().register(RolesAllowedDynamicFeature.class);
-//        environment.jersey().register(new AuthValueFactoryProvider.Binder<>(GebruikerModel.class));
-
-        LoginGebruikerDAO loginGebruikerDao = guiceBundle.getInjector().getInstance(LoginGebruikerDAO.class);
+        AuthDAO authDAO = guiceBundle.getInjector().getInstance(AuthDAO.class);
         ApiUnauthorizedHandler unauthorizedHandler = guiceBundle.getInjector().getInstance(ApiUnauthorizedHandler.class);
 
-        LoginGebruikerService authenticator = new UnitOfWorkAwareProxyFactory(apiGuiceModule.getHibernateBundle())
-                .create(LoginGebruikerService.class, LoginGebruikerDAO.class, loginGebruikerDao);
+        // @NOTE:
+        // This creates the authenticator,
+        // which requires we pass in *ALL* attributes of the authenticator.
+        AuthService authenticator = new UnitOfWorkAwareProxyFactory(apiGuiceModule.getHibernateBundle())
+                .create(AuthService.class, AuthDAO.class, authDAO);
 
         environment.jersey().register(new AuthDynamicFeature(
                 new BasicCredentialAuthFilter.Builder<GebruikerModel>()

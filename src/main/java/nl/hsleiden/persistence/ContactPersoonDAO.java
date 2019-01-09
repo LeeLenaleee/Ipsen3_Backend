@@ -37,9 +37,10 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
         TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
             public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
-                System.out.println("VOORNAAM = " + voornaam + "ACHTERNAAM = " + achternaam);
-                criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"), criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")));
-
+                criteriaQuery.where(criteriaBuilder.and(
+                        criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
+                        criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
+                ));
             }
         };
 

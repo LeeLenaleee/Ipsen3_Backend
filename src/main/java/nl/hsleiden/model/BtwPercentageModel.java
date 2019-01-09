@@ -6,7 +6,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "btw_percentage")
-public class BtwPercentageModel extends BaseModel{
+public class BtwPercentageModel extends BaseModel {
     @Column(name = "btw_percentage_hoog")
     private int btwPercentageHoog;
 
