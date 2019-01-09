@@ -5,28 +5,28 @@ import javax.persistence.*;
 @Entity
 @Table(name = "offerte")
 public class OfferteModel extends BaseModel{
-    @Column(name = "opdracht_omschrijving")
+    @Column(name = "datum")
     private String datum;
 
-    @Column(name = "opdracht_afrondingsdatum")
+    @Column(name = "correspondentienummer")
     private String correspondentienummer;
 
-    @Column(name = "opdracht_kosten")
+    @Column(name = "naamklant")
     private String naamklant;
 
-    @Column(name ="contact_id2")
+    @Column(name ="uren")
     private String uren;
 
-    @Column(name ="contact_id3")
+    @Column(name ="btwPercentage")
     private String btwPercentage;
 
-    @Column(name ="contact_id4")
+    @Column(name ="kostenBruto")
     private String kostenBruto;
 
-    @Column(name ="contact_id5")
+    @Column(name ="kostenBTW")
     private String kostenBTW;
 
-    @Column(name ="contact_id6")
+    @Column(name ="kostenNetto")
     private String kostenNetto;
 
     public String getDatum() {

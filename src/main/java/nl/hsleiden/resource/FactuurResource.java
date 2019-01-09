@@ -12,12 +12,12 @@ import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
-
+/*
 @Singleton
 @Path("/factuur")
 @Produces(MediaType.APPLICATION_JSON)
 public class FactuurResource {
-    private final FactuurService service;
+    /*private final FactuurService service;
 
     @Inject
     public FactuurResource(FactuurService service) { this.service = service; }
@@ -64,4 +64,4 @@ public class FactuurResource {
     {
         service.update(user, id);
     }
-}
+}*/
