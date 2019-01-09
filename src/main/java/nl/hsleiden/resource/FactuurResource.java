@@ -41,7 +41,7 @@ public class FactuurResource {
         }else throw new FileNotFoundException("file not found");
     }
 
-    @Path("/pdf")
+    @Path("/download")
     @GET
     @UnitOfWork
     @Produces({"application/pdf"})
