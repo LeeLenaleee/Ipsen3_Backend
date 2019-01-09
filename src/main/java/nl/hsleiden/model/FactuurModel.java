@@ -27,6 +27,8 @@ public class FactuurModel extends BaseModel{
     @Column(name = "netto_kosten")
     private double netto_kosten;
 
+    public FactuurModel(){}
+
     public String getDatum() {
         return datum;
     }
@@ -51,35 +53,35 @@ public class FactuurModel extends BaseModel{
         this.factuur_omschrijving = factuur_omschrijving;
     }
 
-    public double getBruto_kosten() {
+    public String getBruto_kosten() {
         return bruto_kosten;
     }
 
-    public void setBruto_kosten(double bruto_kosten) {
+    public void setBruto_kosten(String bruto_kosten) {
         this.bruto_kosten = bruto_kosten;
     }
 
-    public int getBtw_percentage() {
+    public String getBtw_percentage() {
         return btw_percentage;
     }
 
-    public void setBtw_percentage(int btw_percentage) {
+    public void setBtw_percentage(String btw_percentage) {
         this.btw_percentage = btw_percentage;
     }
 
-    public double getBtw_kosten() {
+    public String getBtw_kosten() {
         return btw_kosten;
     }
 
-    public void setBtw_kosten(double btw_kosten) {
+    public void setBtw_kosten(String btw_kosten) {
         this.btw_kosten = btw_kosten;
     }
 
-    public double getNetto_kosten() {
+    public String getNetto_kosten() {
         return netto_kosten;
     }
 
-    public void setNetto_kosten(double netto_kosten) {
+    public void setNetto_kosten(String netto_kosten) {
         this.netto_kosten = netto_kosten;
     }
 }

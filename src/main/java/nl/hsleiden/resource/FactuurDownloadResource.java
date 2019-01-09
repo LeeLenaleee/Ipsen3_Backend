@@ -1,21 +1,28 @@
 package nl.hsleiden.resource;
 
-import nl.hsleiden.PDFWriter;
+import io.dropwizard.hibernate.UnitOfWork;
+import nl.hsleiden.model.FactuurModel;
+import nl.hsleiden.service.FactuurService;
+import nl.hsleiden.utility.PDFWriter;
 
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.util.Optional;
 
 @Provider
 @Singleton
 @Path("/download")
 public class FactuurDownloadResource {
+    private final FactuurService factuurService;
     private String testPdf = "C:\\Users\\Jacco School\\IdeaProjects\\Ipsen3_Backend\\src\\main\\java\\nl\\hsleiden\\pdfFiles\\facturen\\112.pdf";
 
+    @Inject
+    public FactuurDownloadResource(FactuurService service){this.factuurService = service;}
 
     //download de pdf file automatish
     @Path("/pdf/{id}")
@@ -39,10 +46,12 @@ public class FactuurDownloadResource {
         }else throw new FileNotFoundException("file not found");
     }
 
-    @Path("/pdfDoc/")
+    @Path("/pdfDoc2")
     @GET
+    @UnitOfWork
     @Produces({"application/pdf"})
-    public File getFile3() {
-        return PDFWriter.maakFactuur("01-01-2019","kasper good joib met auth","5","4","3","2","55");
+    public File getFile4(@QueryParam("id") int id) {
+        System.err.println(id);
+        return this.factuurService.getById(id);
     }
 }
