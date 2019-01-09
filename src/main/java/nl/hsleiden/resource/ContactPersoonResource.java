@@ -1,5 +1,6 @@
 package nl.hsleiden.resource;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -30,6 +31,7 @@ public class ContactPersoonResource {
     @Path("/{id}")
     @UnitOfWork
     @JsonView(View.Protected.class)
+    @RolesAllowed("admin")
     public ContactPersoonModel findById(@PathParam("id") int id) {
         return service.findById(id);
     }

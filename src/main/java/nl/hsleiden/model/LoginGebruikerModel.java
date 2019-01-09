@@ -19,6 +19,11 @@ public class LoginGebruikerModel implements Principal {
     @JsonView(View.Public.class)
     private String password;
 
+    public LoginGebruikerModel(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
+
     public String getEmail() {
         return email;
     }
