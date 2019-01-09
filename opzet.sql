@@ -70,6 +70,16 @@ CREATE TABLE onkosten (
 	primary key(id)
 );
 
+CREATE TABLE brief (
+	 id int not null auto_increment,
+    datum				VARCHAR(12),
+    correspondentie			VARCHAR(12),
+    betreft   		VARCHAR(25),
+    adresering			VARCHAR(50),
+    verhaal			TEXT,
+    primary key(id)
+);
+
 CREATE TABLE btw_percentage (
     id int not null auto_increment,
     btw_percentage_hoog      INT(2),
