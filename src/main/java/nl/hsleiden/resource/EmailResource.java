@@ -7,6 +7,7 @@ import nl.hsleiden.model.EmailModel;
 import nl.hsleiden.service.BtwPercentageService;
 import nl.hsleiden.service.EmailService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.validation.Valid;
@@ -17,6 +18,7 @@ import java.util.List;
 @Singleton
 @Path("/email")
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed("user")
 public class EmailResource {
     private final EmailService service;
 

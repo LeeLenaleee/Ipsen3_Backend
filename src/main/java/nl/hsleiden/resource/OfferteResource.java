@@ -6,6 +6,7 @@ import nl.hsleiden.View;
 import nl.hsleiden.model.OfferteModel;
 import nl.hsleiden.service.OfferteService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.validation.Valid;
@@ -15,6 +16,7 @@ import java.util.List;
 
 @Singleton
 @Path("/offerte")
+@RolesAllowed("user")
 @Produces(MediaType.APPLICATION_JSON)
 public class OfferteResource {
     private final OfferteService service;

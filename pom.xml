@@ -75,6 +75,13 @@
             <version>2.0.13</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.stansvec/dropwizard-authorization -->
+        <dependency>
+            <groupId>com.stansvec</groupId>
+            <artifactId>dropwizard-authorization</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>io.dropwizard</groupId>
             <artifactId>dropwizard-forms</artifactId>

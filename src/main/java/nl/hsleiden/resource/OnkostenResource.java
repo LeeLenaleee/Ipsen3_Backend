@@ -8,6 +8,7 @@ import nl.hsleiden.model.ContactPersoonModel;
 import nl.hsleiden.model.OnkostenModel;
 import nl.hsleiden.service.OnkostenService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -20,6 +21,7 @@ import java.util.List;
 
 @Singleton
 @Path("/onkosten")
+@RolesAllowed("user")
 @Produces(MediaType.APPLICATION_JSON)
 public class OnkostenResource {
     private final OnkostenService service;

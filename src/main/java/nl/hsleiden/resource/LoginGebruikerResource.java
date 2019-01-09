@@ -5,6 +5,8 @@ import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.GebruikerModel;
 import nl.hsleiden.service.AuthService;
+
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
@@ -18,6 +20,7 @@ import javax.ws.rs.ext.Provider;
 @Singleton
 @Path("/login")
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed("user")
 public class LoginGebruikerResource {
     private final AuthService service;
 

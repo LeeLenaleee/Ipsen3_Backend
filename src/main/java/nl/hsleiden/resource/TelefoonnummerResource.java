@@ -6,6 +6,7 @@ import nl.hsleiden.View;
 import nl.hsleiden.model.TelefoonnummerModel;
 import nl.hsleiden.service.TelefoonnummerService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.validation.Valid;
@@ -16,6 +17,7 @@ import java.util.List;
 @Singleton
 @Path("/telefoonnummer")
 @Produces(MediaType.APPLICATION_JSON)
+@RolesAllowed("user")
 public class TelefoonnummerResource {
     private final TelefoonnummerService service;
 

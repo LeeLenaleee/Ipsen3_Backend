@@ -2,6 +2,7 @@ package nl.hsleiden.resource;
 
 import nl.hsleiden.PDFWriter;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Singleton;
 import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
@@ -13,6 +14,7 @@ import java.io.IOException;
 @Provider
 @Singleton
 @Path("/download")
+@RolesAllowed("user")
 public class FactuurDownloadResource {
     private String testPdf = "C:\\Users\\Jacco School\\IdeaProjects\\Ipsen3_Backend\\src\\main\\java\\nl\\hsleiden\\pdfFiles\\facturen\\112.pdf";
 
