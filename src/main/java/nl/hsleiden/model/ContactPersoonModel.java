@@ -1,6 +1,13 @@
 package nl.hsleiden.model;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import nl.hsleiden.View;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import java.security.Principal;
+import java.util.ArrayList;
 
 /**
  * @author Kasper

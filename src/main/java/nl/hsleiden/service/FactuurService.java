@@ -1,12 +1,13 @@
 package nl.hsleiden.service;
 
+import nl.hsleiden.PDFWriter;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
-import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Inject;
 import java.io.File;
 import java.util.Optional;
+
 
 public class FactuurService {
     FactuurDAO factuurDAO;

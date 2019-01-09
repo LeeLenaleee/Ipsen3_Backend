@@ -18,14 +18,16 @@ public class FactuurDAO extends BaseDAO<FactuurModel> {
     }
 
     public Optional<FactuurModel> getByFactuurId(int factuurId) {
+
         Session session = currentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<FactuurModel> criteriaQuery = criteriaBuilder.createQuery(FactuurModel.class);
         Root<FactuurModel> root = criteriaQuery.from(FactuurModel.class);
-        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("id"), factuurId)));
+
+        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("factuur_nummer"), factuurId)));
 
         Query<FactuurModel> q = session.createQuery(criteriaQuery);
-        System.err.println(q.uniqueResultOptional().get().getFactuur_omschrijving());
+
         return q.uniqueResultOptional();
     }
 }
