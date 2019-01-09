@@ -1,17 +1,11 @@
 package nl.hsleiden;
 
-import javafx.scene.control.Alert;
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
-import org.eclipse.jetty.util.IO;
-
-import java.awt.*;
 import java.io.*;
-import java.net.URL;
+
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
@@ -23,7 +17,7 @@ public class PDFWriter {
 
    public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
                                    String nettoKosten, String btwPercentage, String factuurNummer) {
-       
+
        File file = new File(template + "factuurtemplate.pdf");
        PDDocument pdDocument = null;
        try {
