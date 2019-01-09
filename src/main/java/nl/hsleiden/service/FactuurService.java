@@ -7,16 +7,24 @@ import nl.hsleiden.utility.PDFWriter;
 import javax.inject.Inject;
 import java.io.File;
 import java.util.Optional;
+import javax.inject.Singleton;
 
-public class FactuurService {
-    FactuurDAO factuurDAO;
-    FactuurModel factuur;
+@Singleton
+public class FactuurService extends BaseService<FactuurModel, FactuurDAO> {
 
     @Inject
-    public FactuurService(FactuurDAO dao){this.factuurDAO = dao;}
+    public FactuurService(FactuurDAO dao)
+    {
+        super(dao);
+    }
 
     public File getById(int factuurId) {
         FactuurModel factuurModel = factuurDAO.getByFactuurId(factuurId).get();
         return PDFWriter.maakFactuur(factuurModel);
+    }
+  
+    public void update(FactuurModel user, int userId) {
+        user.setId(userId);
+        super.update(user);
     }
 }

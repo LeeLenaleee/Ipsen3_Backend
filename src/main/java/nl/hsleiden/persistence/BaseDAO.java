@@ -35,6 +35,15 @@ public class BaseDAO<T extends BaseModel> {
         return currentSession().get(type, id);
     }
 
+    public List<T> findAll()
+    {
+        CriteriaBuilder criteriaBuilder = currentSession().getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
+        criteriaQuery.from(type);
+        return currentSession().createQuery(criteriaQuery).getResultList();
+
+    }
+
     public void create(T obj)
     {
         currentSession().save(obj);
@@ -45,12 +54,9 @@ public class BaseDAO<T extends BaseModel> {
         currentSession().delete(obj);
     }
 
-    public void update(int id, T obj)
+    public void update( T obj)
     {
-        Session currentSession = currentSession();
-        T old_obj = currentSession.load(type, id);
-
-        currentSession.update(obj);
+        currentSession().update(obj);
     }
 
     public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> lambda) {

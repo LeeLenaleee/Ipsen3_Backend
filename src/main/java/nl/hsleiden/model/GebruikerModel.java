@@ -19,114 +19,52 @@ import javax.persistence.Table;
  * @author Peter van Vliet
  */
 @Entity
-@Table(name = "user")
+@Table(name = "gebruiker")
 public class GebruikerModel extends BaseModel implements Principal
 {
-    @Column(name = "fullName")
-    @NotEmpty
-    @Length(min = 3, max = 100)
-    @JsonView(View.Public.class)
-    private String fullName;
-
-    @Column(name = "postcode")
-    @NotEmpty
-    @Length(min = 6, max = 7)
-    @JsonView(View.Public.class)
-    private String postcode;
-
-    @Column(name = "streetnumber")
-    @NotEmpty
-    @Length(min = 1, max = 10)
-    @JsonView(View.Public.class)
-    private String streetnumber;
-
-    @Column(name = "emailAddress")
+    @Column(name = "email_adres")
     @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String emailAdres;
 
-    @Column(name = "password")
+    @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
     @JsonView(View.Protected.class)
-    private String password;
+    private String wachtwoord;
 
-    @Column(name = "role")
+    @Column(name = "rol")
     @JsonView(View.Public.class)
-    private String role;
+    private String rol;
 
-    public GebruikerModel() { }
-
-    public GebruikerModel(String fullName, String postcode, String streetnumber, String emailAddress, String password, String role) {
-
-        this.fullName = fullName;
-        this.postcode = postcode;
-        this.streetnumber = streetnumber;
-        this.emailAddress = emailAddress;
-        this.password = password;
-        this.role = role;
-
+    public String getEmailAdres() {
+        return emailAdres;
     }
 
-    public String getFullName() {
-        return fullName;
+    public void setEmailAdres(String emailAdres) {
+        this.emailAdres = emailAdres;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public String getWachtwoord() {
+        return wachtwoord;
     }
 
-    public String getPostcode() {
-        return postcode;
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
     }
 
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
+    public String getRol() {
+        return rol;
     }
 
-    public String getStreetnumber() {
-        return streetnumber;
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
-    public void setStreetnumber(String streetnumber) {
-        this.streetnumber = streetnumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    @JsonIgnore
-    public String getName() {
-        return fullName;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role)
-    {
-        this.role = role;
-    }
-
-    public boolean hasRole(String roleName) {
-        if (role != null) {
-            if (roleName.equals(role)) {
+    public boolean hasRol(String rolName) {
+        if (rol != null) {
+            if (rolName.equals(rol)) {
                 return true;
             }
         }
@@ -134,6 +72,11 @@ public class GebruikerModel extends BaseModel implements Principal
     }
 
     public boolean equals(GebruikerModel gebruikerModel) {
-        return emailAddress.equals(gebruikerModel.getEmailAddress());
+        return emailAdres.equals(gebruikerModel.getEmailAdres());
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 }

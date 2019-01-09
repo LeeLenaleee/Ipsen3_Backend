@@ -16,26 +16,16 @@ public class FactuurModel extends BaseModel{
     private String factuur_omschrijving;
 
     @Column(name = "bruto_kosten")
-    private String bruto_kosten;
+    private double bruto_kosten;
 
     @Column(name = "btw_percentage")
-    private String btw_percentage;
+    private int btw_percentage;
 
     @Column(name = "btw_kosten")
-    private String btw_kosten;
+    private double btw_kosten;
 
     @Column(name = "netto_kosten")
-    private String netto_kosten;
-
-   /* public FactuurModel(String datum, String aflever_datum, String factuur_omschrijving, String bruto_kosten, String btw_percentage, String btw_kosten, String netto_kosten) {
-        this.datum = datum;
-        this.aflever_datum = aflever_datum;
-        this.factuur_omschrijving = factuur_omschrijving;
-        this.bruto_kosten = bruto_kosten;
-        this.btw_percentage = btw_percentage;
-        this.btw_kosten = btw_kosten;
-        this.netto_kosten = netto_kosten;
-    }*/
+    private double netto_kosten;
 
     public FactuurModel(){}
 
