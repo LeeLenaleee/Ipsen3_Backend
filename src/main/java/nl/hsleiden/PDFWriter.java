@@ -1,47 +1,37 @@
-package nl.hsleiden.utility;
+package nl.hsleiden;
 
-import nl.hsleiden.model.FactuurModel;
-import nl.hsleiden.model.OfferteModel;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.io.*;
 
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
  * @author Jacco
  */
-public final class PDFWriter {
+public class PDFWriter {
     private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
-    private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/temp.pdf";
-    private static final Logger LOGGER = Logger.getLogger( PDFWriter.class.getName() );
-    private static PDDocument pdDocument;
-    private static final String datumFieldAcroform = "datum";
+    private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/";
 
-    private PDFWriter(){
-        //not called
-    }
-
-   public static File maakFactuur(FactuurModel factuur) {
+   public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
+                                   String nettoKosten, String btwPercentage, String factuurNummer) {
 
        File file = new File(template + "factuurtemplate.pdf");
+       PDDocument pdDocument = null;
        try {
            pdDocument = PDDocument.load(file);
        } catch (IOException e) {
-           LOGGER.log(Level.FINE,e.toString(),e);
+           e.printStackTrace();
+           System.err.println("Tim zecht: aardapel");
        }
 
        PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField datumField = pdAcroForm.getField(datumFieldAcroform);
+            PDField datumField = pdAcroForm.getField("datum");
             PDField omschrijvingField = pdAcroForm.getField("omschrijving");
             PDField brutoKostenField = pdAcroForm.getField("bruto");
             PDField btwKostenField = pdAcroForm.getField("btwprijs");
@@ -51,16 +41,18 @@ public final class PDFWriter {
             PDField datum2Field = pdAcroForm.getField("datum2");
 
             try {
-                datumField.setValue(factuur.getAflever_datum());
-                datum2Field.setValue(factuur.getDatum());
-                omschrijvingField.setValue(factuur.getFactuur_omschrijving());
-                brutoKostenField.setValue(factuur.getBruto_kosten());
-                btwKostenField.setValue(factuur.getBtw_kosten());
-                nettoKostenField.setValue(factuur.getNetto_kosten());
-                btwPercentageField.setValue(factuur.getBtw_percentage());
-                factuurNummerField.setValue(Integer.toString(factuur.getId()));
+
+
+                datumField.setValue(datum);
+                datum2Field.setValue(datum);
+                omschrijvingField.setValue(omschrijving);
+                brutoKostenField.setValue(brutoKosten);
+                btwKostenField.setValue(btwKosten);
+                nettoKostenField.setValue(nettoKosten);
+                btwPercentageField.setValue(btwPercentage);
+                factuurNummerField.setValue(factuurNummer);
             }catch (IOException e){
-                LOGGER.log(Level.FINE,e.toString(),e);
+                e.printStackTrace();
             }
 
             datumField.setReadOnly(true);
@@ -73,51 +65,46 @@ public final class PDFWriter {
             factuurNummerField.setReadOnly(true);
 
         }
-        File temp = new File(tempfileLoc);
+        File temp = new File(tempfileLoc + "temp.pdf");
         try {
             pdDocument.save(temp);
             pdDocument.close();
         }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
+            e.printStackTrace();
         }
         return temp;
     }
 
-    public static File maakOfferte(OfferteModel offerte){
+    public static File maakOfferte(String datum, String corespondentieNummer, String naamKlant, String offerteNummer, String uren,
+                                   String btwPercentage, String kostenBruto, String kostenBTW, String kostenNetto) throws IOException {
         File file = new File(template + "offertetemplate.pdf");
-        try {
-            pdDocument = PDDocument.load(file);
-        }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
-        }
+        PDDocument pdDocument = PDDocument.load(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField datumField = pdAcroForm.getField(datumFieldAcroform);
+            PDField datumField = pdAcroForm.getField("datum");
             PDField corespondentieNummerField = pdAcroForm.getField("corespondentieNummer");
             PDField naamKlantField = pdAcroForm.getField("naamKlant");
             PDField offerteNummerField = pdAcroForm.getField("offerteNummer");
-            PDField urenField = pdAcroForm.getField("uren");
+            PDField urenField = (PDField) pdAcroForm.getField("uren");
             PDField btwPercentageField = pdAcroForm.getField("btwPercentage");
             PDField kostenBrutoField = pdAcroForm.getField("kostenBruto");
             PDField kostenBTWField = pdAcroForm.getField("kostenBTW");
             PDField kostenNettoField = pdAcroForm.getField("kostenNetto");
 
-            try {
-                datumField.setValue(offerte.getDatum());
-                corespondentieNummerField.setValue(offerte.getCorrespondentienummer());
-                naamKlantField.setValue(offerte.getNaamklant());
-                offerteNummerField.setValue(Integer.toString(offerte.getId()));
-                urenField.setValue(offerte.getUren());
-                btwPercentageField.setValue(offerte.getBtwPercentage());
-                kostenBrutoField.setValue(offerte.getKostenBruto());
-                kostenBTWField.setValue(offerte.getKostenBTW());
-                kostenNettoField.setValue(offerte.getKostenNetto());
-            }catch (IOException e){
-                LOGGER.log(Level.FINE,e.toString(),e);
-            }
+
+            datumField.setValue(datum);
+            corespondentieNummerField.setValue(corespondentieNummer);
+            naamKlantField.setValue(naamKlant);
+            offerteNummerField.setValue(offerteNummer);
+            urenField.setValue(uren);
+            btwPercentageField.setValue(btwPercentage);
+            kostenBrutoField.setValue(kostenBruto);
+            kostenBTWField.setValue(kostenBTW);
+            kostenNettoField.setValue(kostenNetto);
+
 
             datumField.setReadOnly(true);
             corespondentieNummerField.setReadOnly(true);
@@ -129,54 +116,38 @@ public final class PDFWriter {
             kostenBTWField.setReadOnly(true);
             kostenNettoField.setReadOnly(true);
         }
-        File temp = new File(tempfileLoc);
-        try {
-            pdDocument.save(temp);
-            pdDocument.close();
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE,e.toString(),e);
-        }
+        File temp = new File(tempfileLoc + "temp.pdf");
+        pdDocument.save(temp);
+        pdDocument.close();
         return temp;
     }
 
-    public static File maakBrief(String datum, String brief, String ontvanger, String adress) {
+    public static File maakBrief(String datum, String brief, String ontvanger, String adress) throws IOException {
         File file = new File(template + "brief.pdf");
-        try {
-            pdDocument = PDDocument.load(file);
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE,e.toString(),e);
-        }
+        PDDocument pdDocument = PDDocument.load(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField date = pdAcroForm.getField(datumFieldAcroform);
+            PDField date = pdAcroForm.getField("datum");
             PDField recierver = pdAcroForm.getField("geadreseerde");
             PDField adres = pdAcroForm.getField("adress");
             PDField letter = pdAcroForm.getField("text");
 
-            try {
-                date.setValue(datum);
-                recierver.setValue(ontvanger);
-                adres.setValue(adress);
-                letter.setValue(brief);
-            } catch (IOException e) {
-                LOGGER.log(Level.FINE,e.toString(),e);
-            }
+            date.setValue(datum);
+            recierver.setValue(ontvanger);
+            adres.setValue(adress);
+            letter.setValue(brief);
 
             date.setReadOnly(true);
             recierver.setReadOnly(true);
             adres.setReadOnly(true);
             letter.setReadOnly(true);
         }
-        File temp = new File(tempfileLoc);
-        try {
-            pdDocument.save(temp);
-            pdDocument.close();
-        }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
-        }
+        File temp = new File(tempfileLoc + "temp.pdf");
+        pdDocument.save(temp);
+        pdDocument.close();
         return temp;
     }
 
