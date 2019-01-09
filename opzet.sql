@@ -33,11 +33,15 @@ CREATE TABLE email (
 -- als een contact verwijderd wordt, dan wordt ook de opdracht verwijderd??
 CREATE TABLE offerte (
     id int not null auto_increment,
-    opdracht_omschrijving        VARCHAR(250),
-    opdracht_afrondingsdatum     VARCHAR(20),
-    opdracht_kosten              DOUBLE(9,2),
-    primary key(id),
-    contact_id                   integer REFERENCES contactpersoon(id) ON DELETE CASCADE
+		datum VARCHAR(12),
+		correspondentienummer VARCHAR(25),
+		naamklant VARCHAR(25),
+		uren VARCHAR(4),
+		btwPercentage VARCHAR(3),
+		kostenBruto VARCHAR(10),
+		kostenBTW VARCHAR(10),
+		kostenNetto VARCHAR(10),
+    primary key(id)
 );
 
 CREATE TABLE factuur (
@@ -46,10 +50,10 @@ CREATE TABLE factuur (
     #id is het factuur nummer
     aflever_datum			VARCHAR(12),
     factuur_omschrijving   		VARCHAR(250),
-    bruto_kosten			DOUBLE(9,2),
-    btw_percentage			INT(2),
-    btw_kosten				DOUBLE(9,2),
-    netto_kosten			DOUBLE(9,2),
+    bruto_kosten			VARCHAR(25),
+    btw_percentage			VARCHAR(3),
+    btw_kosten				VARCHAR(25),
+    netto_kosten			VARCHAR(25),
     primary key(id)
 );
 
