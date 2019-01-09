@@ -1,6 +1,7 @@
 package nl.hsleiden.resource;
 
-import nl.hsleiden.PDFWriter;
+import nl.hsleiden.model.FactuurModel;
+import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Singleton;
 import javax.ws.rs.*;
@@ -8,7 +9,6 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 
 @Provider
 @Singleton
@@ -43,6 +43,7 @@ public class FactuurDownloadResource {
     @GET
     @Produces({"application/pdf"})
     public File getFile3() {
-        return PDFWriter.maakFactuur("01-01-2019","kasper good joib met auth","5","4","3","2","55");
+        FactuurModel factuurModel = new FactuurModel("01-01-2020","01-01-2021","Pjeter good joib met auth im verry proud, does this still work??","5","2","3","20");
+        return PDFWriter.maakFactuur(factuurModel);
     }
 }
