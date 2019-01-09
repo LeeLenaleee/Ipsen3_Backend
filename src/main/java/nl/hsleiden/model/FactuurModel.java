@@ -6,49 +6,25 @@ import javax.persistence.*;
 @Entity
 @Table (name = "factuur")
 public class FactuurModel extends BaseModel{
-    @Column(name = "factuur_beschrijving")
-    private String factuurBeschrijving;
+    @Column(name = "datum")
+    private String datum;
 
-    @Column(name = "factuur_status")
-    private String factuurStatus;
+    @Column(name = "aflever_datum")
+    private String aflever_datum;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="offerte_id")
-    private OfferteModel offerteId;
+    @Column(name = "factuur_omschrijving")
+    private String factuur_omschrijving;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="contact_id")
-    private ContactPersoonModel contactId;
+    @Column(name = "bruto_kosten")
+    private String bruto_kosten;
 
-    public String getFactuurBeschrijving() {
-        return factuurBeschrijving;
-    }
+    @Column(name = "btw_percentage")
+    private String btw_percentage;
 
-    public void setFactuurBeschrijving(String factuurBeschrijving) {
-        this.factuurBeschrijving = factuurBeschrijving;
-    }
+    @Column(name = "btw_kosten")
+    private String btw_kosten;
 
-    public String getFactuurStatus() {
-        return factuurStatus;
-    }
+    @Column(name = "netto_kosten")
+    private String netto_kosten;
 
-    public void setFactuurStatus(String factuurStatus) {
-        this.factuurStatus = factuurStatus;
-    }
-
-    public OfferteModel getOfferteId() {
-        return offerteId;
-    }
-
-    public void setOfferteId(OfferteModel offerteId) {
-        this.offerteId = offerteId;
-    }
-
-    public ContactPersoonModel getContactId() {
-        return contactId;
-    }
-
-    public void setContactId(ContactPersoonModel contactId) {
-        this.contactId = contactId;
-    }
 }
