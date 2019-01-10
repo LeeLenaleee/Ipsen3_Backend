@@ -3,7 +3,6 @@ package nl.hsleiden.resource;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 import nl.hsleiden.service.FactuurService;
-import nl.hsleiden.utility.PDFWriter;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;

@@ -1,10 +1,13 @@
 package nl.hsleiden.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "offerte")
-public class OfferteModel extends BaseModel{
+public class OfferteModel extends BaseModel {
     @Column(name = "datum")
     private String datum;
 
@@ -15,19 +18,19 @@ public class OfferteModel extends BaseModel{
     private String naamklant;
 
     @JoinColumn(name = "contact_id")
-    @Column(name ="uren")
+    @Column(name = "uren")
     private String uren;
 
-    @Column(name ="btwPercentage")
+    @Column(name = "btwPercentage")
     private String btwPercentage;
 
-    @Column(name ="kostenBruto")
+    @Column(name = "kostenBruto")
     private String kostenBruto;
 
-    @Column(name ="kostenBTW")
+    @Column(name = "kostenBTW")
     private String kostenBTW;
 
-    @Column(name ="kostenNetto")
+    @Column(name = "kostenNetto")
     private String kostenNetto;
 
     public String getDatum() {

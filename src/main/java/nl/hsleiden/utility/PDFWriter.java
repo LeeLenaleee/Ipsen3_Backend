@@ -16,16 +16,17 @@ import java.util.logging.Logger;
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
+ *
  * @author Jacco
  */
 public final class PDFWriter {
     private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
     private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/temp.pdf";
-    private static final Logger LOGGER = Logger.getLogger( PDFWriter.class.getName() );
+    private static final Logger LOGGER = Logger.getLogger(PDFWriter.class.getName());
     private static PDDocument pdDocument;
     private static final String datumFieldAcroform = "datum";
 
-    private PDFWriter(){
+    private PDFWriter() {
         //not called
     }
 
@@ -35,7 +36,7 @@ public final class PDFWriter {
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
-            LOGGER.log(Level.FINE,e.toString(),e);
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
@@ -60,8 +61,8 @@ public final class PDFWriter {
                 nettoKostenField.setValue(Double.toString(factuur.getNettoKosten()));
                 btwPercentageField.setValue(Double.toString(factuur.getBtwPercentage()));
                 factuurNummerField.setValue(Integer.toString(factuur.getId()));
-            }catch (IOException e){
-                LOGGER.log(Level.FINE,e.toString(),e);
+            } catch (IOException e) {
+                LOGGER.log(Level.FINE, e.toString(), e);
             }
 
             datumField.setReadOnly(true);
@@ -78,18 +79,18 @@ public final class PDFWriter {
         try {
             pdDocument.save(temp);
             pdDocument.close();
-        }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
+        } catch (IOException e) {
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
         return temp;
     }
 
-    public static File maakOfferte(OfferteModel offerte){
+    public static File maakOfferte(OfferteModel offerte) {
         File file = new File(template + "offertetemplate.pdf");
         try {
             pdDocument = PDDocument.load(file);
-        }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
+        } catch (IOException e) {
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
@@ -116,8 +117,8 @@ public final class PDFWriter {
                 kostenBrutoField.setValue(offerte.getKostenBruto());
                 kostenBTWField.setValue(offerte.getKostenBTW());
                 kostenNettoField.setValue(offerte.getKostenNetto());
-            }catch (IOException e){
-                LOGGER.log(Level.FINE,e.toString(),e);
+            } catch (IOException e) {
+                LOGGER.log(Level.FINE, e.toString(), e);
             }
 
             datumField.setReadOnly(true);
@@ -135,7 +136,7 @@ public final class PDFWriter {
             pdDocument.save(temp);
             pdDocument.close();
         } catch (IOException e) {
-            LOGGER.log(Level.FINE,e.toString(),e);
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
         return temp;
     }
@@ -145,7 +146,7 @@ public final class PDFWriter {
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
-            LOGGER.log(Level.FINE,e.toString(),e);
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
@@ -163,7 +164,7 @@ public final class PDFWriter {
                 adres.setValue(brief.getAdresering());
                 letter.setValue(brief.getVerhaal());
             } catch (IOException e) {
-                LOGGER.log(Level.FINE,e.toString(),e);
+                LOGGER.log(Level.FINE, e.toString(), e);
             }
 
             date.setReadOnly(true);
@@ -175,8 +176,8 @@ public final class PDFWriter {
         try {
             pdDocument.save(temp);
             pdDocument.close();
-        }catch (IOException e){
-            LOGGER.log(Level.FINE,e.toString(),e);
+        } catch (IOException e) {
+            LOGGER.log(Level.FINE, e.toString(), e);
         }
         return temp;
     }

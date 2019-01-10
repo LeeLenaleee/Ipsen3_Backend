@@ -1,10 +1,12 @@
 package nl.hsleiden.model;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "brief")
-public class BriefModel extends BaseModel{
+public class BriefModel extends BaseModel {
     @Column(name = "datum")
     private String datum;
 
@@ -20,7 +22,8 @@ public class BriefModel extends BaseModel{
     @Column(name = "verhaal", columnDefinition = "TEXT")
     private String verhaal;
 
-    public BriefModel(){}
+    public BriefModel() {
+    }
 
     public String getDatum() {
         return datum;

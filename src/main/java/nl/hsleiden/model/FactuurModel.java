@@ -29,7 +29,8 @@ public class FactuurModel extends BaseModel {
     @Column(name = "netto_kosten")
     private double nettoKosten;
 
-    public FactuurModel(){}
+    public FactuurModel() {
+    }
 
     public String getDatum() {
         return datum;
