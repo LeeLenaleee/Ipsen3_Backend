@@ -19,14 +19,4 @@ public class OfferteDAO extends BaseDAO<OfferteModel> {
     @Inject
     public OfferteDAO(SessionFactory factory) { super(OfferteModel.class, factory); }
 
-    public Optional<OfferteModel> getByOfferteId(int factuurId) {
-        Session session = currentSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<OfferteModel> criteriaQuery = criteriaBuilder.createQuery(OfferteModel.class);
-        Root<OfferteModel> root = criteriaQuery.from(OfferteModel.class);
-        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("id"), factuurId)));
-
-        Query<OfferteModel> q = session.createQuery(criteriaQuery);
-        return q.uniqueResultOptional();
-    }
 }

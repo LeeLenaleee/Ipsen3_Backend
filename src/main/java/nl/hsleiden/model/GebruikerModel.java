@@ -28,6 +28,12 @@ public class GebruikerModel extends BaseModel implements Principal
     @JsonView(View.Public.class)
     private String emailAdres;
 
+    @Column(name = "gebruikersnaam")
+    @NotEmpty
+    @Email
+    @JsonView(View.Public.class)
+    private String gebruikersnaam;
+
     @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
@@ -78,5 +84,13 @@ public class GebruikerModel extends BaseModel implements Principal
     @Override
     public String getName() {
         return null;
+    }
+
+    public String getGebruikersnaam() {
+        return gebruikersnaam;
+    }
+
+    public void setGebruikersnaam(String gebruikersnaam) {
+        this.gebruikersnaam = gebruikersnaam;
     }
 }

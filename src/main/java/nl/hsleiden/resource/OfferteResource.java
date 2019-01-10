@@ -1,7 +1,9 @@
 package nl.hsleiden.resource;
 
 import io.dropwizard.hibernate.UnitOfWork;
+import nl.hsleiden.model.OfferteModel;
 import nl.hsleiden.service.OfferteService;
+import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -26,6 +28,14 @@ public class OfferteResource {
     @UnitOfWork
     @Produces({"application/pdf"})
     public File getFile(@QueryParam("id") int id) {
-        return this.offerteService.getById(id);
+        return PDFWriter.maakOfferte(this.offerteService.findById(id));
+    }
+
+    @Path("/json")
+    @GET
+    @UnitOfWork
+    @Produces(MediaType.APPLICATION_JSON)
+    public OfferteModel getJson(@QueryParam("id") int id) {
+        return this.offerteService.findById(id);
     }
 }
