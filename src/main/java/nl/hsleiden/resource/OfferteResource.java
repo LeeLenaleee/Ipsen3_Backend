@@ -3,6 +3,7 @@ package nl.hsleiden.resource;
 import nl.hsleiden.model.OfferteModel;
 import nl.hsleiden.persistence.OfferteDAO;
 import nl.hsleiden.service.OfferteService;
+import nl.hsleiden.utility.PDFWriter;
 
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
