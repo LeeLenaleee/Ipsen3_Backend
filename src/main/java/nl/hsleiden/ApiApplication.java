@@ -37,6 +37,18 @@ public class ApiApplication extends Application<ApiConfiguration> {
     private ApiGuiceModule apiGuiceModule;
     private String name;
 
+    public static void main(String[] args) {
+        if (args.length == 0) {
+            args = new String[]{"server", "configuration.yml"};
+        }
+
+        try {
+            new ApiApplication().run(args);
+        } catch (Exception e) {
+            System.err.println(e.getStackTrace());
+        }
+    }
+
     @Override
     public String getName() {
         return name;
@@ -116,24 +128,11 @@ public class ApiApplication extends Application<ApiConfiguration> {
         environment.jersey().register(new AuthValueFactoryProvider.Binder<>(GebruikerModel.class));
     }
 
-
     private void configureClientFilter(Environment environment) {
         environment.getApplicationContext().addFilter(
                 new FilterHolder(new ClientFilter()),
                 "/*",
                 EnumSet.allOf(DispatcherType.class)
         );
-    }
-
-    public static void main(String[] args) {
-        if (args.length == 0) {
-            args = new String[]{"server", "configuration.yml"};
-        }
-
-        try {
-            new ApiApplication().run(args);
-        } catch (Exception e) {
-            System.err.println(e.getStackTrace());
-        }
     }
 }

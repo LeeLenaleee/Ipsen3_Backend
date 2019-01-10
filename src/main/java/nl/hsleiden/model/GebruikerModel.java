@@ -31,14 +31,6 @@ public class GebruikerModel extends BaseModel implements Principal {
     private Role role;
 
 
-    public boolean hasRole(Role role) {
-        return this.role.hasRole(role);
-    }
-
-    public String getName() {
-        return this.emailAdres;
-    }
-
     public GebruikerModel() {
     }
 
@@ -46,6 +38,14 @@ public class GebruikerModel extends BaseModel implements Principal {
         this.emailAdres = emailAdres;
         this.wachtwoord = wachtwoord;
         this.role = role;
+    }
+
+    public boolean hasRole(Role role) {
+        return this.role.hasRole(role);
+    }
+
+    public String getName() {
+        return this.emailAdres;
     }
 
     public String getEmailAdres() {

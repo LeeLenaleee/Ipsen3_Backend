@@ -2,16 +2,12 @@ package nl.hsleiden.persistence;
 
 import com.google.inject.Inject;
 import nl.hsleiden.model.OnkostenModel;
-import org.hibernate.Criteria;
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.criterion.Restrictions;
 
 import javax.inject.Singleton;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.ws.rs.NotFoundException;
 import java.util.List;
 
 /**
@@ -30,7 +26,7 @@ public class OnkostenDAO extends BaseDAO<OnkostenModel> {
         TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
             public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
-                criteriaQuery.where(criteriaBuilder.like(root.get("onkosten_omschrijving"), "%" + omschrijving + "%"));
+                criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%"));
             }
         };
 

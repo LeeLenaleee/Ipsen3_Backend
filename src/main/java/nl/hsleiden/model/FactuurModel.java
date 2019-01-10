@@ -12,22 +12,22 @@ public class FactuurModel extends BaseModel {
     private String datum;
 
     @Column(name = "aflever_datum")
-    private String aflever_datum;
+    private String afleverDatum;
 
     @Column(name = "factuur_omschrijving")
-    private String factuur_omschrijving;
+    private String factuurOmschrijving;
 
     @Column(name = "bruto_kosten")
-    private double bruto_kosten;
+    private double brutoKosten;
 
     @Column(name = "btw_percentage")
-    private int btw_percentage;
+    private int btwPercentage;
 
     @Column(name = "btw_kosten")
-    private double btw_kosten;
+    private double btwKosten;
 
     @Column(name = "netto_kosten")
-    private double netto_kosten;
+    private double nettoKosten;
 
     public String getDatum() {
         return datum;
@@ -37,51 +37,51 @@ public class FactuurModel extends BaseModel {
         this.datum = datum;
     }
 
-    public String getAflever_datum() {
-        return aflever_datum;
+    public String getAfleverDatum() {
+        return afleverDatum;
     }
 
-    public void setAflever_datum(String aflever_datum) {
-        this.aflever_datum = aflever_datum;
+    public void setAfleverDatum(String afleverDatum) {
+        this.afleverDatum = afleverDatum;
     }
 
-    public String getFactuur_omschrijving() {
-        return factuur_omschrijving;
+    public String getFactuurOmschrijving() {
+        return factuurOmschrijving;
     }
 
-    public void setFactuur_omschrijving(String factuur_omschrijving) {
-        this.factuur_omschrijving = factuur_omschrijving;
+    public void setFactuurOmschrijving(String factuurOmschrijving) {
+        this.factuurOmschrijving = factuurOmschrijving;
     }
 
-    public double getBruto_kosten() {
-        return bruto_kosten;
+    public double getBrutoKosten() {
+        return brutoKosten;
     }
 
-    public void setBruto_kosten(double bruto_kosten) {
-        this.bruto_kosten = bruto_kosten;
+    public void setBrutoKosten(double brutoKosten) {
+        this.brutoKosten = brutoKosten;
     }
 
-    public int getBtw_percentage() {
-        return btw_percentage;
+    public int getBtwPercentage() {
+        return btwPercentage;
     }
 
-    public void setBtw_percentage(int btw_percentage) {
-        this.btw_percentage = btw_percentage;
+    public void setBtwPercentage(int btwPercentage) {
+        this.btwPercentage = btwPercentage;
     }
 
-    public double getBtw_kosten() {
-        return btw_kosten;
+    public double getBtwKosten() {
+        return btwKosten;
     }
 
-    public void setBtw_kosten(double btw_kosten) {
-        this.btw_kosten = btw_kosten;
+    public void setBtwKosten(double btwKosten) {
+        this.btwKosten = btwKosten;
     }
 
-    public double getNetto_kosten() {
-        return netto_kosten;
+    public double getNettoKosten() {
+        return nettoKosten;
     }
 
-    public void setNetto_kosten(double netto_kosten) {
-        this.netto_kosten = netto_kosten;
+    public void setNettoKosten(double nettoKosten) {
+        this.nettoKosten = nettoKosten;
     }
 }

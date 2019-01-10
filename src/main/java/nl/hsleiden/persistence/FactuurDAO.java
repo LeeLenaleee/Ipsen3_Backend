@@ -24,7 +24,7 @@ public class FactuurDAO extends BaseDAO<FactuurModel> {
         CriteriaQuery<FactuurModel> criteriaQuery = criteriaBuilder.createQuery(FactuurModel.class);
         Root<FactuurModel> root = criteriaQuery.from(FactuurModel.class);
 
-        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("factuur_nummer"), factuurId)));
+        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("factuurNummer"), factuurId)));
 
         Query<FactuurModel> q = session.createQuery(criteriaQuery);
 

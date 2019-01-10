@@ -14,19 +14,17 @@ import javax.validation.constraints.NotNull;
  * @author Peter van Vliet
  */
 public class ApiConfiguration extends Configuration implements AssetsBundleConfiguration {
-    @NotEmpty
-    @JsonProperty
-    private String apiName;
-
     @Valid
     @NotNull
     @JsonProperty
     private final DataSourceFactory database = new DataSourceFactory();
-
     @Valid
     @NotNull
     @JsonProperty
     private final AssetsConfiguration assets = new AssetsConfiguration();
+    @NotEmpty
+    @JsonProperty
+    private String apiName;
 
     public String getApiName() {
         return apiName;

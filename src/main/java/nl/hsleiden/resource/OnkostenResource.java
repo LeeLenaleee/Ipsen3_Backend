@@ -39,10 +39,10 @@ public class OnkostenResource {
     }
 
     @GET
-    @Path("/expenses/{omschrijving}")
+    @Path("/expenses/")
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public List<OnkostenModel> findByOmschrijving(@PathParam("omschrijving") String omschrijving) {
+    public List<OnkostenModel> findByOmschrijving(@QueryParam("omschrijving") String omschrijving) {
         return service.findByOmschrijving(omschrijving);
     }
 
