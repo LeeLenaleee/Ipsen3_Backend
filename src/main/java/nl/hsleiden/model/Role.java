@@ -2,7 +2,7 @@ package nl.hsleiden.model;
 
 /**
  * @Author Kasper
- *
+ * <p>
  * Represents a Role, using an integer to check whether a role `includes` another.
  * The higher the number, the more it `includes`.
  */

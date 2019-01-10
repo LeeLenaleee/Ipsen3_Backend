@@ -22,7 +22,9 @@ public class OfferteResource {
     private final OfferteService service;
 
     @Inject
-    public OfferteResource(OfferteService service) { this.service = service; }
+    public OfferteResource(OfferteService service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -43,8 +45,7 @@ public class OfferteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid OfferteModel OfferteModel)
-    {
+    public void create(@Valid OfferteModel OfferteModel) {
         service.create(OfferteModel);
     }
 
@@ -52,8 +53,7 @@ public class OfferteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid OfferteModel OfferteModel)
-    {
+    public void delete(@Valid OfferteModel OfferteModel) {
         service.delete(OfferteModel);
     }
 
@@ -62,8 +62,7 @@ public class OfferteResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid OfferteModel user)
-    {
+    public void update(@PathParam("id") int id, @Valid OfferteModel user) {
         service.update(user, id);
     }
 }

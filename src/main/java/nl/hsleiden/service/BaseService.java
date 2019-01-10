@@ -31,7 +31,7 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         {
             throw new NotFoundException();
         }
-        
+
         return model;
     }
 
@@ -56,8 +56,9 @@ public class BaseService<M extends BaseModel, D extends BaseDAO<M>>
         dao.delete(obj);
     }
 
-    public void update(M obj)
+    public void update(M obj, int id)
     {
+        obj.setId(id);
         dao.update(obj);
     }
 }

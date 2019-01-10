@@ -9,7 +9,10 @@ import nl.hsleiden.service.AuthService;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.*;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 
@@ -33,8 +36,7 @@ public class LoginGebruikerResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     @JsonView(View.Protected.class)
-    public void get(GebruikerModel gebruikerModel)
-    {
+    public void get(GebruikerModel gebruikerModel) {
 
     }
 }

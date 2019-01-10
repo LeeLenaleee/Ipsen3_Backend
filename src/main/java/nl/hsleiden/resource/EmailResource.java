@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.EmailModel;
-import nl.hsleiden.service.BtwPercentageService;
 import nl.hsleiden.service.EmailService;
 
 import javax.annotation.security.RolesAllowed;
@@ -23,7 +22,9 @@ public class EmailResource {
     private final EmailService service;
 
     @Inject
-    public EmailResource(EmailService service) { this.service = service; }
+    public EmailResource(EmailService service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -44,8 +45,7 @@ public class EmailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid EmailModel EmailModel)
-    {
+    public void create(@Valid EmailModel EmailModel) {
         service.create(EmailModel);
     }
 
@@ -53,8 +53,7 @@ public class EmailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid EmailModel EmailModel)
-    {
+    public void delete(@Valid EmailModel EmailModel) {
         service.delete(EmailModel);
     }
 
@@ -63,8 +62,8 @@ public class EmailResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid EmailModel user)
-    {
+
+    public void update(@PathParam("id") int id, @Valid EmailModel user) {
         service.update(user, id);
     }
 }

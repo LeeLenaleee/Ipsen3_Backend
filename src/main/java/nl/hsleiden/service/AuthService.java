@@ -1,10 +1,5 @@
 package nl.hsleiden.service;
 
-import javax.inject.Inject;
-import javax.inject.Singleton;
-import javax.ws.rs.ForbiddenException;
-import javax.ws.rs.core.Response;
-
 import io.dropwizard.auth.AuthenticationException;
 import io.dropwizard.auth.Authenticator;
 import io.dropwizard.auth.Authorizer;
@@ -14,10 +9,14 @@ import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.model.GebruikerModel;
 import nl.hsleiden.model.Role;
 import nl.hsleiden.persistence.AuthDAO;
+
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import javax.ws.rs.ForbiddenException;
+import javax.ws.rs.core.Response;
 import java.util.Optional;
 
 /**
- *
  * @author Jaccao van den Berg, Kasper van den Berg
  */
 @Singleton
@@ -25,8 +24,7 @@ public class AuthService implements Authenticator<BasicCredentials, GebruikerMod
     AuthDAO dao;
 
     @Inject
-    public AuthService(AuthDAO dao)
-    {
+    public AuthService(AuthDAO dao) {
         this.dao = dao;
     }
 

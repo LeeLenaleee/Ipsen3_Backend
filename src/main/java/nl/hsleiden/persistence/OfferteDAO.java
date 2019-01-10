@@ -1,7 +1,6 @@
 package nl.hsleiden.persistence;
 
 import nl.hsleiden.model.OfferteModel;
-import nl.hsleiden.model.TelefoonnummerModel;
 import org.hibernate.SessionFactory;
 
 import javax.inject.Inject;
@@ -11,5 +10,7 @@ import javax.inject.Singleton;
 public class OfferteDAO extends BaseDAO<OfferteModel> {
 
     @Inject
-    public OfferteDAO(SessionFactory factory) { super(OfferteModel.class, factory); }
+    public OfferteDAO(SessionFactory factory) {
+        super(OfferteModel.class, factory);
+    }
 }

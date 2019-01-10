@@ -22,7 +22,9 @@ public class FactuurResource {
     private final FactuurService service;
 
     @Inject
-    public FactuurResource(FactuurService service) { this.service = service; }
+    public FactuurResource(FactuurService service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -43,8 +45,7 @@ public class FactuurResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid FactuurModel FactuurModel)
-    {
+    public void create(@Valid FactuurModel FactuurModel) {
         service.create(FactuurModel);
     }
 
@@ -52,8 +53,7 @@ public class FactuurResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid FactuurModel FactuurModel)
-    {
+    public void delete(@Valid FactuurModel FactuurModel) {
         service.delete(FactuurModel);
     }
 
@@ -62,8 +62,7 @@ public class FactuurResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid FactuurModel user)
-    {
+    public void update(@PathParam("id") int id, @Valid FactuurModel user) {
         service.update(user, id);
     }
 }

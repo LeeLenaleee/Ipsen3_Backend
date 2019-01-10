@@ -4,17 +4,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.dropwizard.Configuration;
 import io.dropwizard.bundles.assets.AssetsBundleConfiguration;
 import io.dropwizard.bundles.assets.AssetsConfiguration;
+import io.dropwizard.db.DataSourceFactory;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import io.dropwizard.db.DataSourceFactory;
-import org.hibernate.validator.constraints.NotEmpty;
 /**
- *
  * @author Peter van Vliet
  */
-public class ApiConfiguration extends Configuration implements AssetsBundleConfiguration
-{
+public class ApiConfiguration extends Configuration implements AssetsBundleConfiguration {
     @NotEmpty
     @JsonProperty
     private String apiName;
@@ -29,19 +28,16 @@ public class ApiConfiguration extends Configuration implements AssetsBundleConfi
     @JsonProperty
     private final AssetsConfiguration assets = new AssetsConfiguration();
 
-    public String getApiName()
-    {
+    public String getApiName() {
         return apiName;
     }
 
-    public void setApiName(String apiName)
-    {
+    public void setApiName(String apiName) {
         this.apiName = apiName;
     }
 
     @Override
-    public AssetsConfiguration getAssetsConfiguration()
-    {
+    public AssetsConfiguration getAssetsConfiguration() {
         return assets;
     }
 

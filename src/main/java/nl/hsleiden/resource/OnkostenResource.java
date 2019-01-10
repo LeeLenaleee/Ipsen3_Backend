@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonView;
 import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
-import nl.hsleiden.model.ContactPersoonModel;
 import nl.hsleiden.model.OnkostenModel;
 import nl.hsleiden.service.OnkostenService;
 
@@ -27,8 +26,7 @@ public class OnkostenResource {
     private final OnkostenService service;
 
     @Inject
-    public OnkostenResource(OnkostenService service)
-    {
+    public OnkostenResource(OnkostenService service) {
         this.service = service;
     }
 
@@ -59,17 +57,15 @@ public class OnkostenResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid OnkostenModel onkostenModel)
-    {
-       service.create(onkostenModel);
+    public void create(@Valid OnkostenModel onkostenModel) {
+        service.create(onkostenModel);
     }
 
     @DELETE
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid OnkostenModel onkostenModel)
-    {
+    public void delete(@Valid OnkostenModel onkostenModel) {
         service.delete(onkostenModel);
     }
 
@@ -78,8 +74,7 @@ public class OnkostenResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid OnkostenModel user)
-    {
+    public void update(@PathParam("id") int id, @Valid OnkostenModel user) {
         service.update(user, id);
     }
 }

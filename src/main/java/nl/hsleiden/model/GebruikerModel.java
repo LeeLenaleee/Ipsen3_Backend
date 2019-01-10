@@ -35,9 +35,12 @@ public class GebruikerModel extends BaseModel implements Principal {
         return this.role.hasRole(role);
     }
 
-    public String getName() { return this.emailAdres; }
+    public String getName() {
+        return this.emailAdres;
+    }
 
-    public GebruikerModel() {}
+    public GebruikerModel() {
+    }
 
     public GebruikerModel(String emailAdres, String wachtwoord, Role role) {
         this.emailAdres = emailAdres;

@@ -22,7 +22,9 @@ public class BtwPercentageResource {
     private final BtwPercentageService service;
 
     @Inject
-    public BtwPercentageResource(BtwPercentageService service) { this.service = service; }
+    public BtwPercentageResource(BtwPercentageService service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -43,8 +45,7 @@ public class BtwPercentageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid BtwPercentageModel BtwPercentageModel)
-    {
+    public void create(@Valid BtwPercentageModel BtwPercentageModel) {
         service.create(BtwPercentageModel);
     }
 
@@ -52,8 +53,7 @@ public class BtwPercentageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid BtwPercentageModel BtwPercentageModel)
-    {
+    public void delete(@Valid BtwPercentageModel BtwPercentageModel) {
         service.delete(BtwPercentageModel);
     }
 
@@ -62,8 +62,7 @@ public class BtwPercentageResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid BtwPercentageModel user)
-    {
+    public void update(@PathParam("id") int id, @Valid BtwPercentageModel user) {
         service.update(user, id);
     }
 }

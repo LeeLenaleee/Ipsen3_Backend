@@ -3,14 +3,13 @@ package nl.hsleiden.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
 
 /**
  * @Author Simon van Kouteren
  */
 @Entity
 @Table(name = "onkosten")
-public class OnkostenModel extends BaseModel{
+public class OnkostenModel extends BaseModel {
 
     @Column(name = "onkosten_bedrijf")
     private String onkostenBedrijf;

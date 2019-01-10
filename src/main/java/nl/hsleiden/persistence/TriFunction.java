@@ -2,6 +2,7 @@ package nl.hsleiden.persistence;
 
 /**
  * A little interface for the setup of CriteriaQueries!
+ *
  * @param <T>
  * @param <U>
  * @param <V>

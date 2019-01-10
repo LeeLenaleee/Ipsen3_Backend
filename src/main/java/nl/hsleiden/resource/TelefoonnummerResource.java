@@ -22,7 +22,9 @@ public class TelefoonnummerResource {
     private final TelefoonnummerService service;
 
     @Inject
-    public TelefoonnummerResource(TelefoonnummerService service) { this.service = service; }
+    public TelefoonnummerResource(TelefoonnummerService service) {
+        this.service = service;
+    }
 
     @GET
     @Path("/{id}")
@@ -43,8 +45,7 @@ public class TelefoonnummerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void create(@Valid TelefoonnummerModel TelefoonnummerModel)
-    {
+    public void create(@Valid TelefoonnummerModel TelefoonnummerModel) {
         service.create(TelefoonnummerModel);
     }
 
@@ -52,8 +53,7 @@ public class TelefoonnummerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void delete(@Valid TelefoonnummerModel TelefoonnummerModel)
-    {
+    public void delete(@Valid TelefoonnummerModel TelefoonnummerModel) {
         service.delete(TelefoonnummerModel);
     }
 
@@ -62,8 +62,7 @@ public class TelefoonnummerResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @UnitOfWork
     @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid TelefoonnummerModel user)
-    {
+    public void update(@PathParam("id") int id, @Valid TelefoonnummerModel user) {
         service.update(user, id);
     }
 }

@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "offerte")
-public class OfferteModel extends BaseModel{
+public class OfferteModel extends BaseModel {
     @Column(name = "opdracht_omschrijving")
     private String opdrachtOmschrijving;
 
@@ -15,7 +15,7 @@ public class OfferteModel extends BaseModel{
     private double opdrachtKosten;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="contact_id")
+    @JoinColumn(name = "contact_id")
     private ContactPersoonModel contactId;
 
     public String getOpdrachtOmschrijving() {

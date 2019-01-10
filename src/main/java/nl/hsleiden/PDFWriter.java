@@ -4,30 +4,33 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDDocumentCatalog;
 import org.apache.pdfbox.pdmodel.interactive.form.PDAcroForm;
 import org.apache.pdfbox.pdmodel.interactive.form.PDField;
-import java.io.*;
+
+import java.io.File;
+import java.io.IOException;
 
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
+ *
  * @author Jacco
  */
 public class PDFWriter {
     private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
     private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/";
 
-   public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
+    public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
                                    String nettoKosten, String btwPercentage, String factuurNummer) {
 
-       File file = new File(template + "factuurtemplate.pdf");
-       PDDocument pdDocument = null;
-       try {
-           pdDocument = PDDocument.load(file);
-       } catch (IOException e) {
-           e.printStackTrace();
-           System.err.println("Tim zecht: aardapel");
-       }
+        File file = new File(template + "factuurtemplate.pdf");
+        PDDocument pdDocument = null;
+        try {
+            pdDocument = PDDocument.load(file);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.err.println("Tim zecht: aardapel");
+        }
 
-       PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
+        PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
@@ -51,7 +54,7 @@ public class PDFWriter {
                 nettoKostenField.setValue(nettoKosten);
                 btwPercentageField.setValue(btwPercentage);
                 factuurNummerField.setValue(factuurNummer);
-            }catch (IOException e){
+            } catch (IOException e) {
                 e.printStackTrace();
             }
 
@@ -69,7 +72,7 @@ public class PDFWriter {
         try {
             pdDocument.save(temp);
             pdDocument.close();
-        }catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return temp;

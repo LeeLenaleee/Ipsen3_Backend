@@ -1,11 +1,5 @@
 package nl.hsleiden.persistence;
 
-import java.util.Optional;
-import javax.inject.Singleton;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
-
 import com.google.inject.Inject;
 import io.dropwizard.auth.basic.BasicCredentials;
 import nl.hsleiden.model.GebruikerModel;
@@ -13,13 +7,17 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
+import javax.inject.Singleton;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.util.Optional;
+
 /**
- *
  * @author Jacco van den Berg
  */
 @Singleton
-public class AuthDAO extends BaseDAO<GebruikerModel>
-{
+public class AuthDAO extends BaseDAO<GebruikerModel> {
     @Inject
     public AuthDAO(SessionFactory factory) {
         super(GebruikerModel.class, factory);

@@ -10,13 +10,7 @@ import javax.inject.Singleton;
 public class OfferteService extends BaseService<OfferteModel, OfferteDAO> {
 
     @Inject
-    public OfferteService(OfferteDAO dao)
-    {
+    public OfferteService(OfferteDAO dao) {
         super(dao);
-    }
-
-    public void update(OfferteModel user, int userId) {
-        user.setId(userId);
-        super.update(user);
     }
 }

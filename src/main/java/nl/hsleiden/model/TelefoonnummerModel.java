@@ -5,12 +5,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "telefoonnummer")
-public class TelefoonnummerModel extends BaseModel{
+public class TelefoonnummerModel extends BaseModel {
     @Column(name = "telnr")
     private String telnr;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="contact_id")
+    @JoinColumn(name = "contact_id")
     private ContactPersoonModel contactId;
 
     public String getTelnr() {

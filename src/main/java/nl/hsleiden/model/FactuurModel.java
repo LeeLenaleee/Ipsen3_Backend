@@ -1,11 +1,13 @@
 package nl.hsleiden.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Table (name = "factuur")
-public class FactuurModel extends BaseModel{
+@Table(name = "factuur")
+public class FactuurModel extends BaseModel {
     @Column(name = "datum")
     private String datum;
 
