@@ -11,8 +11,7 @@ import java.util.List;
 public class ContactPersoonService extends BaseService<ContactPersoonModel, ContactPersoonDAO> {
 
     @Inject
-    public ContactPersoonService(ContactPersoonDAO dao)
-    {
+    public ContactPersoonService(ContactPersoonDAO dao) {
         super(dao);
     }
 
@@ -20,5 +19,7 @@ public class ContactPersoonService extends BaseService<ContactPersoonModel, Cont
         return dao.findByBedrijf(bedrijf);
     }
 
-    public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) { return dao.findByNaam(voornaam, achternaam); }
+    public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) {
+        return dao.findByNaam(voornaam, achternaam);
+    }
 }

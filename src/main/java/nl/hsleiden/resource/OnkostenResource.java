@@ -5,11 +5,15 @@ import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.OnkostenModel;
+import nl.hsleiden.persistence.OnkostenDAO;
 import nl.hsleiden.service.OnkostenService;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
-import javax.validation.Valid;
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
@@ -19,57 +23,20 @@ import java.util.List;
 
 @Singleton
 @Path("/onkosten")
-@Produces(MediaType.APPLICATION_JSON)
-public class OnkostenResource {
-    private final OnkostenService service;
+@RolesAllowed("user")
+public class OnkostenResource extends BaseResource<OnkostenModel, OnkostenDAO, OnkostenService> {
 
     @Inject
-    public OnkostenResource(OnkostenService service)
-    {
-        this.service = service;
+    public OnkostenResource(OnkostenService service) {
+        super(service);
     }
 
     @GET
-    @Path("/{id}")
+    @Path("/expenses/")
     @UnitOfWork
     @JsonView(View.Protected.class)
-    public OnkostenModel findById(@PathParam("id") int id) {
-        return service.findById(id);
-    }
-
-    @GET
-    @Path("/expenses/{omschrijving}")
-    @UnitOfWork
-    @JsonView(View.Protected.class)
-    public List<OnkostenModel> findByOmschrijving(@PathParam("omschrijving") String omschrijving) {
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OnkostenModel> findByOmschrijving(@QueryParam("omschrijving") String omschrijving) {
         return service.findByOmschrijving(omschrijving);
-    }
-
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void create(@Valid OnkostenModel onkostenModel)
-    {
-        System.out.println("hij komt hier niet"); service.create(onkostenModel);
-    }
-
-    @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void delete(@Valid OnkostenModel onkostenModel)
-    {
-        service.delete(onkostenModel);
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @UnitOfWork
-    @JsonView(View.Public.class)
-    public void update(@PathParam("id") int id, @Valid OnkostenModel onkostenModel)
-    {
-        service.update(id, onkostenModel);
     }
 }

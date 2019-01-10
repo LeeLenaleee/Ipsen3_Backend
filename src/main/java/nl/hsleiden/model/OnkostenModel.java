@@ -3,20 +3,19 @@ package nl.hsleiden.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import java.sql.Date;
 
 /**
  * @Author Simon van Kouteren
  */
 @Entity
 @Table(name = "onkosten")
-public class OnkostenModel extends BaseModel{
+public class OnkostenModel extends BaseModel {
 
     @Column(name = "onkosten_bedrijf")
     private String onkostenBedrijf;
 
     @Column(name = "onkosten_datum")
-    private Date onkostenDatum;
+    private String onkostenDatum;
 
     @Column(name = "onkosten_kostenpost")
     private String onkostenKostenpost;
@@ -25,16 +24,16 @@ public class OnkostenModel extends BaseModel{
     private String onkostenOmschrijving;
 
     @Column(name = "onkosten_bruto_kosten")
-    private int onkostenBrutoKosten;
+    private double onkostenBrutoKosten;
 
     @Column(name = "onkosten_btw_percentage")
     private int onkostenBtwPercentage;
 
     @Column(name = "onkosten_btw_kosten")
-    private int onkostenBtwKosten;
+    private double onkostenBtwKosten;
 
     @Column(name = "onkosten_netto_kosten")
-    private int onkostenNettoKosten;
+    private double onkostenNettoKosten;
 
 
     public String getOnkostenBedrijf() {
@@ -45,11 +44,11 @@ public class OnkostenModel extends BaseModel{
         this.onkostenBedrijf = onkostenBedrijf;
     }
 
-    public Date getOnkostenDatum() {
+    public String getOnkostenDatum() {
         return onkostenDatum;
     }
 
-    public void setOnkostenDatum(Date onkostenDatum) {
+    public void setOnkostenDatum(String onkostenDatum) {
         this.onkostenDatum = onkostenDatum;
     }
 
@@ -69,11 +68,11 @@ public class OnkostenModel extends BaseModel{
         this.onkostenOmschrijving = onkostenOmschrijving;
     }
 
-    public int getOnkostenBrutoKosten() {
+    public double getOnkostenBrutoKosten() {
         return onkostenBrutoKosten;
     }
 
-    public void setOnkostenBrutoKosten(int onkostenBrutoKosten) {
+    public void setOnkostenBrutoKosten(double onkostenBrutoKosten) {
         this.onkostenBrutoKosten = onkostenBrutoKosten;
     }
 
@@ -85,19 +84,19 @@ public class OnkostenModel extends BaseModel{
         this.onkostenBtwPercentage = onkostenBtwPercentage;
     }
 
-    public int getOnkostenBtwKosten() {
+    public double getOnkostenBtwKosten() {
         return onkostenBtwKosten;
     }
 
-    public void setOnkostenBtwKosten(int onkostenBtwKosten) {
+    public void setOnkostenBtwKosten(double onkostenBtwKosten) {
         this.onkostenBtwKosten = onkostenBtwKosten;
     }
 
-    public int getOnkostenNettoKosten() {
+    public double getOnkostenNettoKosten() {
         return onkostenNettoKosten;
     }
 
-    public void setOnkostenNettoKosten(int onkostenNettoKosten) {
+    public void setOnkostenNettoKosten(double onkostenNettoKosten) {
         this.onkostenNettoKosten = onkostenNettoKosten;
     }
 }

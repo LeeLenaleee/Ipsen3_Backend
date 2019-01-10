@@ -1,139 +1,88 @@
 package nl.hsleiden.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
-import java.security.Principal;
 import nl.hsleiden.View;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.security.Principal;
 
-/**
- * Meer informatie over validatie:
- *  http://hibernate.org/validator/
- *
- * @author Peter van Vliet
- */
+@Table(name = "gebruiker")
 @Entity
-@Table(name = "user")
-public class GebruikerModel extends BaseModel implements Principal
-{
-    @Column(name = "fullName")
-    @NotEmpty
-    @Length(min = 3, max = 100)
-    @JsonView(View.Public.class)
-    private String fullName;
-
-    @Column(name = "postcode")
-    @NotEmpty
-    @Length(min = 6, max = 7)
-    @JsonView(View.Public.class)
-    private String postcode;
-
-    @Column(name = "streetnumber")
-    @NotEmpty
-    @Length(min = 1, max = 10)
-    @JsonView(View.Public.class)
-    private String streetnumber;
-
-    @Column(name = "emailAddress")
+public class GebruikerModel extends BaseModel implements Principal {
+    @Column(name = "email_adres")
     @NotEmpty
     @Email
     @JsonView(View.Public.class)
-    private String emailAddress;
+    private String emailAdres;
 
-    @Column(name = "password")
+    @Column(name = "gebruikersnaam")
+    @NotEmpty
+    @Email
+    @JsonView(View.Public.class)
+    private String gebruikersnaam;
+
+    @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
     @JsonView(View.Protected.class)
-    private String password;
+    private String wachtwoord;
 
-    @Column(name = "role")
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "rol")
     @JsonView(View.Public.class)
-    private String role;
+    private Role role;
 
-    public GebruikerModel() { }
 
-    public GebruikerModel(String fullName, String postcode, String streetnumber, String emailAddress, String password, String role) {
+    public GebruikerModel() {
+    }
 
-        this.fullName = fullName;
-        this.postcode = postcode;
-        this.streetnumber = streetnumber;
-        this.emailAddress = emailAddress;
-        this.password = password;
+    public GebruikerModel(String emailAdres, String wachtwoord, Role role) {
+        this.emailAdres = emailAdres;
+        this.wachtwoord = wachtwoord;
         this.role = role;
-
     }
 
-    public String getFullName() {
-        return fullName;
+    public boolean hasRole(Role role) {
+        return this.role.hasRole(role);
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getStreetnumber() {
-        return streetnumber;
-    }
-
-    public void setStreetnumber(String streetnumber) {
-        this.streetnumber = streetnumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-
-    @JsonIgnore
     public String getName() {
-        return fullName;
+        return this.emailAdres;
     }
 
-    public String getRole() {
+    public String getEmailAdres() {
+        return emailAdres;
+    }
+
+    public void setEmailAdres(String emailAdres) {
+        this.emailAdres = emailAdres;
+    }
+
+    public String getWachtwoord() {
+        return wachtwoord;
+    }
+
+    public void setWachtwoord(String wachtwoord) {
+        this.wachtwoord = wachtwoord;
+    }
+
+    public Role getRole() {
         return role;
     }
 
-    public void setRole(String role)
-    {
+    public void setRole(Role role) {
         this.role = role;
     }
 
-    public boolean hasRole(String roleName) {
-        if (role != null) {
-            if (roleName.equals(role)) {
-                return true;
-            }
-        }
-        return false;
+    public String getGebruikersnaam() {
+        return gebruikersnaam;
     }
 
-    public boolean equals(GebruikerModel gebruikerModel) {
-        return emailAddress.equals(gebruikerModel.getEmailAddress());
+    public void setGebruikersnaam(String gebruikersnaam) {
+        this.gebruikersnaam = gebruikersnaam;
     }
 }

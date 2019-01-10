@@ -12,54 +12,54 @@ import java.util.List;
 
 /**
  * BaseDAO is a simple implementation of the CRUD operations.
- * @author Kasper
+ *
  * @param <T>
+ * @author Kasper
  */
 public class BaseDAO<T extends BaseModel> {
     private final Class<T> type;
     private final SessionFactory sessionFactory;
 
-    public BaseDAO(Class<T> type, SessionFactory sessionFactory)
-    {
+    public BaseDAO(Class<T> type, SessionFactory sessionFactory) {
         this.type = type;
         this.sessionFactory = sessionFactory;
     }
 
-    protected Session currentSession()
-    {
+    protected Session currentSession() {
         return this.sessionFactory.getCurrentSession();
     }
 
-    public T findById(int id)
-    {
+    public T findById(int id) {
         return currentSession().get(type, id);
     }
 
-    public void create(T obj)
-    {
+    public List<T> findAll() {
+        CriteriaBuilder criteriaBuilder = currentSession().getCriteriaBuilder();
+        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
+        criteriaQuery.from(type);
+        return currentSession().createQuery(criteriaQuery).getResultList();
+
+    }
+
+    public void create(T obj) {
         currentSession().save(obj);
     }
 
-    public void delete(T obj)
-    {
+    public void delete(T obj) {
         currentSession().delete(obj);
     }
 
-    public void update(int id, T obj)
-    {
-        Session currentSession = currentSession();
-        T old_obj = currentSession.load(type, id);
-
-        currentSession.update(obj);
+    public void update(T obj) {
+        currentSession().update(obj);
     }
 
-    public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> lambda) {
+    public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query) {
         Session session = currentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
         Root<T> root = criteriaQuery.from(type);
 
-        lambda.apply(criteriaBuilder, criteriaQuery, root);
+        build_query.apply(criteriaBuilder, criteriaQuery, root);
 
         Query<T> q = session.createQuery(criteriaQuery);
 

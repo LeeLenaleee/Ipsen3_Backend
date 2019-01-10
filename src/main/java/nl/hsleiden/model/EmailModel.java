@@ -4,12 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "email")
-public class EmailModel extends BaseModel{
+public class EmailModel extends BaseModel {
     @Column(name = "email")
     private String email;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="contact_id")
+    @JoinColumn(name = "contact_id")
     private ContactPersoonModel contactId;
 
     public String getEmail() {

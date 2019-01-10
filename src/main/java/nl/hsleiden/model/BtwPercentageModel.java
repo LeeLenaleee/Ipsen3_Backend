@@ -6,26 +6,26 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "btw_percentage")
-public class BtwPercentageModel extends BaseModel{
+public class BtwPercentageModel extends BaseModel {
     @Column(name = "btw_percentage_hoog")
-    private String btwPercentageHoog;
+    private int btwPercentageHoog;
 
     @Column(name = "btw_percentage_laag")
-    private String btwPercentageLaag;
+    private int btwPercentageLaag;
 
-    public String getBtwPercentageHoog() {
+    public int getBtwPercentageHoog() {
         return btwPercentageHoog;
     }
 
-    public void setBtwPercentageHoog(String btwPercentageHoog) {
+    public void setBtwPercentageHoog(int btwPercentageHoog) {
         this.btwPercentageHoog = btwPercentageHoog;
     }
 
-    public String getBtwPercentageLaag() {
+    public int getBtwPercentageLaag() {
         return btwPercentageLaag;
     }
 
-    public void setBtwPercentageLaag(String btwPercentageLaag) {
+    public void setBtwPercentageLaag(int btwPercentageLaag) {
         this.btwPercentageLaag = btwPercentageLaag;
     }
 }

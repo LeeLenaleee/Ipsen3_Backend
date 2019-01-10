@@ -3,17 +3,16 @@ package nl.hsleiden.resource;
 import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
+import nl.hsleiden.model.CredentialsModel;
 import nl.hsleiden.model.GebruikerModel;
-import nl.hsleiden.model.LoginGebruikerModel;
-import nl.hsleiden.persistence.LoginGebruikerDAO;
-import nl.hsleiden.service.LoginGebruikerService;
+import nl.hsleiden.service.GebruikerService;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import javax.validation.Valid;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
-import java.util.Optional;
 
 /**
  * @author Jacco van den Berg
@@ -21,23 +20,21 @@ import java.util.Optional;
 @Provider
 @Singleton
 @Path("/login")
-@Produces(MediaType.APPLICATION_JSON)
 public class LoginGebruikerResource {
-    private final LoginGebruikerService service;
+    private final GebruikerService service;
 
     @Inject
-    public LoginGebruikerResource(LoginGebruikerService service) {
+    public LoginGebruikerResource(GebruikerService service) {
         this.service = service;
     }
 
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    @JsonView(View.Protected.class)
-    public GebruikerModel get(LoginGebruikerModel loginGebruikerModel)
-    {
-        Optional<GebruikerModel> gebruiker = this.service.getByEmailAddress(loginGebruikerModel);
-
-        return gebruiker.orElseThrow(() -> new NotAuthorizedException("Failed to login."));
+    @JsonView(View.Public.class)
+    @Produces(MediaType.APPLICATION_JSON)
+    public GebruikerModel get(@Valid CredentialsModel credentials) {
+        return service.getByCredentials(credentials.getGebruikersnaam(), credentials.getWachtwoord())
+                .orElseThrow(() -> new NotAuthorizedException("Required credentials"));
     }
 }

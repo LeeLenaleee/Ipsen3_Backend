@@ -1,4 +1,5 @@
 package nl.hsleiden.service;
+
 import nl.hsleiden.model.OnkostenModel;
 import nl.hsleiden.persistence.OnkostenDAO;
 
@@ -14,8 +15,7 @@ import java.util.List;
 public class OnkostenService extends BaseService<OnkostenModel, OnkostenDAO> {
 
     @Inject
-    public OnkostenService(OnkostenDAO dao)
-    {
+    public OnkostenService(OnkostenDAO dao) {
         super(dao);
     }
 

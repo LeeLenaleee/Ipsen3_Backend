@@ -4,17 +4,12 @@ import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 
 import javax.inject.Inject;
-import java.util.Optional;
+import javax.inject.Singleton;
 
-public class FactuurService {
-    FactuurDAO factuurDAO;
-    FactuurModel factuur;
-
+@Singleton
+public class FactuurService extends BaseService<FactuurModel, FactuurDAO> {
     @Inject
-    public FactuurService(FactuurDAO dao){this.factuurDAO = dao;}
-
-    public Optional<FactuurModel> getById(int factuurId) throws Exception {
-        factuur = factuurDAO.getByFactuurId(factuurId).orElseThrow(() -> new Exception());
-        return null;
+    public FactuurService(FactuurDAO dao) {
+        super(dao);
     }
 }
