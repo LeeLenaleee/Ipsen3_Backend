@@ -14,6 +14,20 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 
+/**
+ * A base resource is a simple resource that provides all CRUD operations on a BaseModel.
+ * That is, it implements all operations for the 'id' field.
+ *
+ * WARNING
+ * It should be noted that extending from this resource does NOT provide any role-based security whatsoever.
+ * Extendors should annotate their with @RolesAllowed as they see fit.
+ *
+ * @author Kasper
+ * @param <M> BaseModel
+ * @param <D> BaseDao
+ * @param <S> BaseService
+ *
+ */
 @Singleton
 public class BaseResource<M extends BaseModel, D extends BaseDAO<M>, S extends BaseService<M, D>> {
     protected S service;
