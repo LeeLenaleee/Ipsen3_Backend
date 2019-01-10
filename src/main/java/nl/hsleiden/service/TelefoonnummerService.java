@@ -10,13 +10,7 @@ import javax.inject.Singleton;
 public class TelefoonnummerService extends BaseService<TelefoonnummerModel, TelefoonnummerDAO> {
 
     @Inject
-    public TelefoonnummerService(TelefoonnummerDAO dao)
-    {
+    public TelefoonnummerService(TelefoonnummerDAO dao) {
         super(dao);
-    }
-
-    public void update(TelefoonnummerModel user, int userId) {
-        user.setId(userId);
-        super.update(user);
     }
 }

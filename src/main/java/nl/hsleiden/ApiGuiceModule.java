@@ -9,11 +9,9 @@ import io.dropwizard.setup.Bootstrap;
 import org.hibernate.SessionFactory;
 
 /**
- *
  * @author Peter van Vliet
  */
-public class ApiGuiceModule extends AbstractModule
-{
+public class ApiGuiceModule extends AbstractModule {
     private final HibernateBundle<ApiConfiguration> hibernateBundle;
 
     public ApiGuiceModule(Bootstrap<ApiConfiguration> bootstrap) {
@@ -29,9 +27,8 @@ public class ApiGuiceModule extends AbstractModule
     }
 
     @Override
-    protected void configure()
-    {
-        
+    protected void configure() {
+
     }
 
     @Provides

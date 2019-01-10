@@ -1,65 +1,22 @@
 package nl.hsleiden.resource;
 
-import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.model.FactuurModel;
+import nl.hsleiden.persistence.FactuurDAO;
 import nl.hsleiden.service.FactuurService;
-import nl.hsleiden.utility.PDFWriter;
 
+import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.ext.Provider;
-import java.io.File;
-import java.io.FileNotFoundException;
-@Provider
+import javax.ws.rs.Path;
+
 @Singleton
 @Path("/factuur")
-public class FactuurResource{
-    private final FactuurService factuurService;
+@RolesAllowed("user")
+public class FactuurResource extends BaseResource<FactuurModel, FactuurDAO, FactuurService> {
 
     @Inject
-    public FactuurResource(FactuurService service){this.factuurService = service;}
-
-    @Path("/download")
-    @GET
-    @UnitOfWork
-    @Produces({"application/pdf"})
-    public File getFile(@QueryParam("id") int id) {
-        return PDFWriter.maakFactuur(this.factuurService.findById(id));
-    }
-
-    @Path("/json")
-    @GET
-    @UnitOfWork
-    @Produces(MediaType.APPLICATION_JSON)
-    public FactuurModel getJson(@QueryParam("id") int id) {
-        return this.factuurService.findById(id);
-    }
-
-    @Path("/insert")
-    @POST
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void voegToe(FactuurModel factuurModel){
-        this.factuurService.create(factuurModel);
-    }
-    @Path("/update")
-    @POST
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void update(FactuurModel factuurModel){
-        System.err.println(factuurModel.getId());
-        this.factuurService.update(factuurModel);
-    }
-
-    @Path("/delete")
-    @POST
-    @UnitOfWork
-    @Consumes(MediaType.APPLICATION_JSON)
-    public void delete(FactuurModel factuurModel){
-        this.factuurService.delete(factuurModel);
+    public FactuurResource(FactuurService service) {
+        super(service);
     }
 
 }

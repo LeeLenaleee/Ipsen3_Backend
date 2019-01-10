@@ -1,33 +1,36 @@
 package nl.hsleiden.model;
 
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Table (name = "factuur")
-public class FactuurModel extends BaseModel{
+@Table(name = "factuur")
+public class FactuurModel extends BaseModel {
     @Column(name = "datum")
     private String datum;
 
     @Column(name = "aflever_datum")
-    private String aflever_datum;
+    private String afleverDatum;
 
     @Column(name = "factuur_omschrijving")
-    private String factuur_omschrijving;
+    private String factuurOmschrijving;
 
     @Column(name = "bruto_kosten")
-    private String bruto_kosten;
+    private double brutoKosten;
 
     @Column(name = "btw_percentage")
-    private String btw_percentage;
+    private int btwPercentage;
 
     @Column(name = "btw_kosten")
-    private String btw_kosten;
+    private double btwKosten;
 
     @Column(name = "netto_kosten")
-    private String netto_kosten;
+    private double nettoKosten;
 
-    public FactuurModel(){}
+    public FactuurModel() {
+    }
 
     public String getDatum() {
         return datum;
@@ -37,51 +40,51 @@ public class FactuurModel extends BaseModel{
         this.datum = datum;
     }
 
-    public String getAflever_datum() {
-        return aflever_datum;
+    public String getAfleverDatum() {
+        return afleverDatum;
     }
 
-    public void setAflever_datum(String aflever_datum) {
-        this.aflever_datum = aflever_datum;
+    public void setAfleverDatum(String afleverDatum) {
+        this.afleverDatum = afleverDatum;
     }
 
-    public String getFactuur_omschrijving() {
-        return factuur_omschrijving;
+    public String getFactuurOmschrijving() {
+        return factuurOmschrijving;
     }
 
-    public void setFactuur_omschrijving(String factuur_omschrijving) {
-        this.factuur_omschrijving = factuur_omschrijving;
+    public void setFactuurOmschrijving(String factuurOmschrijving) {
+        this.factuurOmschrijving = factuurOmschrijving;
     }
 
-    public String getBruto_kosten() {
-        return bruto_kosten;
+    public double getBrutoKosten() {
+        return brutoKosten;
     }
 
-    public void setBruto_kosten(String bruto_kosten) {
-        this.bruto_kosten = bruto_kosten;
+    public void setBrutoKosten(double brutoKosten) {
+        this.brutoKosten = brutoKosten;
     }
 
-    public String getBtw_percentage() {
-        return btw_percentage;
+    public int getBtwPercentage() {
+        return btwPercentage;
     }
 
-    public void setBtw_percentage(String btw_percentage) {
-        this.btw_percentage = btw_percentage;
+    public void setBtwPercentage(int btwPercentage) {
+        this.btwPercentage = btwPercentage;
     }
 
-    public String getBtw_kosten() {
-        return btw_kosten;
+    public double getBtwKosten() {
+        return btwKosten;
     }
 
-    public void setBtw_kosten(String btw_kosten) {
-        this.btw_kosten = btw_kosten;
+    public void setBtwKosten(double btwKosten) {
+        this.btwKosten = btwKosten;
     }
 
-    public String getNetto_kosten() {
-        return netto_kosten;
+    public double getNettoKosten() {
+        return nettoKosten;
     }
 
-    public void setNetto_kosten(String netto_kosten) {
-        this.netto_kosten = netto_kosten;
+    public void setNettoKosten(double nettoKosten) {
+        this.nettoKosten = nettoKosten;
     }
 }

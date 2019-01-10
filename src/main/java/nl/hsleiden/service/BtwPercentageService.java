@@ -10,13 +10,7 @@ import javax.inject.Singleton;
 public class BtwPercentageService extends BaseService<BtwPercentageModel, BtwPercentageDAO> {
 
     @Inject
-    public BtwPercentageService(BtwPercentageDAO dao)
-    {
+    public BtwPercentageService(BtwPercentageDAO dao) {
         super(dao);
-    }
-
-    public void update(BtwPercentageModel user, int userId) {
-        user.setId(userId);
-        super.update(user);
     }
 }

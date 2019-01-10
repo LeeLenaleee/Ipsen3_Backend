@@ -4,19 +4,15 @@ import nl.hsleiden.model.GebruikerModel;
 import nl.hsleiden.persistence.GebruikerDAO;
 
 import javax.inject.Inject;
-import javax.inject.Singleton;
+import java.util.Optional;
 
-@Singleton
 public class GebruikerService extends BaseService<GebruikerModel, GebruikerDAO> {
-
     @Inject
-    public GebruikerService(GebruikerDAO dao)
-    {
+    public GebruikerService(GebruikerDAO dao) {
         super(dao);
     }
 
-    public void update(GebruikerModel user, int userId) {
-        user.setId(userId);
-        super.update(user);
+    public Optional<GebruikerModel> getByCredentials(String username, String wachtwoord) {
+        return dao.getByCredentials(username, wachtwoord);
     }
 }

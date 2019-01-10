@@ -10,5 +10,7 @@ import javax.inject.Singleton;
 public class BtwPercentageDAO extends BaseDAO<BtwPercentageModel> {
 
     @Inject
-    public BtwPercentageDAO(SessionFactory factory) { super(BtwPercentageModel.class, factory); }
+    public BtwPercentageDAO(SessionFactory factory) {
+        super(BtwPercentageModel.class, factory);
+    }
 }

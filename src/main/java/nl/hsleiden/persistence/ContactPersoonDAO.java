@@ -23,26 +23,27 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
 
     public List<ContactPersoonModel> findByBedrijf(String bedrijf) {
 
-        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
             public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
                 criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%"));
             }
         };
 
-        return super.findBy(anon);
+        return super.findBy(build_query);
     }
 
     public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) {
-        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> anon = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
             public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
-                System.out.println("VOORNAAM = " + voornaam + "ACHTERNAAM = " + achternaam);
-                criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"), criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")));
-
+                criteriaQuery.where(criteriaBuilder.and(
+                        criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
+                        criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
+                ));
             }
         };
 
-        return super.findBy(anon);
+        return super.findBy(build_query);
     }
 }

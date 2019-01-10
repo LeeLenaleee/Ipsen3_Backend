@@ -10,5 +10,7 @@ import javax.inject.Singleton;
 public class TelefoonnummerDAO extends BaseDAO<TelefoonnummerModel> {
 
     @Inject
-    public TelefoonnummerDAO(SessionFactory factory) { super(TelefoonnummerModel.class, factory); }
+    public TelefoonnummerDAO(SessionFactory factory) {
+        super(TelefoonnummerModel.class, factory);
+    }
 }
