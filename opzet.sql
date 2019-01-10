@@ -89,6 +89,7 @@ CREATE TABLE btw_percentage (
 
 CREATE TABLE gebruiker (
     id int not null auto_increment,
+	gebruikersNaam varchar(25),
     email_adres varchar(25),
     wachtwoord varchar(64),
     rol varchar(25),
