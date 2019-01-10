@@ -10,16 +10,12 @@ import org.apache.pdfbox.pdmodel.interactive.form.PDField;
 
 import java.io.File;
 import java.io.IOException;
-<<<<<<< HEAD:src/main/java/nl/hsleiden/PDFWriter.java
-=======
 import java.util.logging.Level;
 import java.util.logging.Logger;
->>>>>>> dev:src/main/java/nl/hsleiden/utility/PDFWriter.java
 
 
 /**
  * De Klasse verantwoordelijk voor het maken van een facturen en offertes in PDF.
- *
  * @author Jacco
  */
 public final class PDFWriter {
@@ -29,18 +25,6 @@ public final class PDFWriter {
     private static PDDocument pdDocument;
     private static final String datumFieldAcroform = "datum";
 
-<<<<<<< HEAD:src/main/java/nl/hsleiden/PDFWriter.java
-    public static File maakFactuur(String datum, String omschrijving, String brutoKosten, String btwKosten,
-                                   String nettoKosten, String btwPercentage, String factuurNummer) {
-
-        File file = new File(template + "factuurtemplate.pdf");
-        PDDocument pdDocument = null;
-        try {
-            pdDocument = PDDocument.load(file);
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.err.println("Tim zecht: aardapel");
-=======
     private PDFWriter(){
         //not called
     }
@@ -52,7 +36,6 @@ public final class PDFWriter {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
             LOGGER.log(Level.FINE,e.toString(),e);
->>>>>>> dev:src/main/java/nl/hsleiden/utility/PDFWriter.java
         }
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
@@ -69,31 +52,16 @@ public final class PDFWriter {
             PDField datum2Field = pdAcroForm.getField("datum2");
 
             try {
-<<<<<<< HEAD:src/main/java/nl/hsleiden/PDFWriter.java
-
-
-                datumField.setValue(datum);
-                datum2Field.setValue(datum);
-                omschrijvingField.setValue(omschrijving);
-                brutoKostenField.setValue(brutoKosten);
-                btwKostenField.setValue(btwKosten);
-                nettoKostenField.setValue(nettoKosten);
-                btwPercentageField.setValue(btwPercentage);
-                factuurNummerField.setValue(factuurNummer);
-            } catch (IOException e) {
-                e.printStackTrace();
-=======
-                datumField.setValue(factuur.getAflever_datum());
+                datumField.setValue(factuur.getAfleverDatum());
                 datum2Field.setValue(factuur.getDatum());
-                omschrijvingField.setValue(factuur.getFactuur_omschrijving());
-                brutoKostenField.setValue(factuur.getBruto_kosten());
-                btwKostenField.setValue(factuur.getBtw_kosten());
-                nettoKostenField.setValue(factuur.getNetto_kosten());
-                btwPercentageField.setValue(factuur.getBtw_percentage());
+                omschrijvingField.setValue(factuur.getFactuurOmschrijving());
+                brutoKostenField.setValue(Double.toString(factuur.getBrutoKosten()));
+                btwKostenField.setValue(Double.toString(factuur.getBtwKosten()));
+                nettoKostenField.setValue(Double.toString(factuur.getNettoKosten()));
+                btwPercentageField.setValue(Double.toString(factuur.getBtwPercentage()));
                 factuurNummerField.setValue(Integer.toString(factuur.getId()));
             }catch (IOException e){
                 LOGGER.log(Level.FINE,e.toString(),e);
->>>>>>> dev:src/main/java/nl/hsleiden/utility/PDFWriter.java
             }
 
             datumField.setReadOnly(true);
@@ -110,13 +78,8 @@ public final class PDFWriter {
         try {
             pdDocument.save(temp);
             pdDocument.close();
-<<<<<<< HEAD:src/main/java/nl/hsleiden/PDFWriter.java
-        } catch (IOException e) {
-            e.printStackTrace();
-=======
         }catch (IOException e){
             LOGGER.log(Level.FINE,e.toString(),e);
->>>>>>> dev:src/main/java/nl/hsleiden/utility/PDFWriter.java
         }
         return temp;
     }

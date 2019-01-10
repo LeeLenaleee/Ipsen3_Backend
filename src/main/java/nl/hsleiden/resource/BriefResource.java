@@ -49,7 +49,7 @@ public class BriefResource {
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
     public void update(BriefModel briefModel){
-        this.briefService.update(briefModel);
+        this.briefService.update(briefModel, briefModel.getId());
     }
 
     @Path("/delete")
