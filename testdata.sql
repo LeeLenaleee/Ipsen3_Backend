@@ -26,16 +26,16 @@ VALUES (DEFAULT, 'morris@park.nl', 1),
 (DEFAULT, 'info@notenkoor.nl', 5);
 
 insert into offerte values
-(DEFAULT,'03-02-1990','654','piet','55','4','55','9','999'),
-(DEFAULT,'05-12-2000','654','Klaas','555','4','3','9','7'),
-(DEFAULT,'03-05-2136','654','Jan','96','4','74','9','77'),
-(DEFAULT,'22-12-5845','654','Melanie','02','7','8','9','23')
+(DEFAULT,'03-02-1990','124','piet','55','41','55','9','999'),
+(DEFAULT,'05-12-2000','98','Klaas','555','34','3','91','7'),
+(DEFAULT,'03-05-2136','12','Jan','96','4','74','95','77'),
+(DEFAULT,'22-12-5845','95','Melanie','02','7','8','19','23');
 
 INSERT INTO brief VALUES
-(DEFAULT,'01-02-2020','988','Kasper van den Berg','Zernikdreef 11','Pietje ging vissen en ving een karper '),
-(DEFAULT,'12-04-1990','988','Jazzlyn TAN','Zernikdreef 11','im bored so I started smoking weird shit it was great '),
-(DEFAULT,'24-02-2002','988','Wietse Nicolaas','Zernikdreef 11','you got hacked'),
-(DEFAULT,'18-08-2015','988','Jacco van den Berg','Zernikdreef 11','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ')
+(DEFAULT,'01-02-2020','1288','Kasper van den Berg','duckstad 11','Pietje ging vissen en ving een karper '),
+(DEFAULT,'12-04-1990','48','Jazzlyn TAN','xd 211','im bored so I started smoking weird shit it was great '),
+(DEFAULT,'24-02-2002','158','Wietse Nicolaas','testshit 511','you got hacked'),
+(DEFAULT,'18-08-2015','2','Jacco van den Berg','henkers 1211','Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley ');
 
 INSERT INTO factuur
 VALUES 
