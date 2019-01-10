@@ -1,7 +1,6 @@
 package nl.hsleiden.persistence;
 
 import com.google.inject.Inject;
-import io.dropwizard.auth.basic.BasicCredentials;
 import nl.hsleiden.model.GebruikerModel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -17,22 +16,22 @@ import java.util.Optional;
  * @author Jacco van den Berg
  */
 @Singleton
-public class AuthDAO extends BaseDAO<GebruikerModel> {
+public class GebruikerDAO extends BaseDAO<GebruikerModel> {
     @Inject
-    public AuthDAO(SessionFactory factory) {
+    public GebruikerDAO(SessionFactory factory) {
         super(GebruikerModel.class, factory);
     }
 
-    public Optional<GebruikerModel> getByCredentials(BasicCredentials credentials) {
-
+    public Optional<GebruikerModel> getByCredentials(String username, String password) {
+        System.out.println("USERNAME: " + username + "PASSWORD: " + password);
         Session session = currentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<GebruikerModel> criteriaQuery = criteriaBuilder.createQuery(GebruikerModel.class);
         Root<GebruikerModel> root = criteriaQuery.from(GebruikerModel.class);
 
         criteriaQuery.where(criteriaBuilder.and(
-                criteriaBuilder.equal(root.get("emailAdres"), credentials.getUsername()),
-                criteriaBuilder.equal(root.get("wachtwoord"), credentials.getPassword())
+                criteriaBuilder.equal(root.get("emailAdres"), username),
+                criteriaBuilder.equal(root.get("wachtwoord"), password)
         ));
 
         Query<GebruikerModel> q = session.createQuery(criteriaQuery);

@@ -8,7 +8,6 @@ import io.dropwizard.auth.basic.BasicCredentials;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.model.GebruikerModel;
 import nl.hsleiden.model.Role;
-import nl.hsleiden.persistence.AuthDAO;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -21,17 +20,17 @@ import java.util.Optional;
  */
 @Singleton
 public class AuthService implements Authenticator<BasicCredentials, GebruikerModel>, Authorizer<GebruikerModel>, UnauthorizedHandler {
-    AuthDAO dao;
+    private GebruikerService service;
 
     @Inject
-    public AuthService(AuthDAO dao) {
-        this.dao = dao;
+    public AuthService(GebruikerService service) {
+        this.service = service;
     }
 
     @UnitOfWork
     @Override
     public Optional<GebruikerModel> authenticate(BasicCredentials credentials) throws AuthenticationException {
-        return dao.getByCredentials(credentials);
+        return service.getByCredentials(credentials.getUsername(), credentials.getPassword());
     }
 
     @Override

@@ -14,8 +14,8 @@ import io.dropwizard.hibernate.UnitOfWorkAwareProxyFactory;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 import nl.hsleiden.model.GebruikerModel;
-import nl.hsleiden.persistence.AuthDAO;
 import nl.hsleiden.service.AuthService;
+import nl.hsleiden.service.GebruikerService;
 import org.eclipse.jetty.servlet.FilterHolder;
 import org.eclipse.jetty.servlets.CrossOriginFilter;
 import org.glassfish.jersey.server.filter.RolesAllowedDynamicFeature;
@@ -107,14 +107,14 @@ public class ApiApplication extends Application<ApiConfiguration> {
     }
 
     private void setupAuthentication(Environment environment) {
-        AuthDAO authDAO = guiceBundle.getInjector().getInstance(AuthDAO.class);
+        GebruikerService service = guiceBundle.getInjector().getInstance(GebruikerService.class);
         ApiUnauthorizedHandler unauthorizedHandler = guiceBundle.getInjector().getInstance(ApiUnauthorizedHandler.class);
 
         // @NOTE:
         // This creates the authenticator,
         // which requires we pass in *ALL* attributes of the authenticator.
         AuthService authenticator = new UnitOfWorkAwareProxyFactory(apiGuiceModule.getHibernateBundle())
-                .create(AuthService.class, AuthDAO.class, authDAO);
+                .create(AuthService.class, GebruikerService.class, service);
 
         environment.jersey().register(new AuthDynamicFeature(
                 new BasicCredentialAuthFilter.Builder<GebruikerModel>()
