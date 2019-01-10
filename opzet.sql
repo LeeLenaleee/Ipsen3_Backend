@@ -50,10 +50,10 @@ CREATE TABLE factuur (
     #id is het factuur nummer
     aflever_datum			VARCHAR(12),
     factuur_omschrijving   		VARCHAR(250),
-    bruto_kosten			VARCHAR(25),
-    btw_percentage			VARCHAR(3),
-    btw_kosten				VARCHAR(25),
-    netto_kosten			VARCHAR(25),
+    bruto_kosten			DOUBLE(9, 2),
+    btw_percentage			INT(2),
+    btw_kosten				DOUBLE(9, 2),
+    netto_kosten			DOUBLE(9, 2),
     primary key(id)
 );
 
