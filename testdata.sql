@@ -61,5 +61,5 @@ INSERT INTO btw_percentage
 VALUES (DEFAULT, 21, 6);
 
 INSERT INTO gebruiker
-VALUES (DEFAULT, 'test@test.com', '098f6bcd4621d373cade4e832627b4f6', 'admin'),
-(DEFAULT, 'test1@test.com', '5a105e8b9d40e1329780d62ea2265d8a', 'user')
+VALUES (DEFAULT, 'test@test.com','KAAAAAAZPER', '098f6bcd4621d373cade4e832627b4f6', 'admin'),
+(DEFAULT, 'test1@test.com','Meneer Nicolaas', '5a105e8b9d40e1329780d62ea2265d8a', 'user')
