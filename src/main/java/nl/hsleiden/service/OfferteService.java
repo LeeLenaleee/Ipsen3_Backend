@@ -11,16 +11,9 @@ import java.io.File;
 import java.util.Optional;
 
 @Singleton
-public class OfferteService {
-    OfferteDAO offerteDAO;
-
+public class OfferteService extends BaseService<OfferteModel,OfferteDAO>{
     @Inject
-    public OfferteService(OfferteDAO dao){this.offerteDAO = dao;}
-
-    public File getById(int offerteId) {
-        Optional<OfferteModel> offerte = offerteDAO.getByOfferteId(offerteId);
-        if(offerte.isPresent()){
-            return PDFWriter.maakOfferte(offerte.get());
-        }else throw new NotFoundException("Not found");
+    public OfferteService(OfferteDAO dao) {
+        super(dao);
     }
 }

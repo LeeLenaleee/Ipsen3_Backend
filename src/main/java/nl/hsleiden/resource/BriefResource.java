@@ -1,8 +1,8 @@
 package nl.hsleiden.resource;
 
 import io.dropwizard.hibernate.UnitOfWork;
+import nl.hsleiden.model.BriefModel;
 import nl.hsleiden.service.BriefService;
-import nl.hsleiden.service.OfferteService;
 import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Inject;
@@ -29,5 +29,13 @@ public class BriefResource {
     @Produces({"application/pdf"})
     public File getFile(@QueryParam("id") int id) {
         return PDFWriter.maakBrief(this.briefService.findById(id));
+    }
+
+    @Path("/json")
+    @GET
+    @UnitOfWork
+    @Produces(MediaType.APPLICATION_JSON)
+    public BriefModel getJson(@QueryParam("id") int id) {
+        return this.briefService.findById(id);
     }
 }
