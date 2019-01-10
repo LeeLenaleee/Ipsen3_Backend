@@ -42,7 +42,24 @@ public class FactuurResource{
     @POST
     @UnitOfWork
     @Consumes(MediaType.APPLICATION_JSON)
-    public void voegToe(){
-
+    public void voegToe(FactuurModel factuurModel){
+        this.factuurService.create(factuurModel);
     }
+    @Path("/update")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(FactuurModel factuurModel){
+        System.err.println(factuurModel.getId());
+        this.factuurService.update(factuurModel);
+    }
+
+    @Path("/delete")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(FactuurModel factuurModel){
+        this.factuurService.delete(factuurModel);
+    }
+
 }

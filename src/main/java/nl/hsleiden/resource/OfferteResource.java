@@ -7,10 +7,7 @@ import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
 
@@ -37,5 +34,21 @@ public class OfferteResource {
     @Produces(MediaType.APPLICATION_JSON)
     public OfferteModel getJson(@QueryParam("id") int id) {
         return this.offerteService.findById(id);
+    }
+
+    @Path("/insert")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void voegToe(OfferteModel offerteModel){
+        this.offerteService.create(offerteModel);
+    }
+
+    @Path("/delete")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(OfferteModel offerteModel){
+        this.offerteService.delete(offerteModel);
     }
 }

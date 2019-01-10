@@ -7,10 +7,7 @@ import nl.hsleiden.utility.PDFWriter;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.File;
 
@@ -37,5 +34,29 @@ public class BriefResource {
     @Produces(MediaType.APPLICATION_JSON)
     public BriefModel getJson(@QueryParam("id") int id) {
         return this.briefService.findById(id);
+    }
+
+    @Path("/insert")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void voegToe(BriefModel briefModel){
+        this.briefService.create(briefModel);
+    }
+
+    @Path("/update")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void update(BriefModel briefModel){
+        this.briefService.update(briefModel);
+    }
+
+    @Path("/delete")
+    @POST
+    @UnitOfWork
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void delete(BriefModel briefModel){
+        this.briefService.delete(briefModel);
     }
 }

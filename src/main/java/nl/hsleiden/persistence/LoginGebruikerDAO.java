@@ -33,7 +33,7 @@ public class LoginGebruikerDAO extends BaseDAO<GebruikerModel>
         CriteriaQuery<GebruikerModel> criteriaQuery = criteriaBuilder.createQuery(GebruikerModel.class);
         Root<GebruikerModel> root = criteriaQuery.from(GebruikerModel.class);
 
-        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("emailAddress"), loginGebruikerModel.getEmail()), criteriaBuilder.equal(root.get("password"), loginGebruikerModel.getPassword())));
+        criteriaQuery.where(criteriaBuilder.and(criteriaBuilder.equal(root.get("email_adres"), loginGebruikerModel.getEmail()), criteriaBuilder.equal(root.get("password"), loginGebruikerModel.getPassword())));
 
         Query<GebruikerModel> q = session.createQuery(criteriaQuery);
 
