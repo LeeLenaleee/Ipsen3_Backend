@@ -71,8 +71,6 @@ public class ApiApplication extends Application<ApiConfiguration> {
         bootstrap.addBundle(guiceBundle);
 
         bootstrap.addBundle(new MultiPartBundle());
-
-
     }
 
     @Override
