@@ -25,14 +25,13 @@ import org.slf4j.LoggerFactory;
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
 import java.util.EnumSet;
-
 /**
  * @author Peter van Vliet
  */
 public class ApiApplication extends Application<ApiConfiguration> {
     private final Logger logger = LoggerFactory.getLogger(ApiApplication.class);
+    private static final Logger MAINLOGGER = LoggerFactory.getLogger(ApiApplication.class);
 
-    private ConfiguredBundle assetsBundle;
     private GuiceBundle guiceBundle;
     private ApiGuiceModule apiGuiceModule;
     private String name;
@@ -45,7 +44,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         try {
             new ApiApplication().run(args);
         } catch (Exception e) {
-            System.err.println(e.getStackTrace());
+            MAINLOGGER.error(e.getStackTrace().toString());
         }
     }
 
@@ -56,13 +55,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
     @Override
     public void initialize(Bootstrap<ApiConfiguration> bootstrap) {
-//        assetsBundle = (ConfiguredBundle) new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
-//        guiceBundle = createGuiceBundle(ApiConfiguration.class, new ApiGuiceModule(bootstrap));
-//
-//        bootstrap.addBundle(assetsBundle);
-//        bootstrap.addBundle(guiceBundle);
-
-        assetsBundle = new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
+        ConfiguredBundle assetsBundle = new ConfiguredAssetsBundle("/assets/", "/client", "index.html");
 
         apiGuiceModule = new ApiGuiceModule(bootstrap);
         guiceBundle = createGuiceBundle(ApiConfiguration.class, apiGuiceModule);
@@ -98,7 +91,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
     private GuiceBundle createGuiceBundle(Class<ApiConfiguration> configurationClass, Module module) {
         Builder guiceBuilder = GuiceBundle.<ApiConfiguration>newBuilder()
                 .addModule(module)
-                .enableAutoConfig(new String[]{"nl.hsleiden"})
+                .enableAutoConfig("nl.hsleiden")
                 .setConfigClass(configurationClass);
 
         return guiceBuilder.build();

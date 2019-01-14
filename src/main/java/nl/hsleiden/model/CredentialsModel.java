@@ -1,7 +1,12 @@
 package nl.hsleiden.model;
 
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class CredentialsModel {
     private String gebruikersnaam;
+    @NotEmpty
+    @Length(min = 64, max = 64)
     private String wachtwoord;
 
     public String getGebruikersnaam() {

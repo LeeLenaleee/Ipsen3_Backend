@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 
 @Singleton
 @Path("/telefoonnummer")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class TelefoonnummerResource extends BaseResource<TelefoonnummerModel, TelefoonnummerDAO, TelefoonnummerService> {
 
     @Inject

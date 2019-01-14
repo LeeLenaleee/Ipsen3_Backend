@@ -17,7 +17,7 @@ import java.io.File;
 
 @Singleton
 @Path("/factuur")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class FactuurResource extends BaseResource<FactuurModel, FactuurDAO, FactuurService> {
 
     @Inject

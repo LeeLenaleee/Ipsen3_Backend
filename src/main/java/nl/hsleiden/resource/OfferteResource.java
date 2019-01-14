@@ -17,7 +17,7 @@ import java.io.File;
 
 @Singleton
 @Path("/offerte")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class OfferteResource extends BaseResource<OfferteModel, OfferteDAO, OfferteService> {
 
     @Inject

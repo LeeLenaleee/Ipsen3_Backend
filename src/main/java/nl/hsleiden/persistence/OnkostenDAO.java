@@ -23,13 +23,13 @@ public class OnkostenDAO extends BaseDAO<OnkostenModel> {
 
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
 
-        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
+        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> buildQuery = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
             @Override
             public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
                 criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%"));
             }
         };
 
-        return super.findBy(build_query);
+        return super.findBy(buildQuery);
     }
 }

@@ -7,8 +7,8 @@ package nl.hsleiden.model;
  * The higher the number, the more it `includes`.
  */
 public enum Role {
-    user(0),
-    admin(1);
+    USER(0),
+    ADMIN(1);
 
     private Integer bit;
 
