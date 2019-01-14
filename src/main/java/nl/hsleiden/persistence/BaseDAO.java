@@ -53,13 +53,13 @@ public class BaseDAO<T extends BaseModel> {
         currentSession().update(obj);
     }
 
-    public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> build_query) {
+    public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> buildQuery) {
         Session session = currentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
         Root<T> root = criteriaQuery.from(type);
 
-        build_query.apply(criteriaBuilder, criteriaQuery, root);
+        buildQuery.apply(criteriaBuilder, criteriaQuery, root);
 
         Query<T> q = session.createQuery(criteriaQuery);
 

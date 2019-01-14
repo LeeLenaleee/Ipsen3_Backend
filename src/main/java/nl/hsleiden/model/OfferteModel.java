@@ -33,6 +33,10 @@ public class OfferteModel extends BaseModel {
     @Column(name = "kostenNetto")
     private String kostenNetto;
 
+    public OfferteModel() {
+        //deze moet leeg zijn om de test te kunnen runnen, er moet comment in staan anders is het een code snell :)
+    }
+
     public String getDatum() {
         return datum;
     }

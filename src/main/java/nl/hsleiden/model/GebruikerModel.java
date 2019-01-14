@@ -27,7 +27,7 @@ public class GebruikerModel extends BaseModel implements Principal {
     @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
-    @JsonView(View.Protected.class)
+    @JsonView(View.Private.class)
     private String wachtwoord;
 
 

@@ -23,7 +23,6 @@ public class GebruikerDAO extends BaseDAO<GebruikerModel> {
     }
 
     public Optional<GebruikerModel> getByCredentials(String username, String password) {
-        System.out.println("USERNAME: " + username + "PASSWORD: " + password);
         Session session = currentSession();
         CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
         CriteriaQuery<GebruikerModel> criteriaQuery = criteriaBuilder.createQuery(GebruikerModel.class);

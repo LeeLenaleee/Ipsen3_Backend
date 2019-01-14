@@ -20,11 +20,11 @@ import java.util.logging.Logger;
  * @author Jacco
  */
 public final class PDFWriter {
+    private static final Logger LOGGER = Logger.getLogger(PDFWriter.class.getName());
+    private static final String DATUMFIELDACROFROM = "datum";
     private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
     private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/temp.pdf";
-    private static final Logger LOGGER = Logger.getLogger(PDFWriter.class.getName());
     private static PDDocument pdDocument;
-    private static final String datumFieldAcroform = "datum";
 
     private PDFWriter() {
         //not called
@@ -32,7 +32,6 @@ public final class PDFWriter {
 
     public static File maakFactuur(FactuurModel factuur) {
         File file = new File(template + "factuurtemplate.pdf");
-        System.err.println(file.getAbsolutePath());
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
@@ -43,7 +42,7 @@ public final class PDFWriter {
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField datumField = pdAcroForm.getField(datumFieldAcroform);
+            PDField datumField = pdAcroForm.getField(DATUMFIELDACROFROM);
             PDField omschrijvingField = pdAcroForm.getField("omschrijving");
             PDField brutoKostenField = pdAcroForm.getField("bruto");
             PDField btwKostenField = pdAcroForm.getField("btwprijs");
@@ -97,7 +96,7 @@ public final class PDFWriter {
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField datumField = pdAcroForm.getField(datumFieldAcroform);
+            PDField datumField = pdAcroForm.getField(DATUMFIELDACROFROM);
             PDField corespondentieNummerField = pdAcroForm.getField("corespondentieNummer");
             PDField naamKlantField = pdAcroForm.getField("naamKlant");
             PDField offerteNummerField = pdAcroForm.getField("offerteNummer");
@@ -153,7 +152,7 @@ public final class PDFWriter {
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
 
         if (pdAcroForm != null) {
-            PDField date = pdAcroForm.getField(datumFieldAcroform);
+            PDField date = pdAcroForm.getField(DATUMFIELDACROFROM);
             PDField recierver = pdAcroForm.getField("geadreseerde");
             PDField adres = pdAcroForm.getField("adress");
             PDField letter = pdAcroForm.getField("text");
