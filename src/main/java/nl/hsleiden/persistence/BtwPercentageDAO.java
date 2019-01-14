@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class BtwPercentageDAO extends BaseDAO<BtwPercentageModel> {
+public class BtwPercentageDAO extends CrudDAOImpl<BtwPercentageModel> {
 
     @Inject
     public BtwPercentageDAO(SessionFactory factory) {

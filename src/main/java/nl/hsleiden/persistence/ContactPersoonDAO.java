@@ -11,7 +11,7 @@ import java.util.List;
  * @author Kasper
  */
 @Singleton
-public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
+public class ContactPersoonDAO extends CrudFindableDAOimpl<ContactPersoonModel> {
 
     @Inject
     public ContactPersoonDAO(SessionFactory factory) {
@@ -19,15 +19,21 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
     }
 
     public List<ContactPersoonModel> findByBedrijf(String bedrijf) {
-        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
-                criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")));
+        return super.findBy(
+                (criteriaBuilder, criteriaQuery, root) ->
+                    criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")),
+                (query) -> query.list()
+        );
     }
 
     public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) {
-        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
-                criteriaQuery.where(criteriaBuilder.and(
-                        criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
-                        criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
-                )));
+        return super.findBy(
+                (criteriaBuilder, criteriaQuery, root) ->
+                    criteriaQuery.where(criteriaBuilder.and(
+                            criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
+                            criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
+                    )),
+                query -> query.list()
+        );
     }
 }

@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 @Singleton
-public class OnkostenService extends BaseService<OnkostenModel, OnkostenDAO> {
+public class OnkostenService extends CrudFindableServiceImpl<OnkostenModel, OnkostenDAO> {
 
     @Inject
     public OnkostenService(OnkostenDAO dao) {

@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class OfferteDAO extends BaseDAO<OfferteModel> {
+public class OfferteDAO extends CrudDAOImpl<OfferteModel> {
 
     @Inject
     public OfferteDAO(SessionFactory factory) {

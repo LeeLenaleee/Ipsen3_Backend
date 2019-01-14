@@ -11,7 +11,7 @@ import java.util.List;
  * @author Simon van Kouteren
  */
 @Singleton
-public class OnkostenDAO extends BaseDAO<OnkostenModel> {
+public class OnkostenDAO extends CrudFindableDAOimpl<OnkostenModel> {
 
     @Inject
     public OnkostenDAO(SessionFactory factory) {
@@ -19,7 +19,10 @@ public class OnkostenDAO extends BaseDAO<OnkostenModel> {
     }
 
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
-        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
-                criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")));
+        return super.findBy(
+                (criteriaBuilder, criteriaQuery, root) ->
+                    criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")),
+                query -> query.list()
+        );
     }
 }

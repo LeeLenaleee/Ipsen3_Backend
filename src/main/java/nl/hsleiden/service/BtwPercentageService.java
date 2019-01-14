@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class BtwPercentageService extends BaseService<BtwPercentageModel, BtwPercentageDAO> {
+public class BtwPercentageService extends CrudServiceImpl<BtwPercentageModel> {
 
     @Inject
     public BtwPercentageService(BtwPercentageDAO dao) {

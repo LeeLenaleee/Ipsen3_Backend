@@ -5,7 +5,7 @@ import org.hibernate.SessionFactory;
 
 import javax.inject.Inject;
 
-public class FactuurDAO extends BaseDAO<FactuurModel> {
+public class FactuurDAO extends CrudDAOImpl<FactuurModel> {
     @Inject
     public FactuurDAO(SessionFactory sessionFactory) {
         super(FactuurModel.class, sessionFactory);

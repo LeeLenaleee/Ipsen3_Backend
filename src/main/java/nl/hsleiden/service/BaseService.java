@@ -2,7 +2,7 @@ package nl.hsleiden.service;
 
 import com.google.inject.Inject;
 import nl.hsleiden.model.BaseModel;
-import nl.hsleiden.persistence.BaseDAO;
+import nl.hsleiden.persistence.CrudDAO;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
@@ -12,11 +12,11 @@ import java.util.List;
  * @author Peter van Vliet, Kasper
  * @Param <D>: Dao
  */
-public class BaseService<M extends BaseModel, D extends BaseDAO<M>> {
-    protected D dao;
+public class BaseService<M extends BaseModel> {
+    protected CrudDAO<M> dao;
 
     @Inject
-    public BaseService(D dao) {
+    public BaseService(CrudDAO<M> dao) {
         this.dao = dao;
     }
 

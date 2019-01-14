@@ -6,8 +6,9 @@ import com.google.inject.Singleton;
 import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.BaseModel;
-import nl.hsleiden.persistence.BaseDAO;
+import nl.hsleiden.persistence.CrudDAO;
 import nl.hsleiden.service.BaseService;
+import nl.hsleiden.service.CrudService;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -28,7 +29,7 @@ import java.util.List;
  * @author Kasper
  */
 @Singleton
-public class BaseResource<M extends BaseModel, D extends BaseDAO<M>, S extends BaseService<M, D>> {
+public class BaseResource<M extends BaseModel, D extends CrudDAO<M>, S extends CrudService<M>> {
     protected S service;
 
     @Inject

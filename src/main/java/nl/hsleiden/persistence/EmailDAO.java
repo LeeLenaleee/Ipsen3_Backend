@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class EmailDAO extends BaseDAO<EmailModel> {
+public class EmailDAO extends CrudDAOImpl<EmailModel> {
 
     @Inject
     public EmailDAO(SessionFactory factory) {

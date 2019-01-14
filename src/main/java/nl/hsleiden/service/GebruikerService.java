@@ -6,7 +6,7 @@ import nl.hsleiden.persistence.GebruikerDAO;
 import javax.inject.Inject;
 import java.util.Optional;
 
-public class GebruikerService extends BaseService<GebruikerModel, GebruikerDAO> {
+public class GebruikerService extends CrudFindableServiceImpl<GebruikerModel, GebruikerDAO> {
     @Inject
     public GebruikerService(GebruikerDAO dao) {
         super(dao);

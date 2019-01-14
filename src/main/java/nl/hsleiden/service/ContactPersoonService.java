@@ -8,7 +8,7 @@ import javax.inject.Singleton;
 import java.util.List;
 
 @Singleton
-public class ContactPersoonService extends BaseService<ContactPersoonModel, ContactPersoonDAO> {
+public class ContactPersoonService extends CrudFindableServiceImpl<ContactPersoonModel, ContactPersoonDAO> {
 
     @Inject
     public ContactPersoonService(ContactPersoonDAO dao) {

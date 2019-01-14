@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 
 @Singleton
-public class BriefDAO extends BaseDAO<BriefModel> {
+public class BriefDAO extends CrudDAOImpl<BriefModel> {
     @Inject
     public BriefDAO(SessionFactory sessionFactory) {
         super(BriefModel.class, sessionFactory);
