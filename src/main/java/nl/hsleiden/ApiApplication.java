@@ -24,14 +24,15 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.DispatcherType;
 import javax.servlet.FilterRegistration;
+import java.util.Arrays;
 import java.util.EnumSet;
+
 /**
  * @author Peter van Vliet
  */
 public class ApiApplication extends Application<ApiConfiguration> {
-    private final Logger logger = LoggerFactory.getLogger(ApiApplication.class);
     private static final Logger MAINLOGGER = LoggerFactory.getLogger(ApiApplication.class);
-
+    private final Logger logger = LoggerFactory.getLogger(ApiApplication.class);
     private GuiceBundle guiceBundle;
     private ApiGuiceModule apiGuiceModule;
     private String name;
@@ -44,7 +45,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
         try {
             new ApiApplication().run(args);
         } catch (Exception e) {
-            MAINLOGGER.error(e.getStackTrace().toString());
+            MAINLOGGER.error(Arrays.toString(e.getStackTrace()));
         }
     }
 
@@ -70,7 +71,7 @@ public class ApiApplication extends Application<ApiConfiguration> {
     public void run(ApiConfiguration configuration, Environment environment) {
         name = configuration.getApiName();
 
-        logger.info(String.format("Set API name to %s", name));
+        logger.info("Set API name to {}", name);
 
         setupAuthentication(environment);
         configureClientFilter(environment);
