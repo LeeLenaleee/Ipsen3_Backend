@@ -33,15 +33,8 @@ public class OfferteModel extends BaseModel {
     @Column(name = "kostenNetto")
     private String kostenNetto;
 
-    public OfferteModel(String datum, String correspondentienummer, String naamklant, String uren, String btwPercentage, String kostenBruto, String kostenBTW, String kostenNetto) {
-        this.datum = datum;
-        this.correspondentienummer = correspondentienummer;
-        this.naamklant = naamklant;
-        this.uren = uren;
-        this.btwPercentage = btwPercentage;
-        this.kostenBruto = kostenBruto;
-        this.kostenBTW = kostenBTW;
-        this.kostenNetto = kostenNetto;
+    public OfferteModel() {
+        //deze moet leeg zijn om de test te kunnen runnen, er moet comment in staan anders is het een code snell :)
     }
 
     public String getDatum() {

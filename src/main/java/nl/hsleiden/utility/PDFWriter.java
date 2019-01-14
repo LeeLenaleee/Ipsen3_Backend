@@ -20,11 +20,11 @@ import java.util.logging.Logger;
  * @author Jacco
  */
 public final class PDFWriter {
+    private static final Logger LOGGER = Logger.getLogger(PDFWriter.class.getName());
+    private static final String DATUMFIELDACROFROM = "datum";
     private static String template = "./src/main/java/nl/hsleiden/pdfFiles/templates/";
     private static String tempfileLoc = "./src/main/java/nl/hsleiden/pdfFiles/temp/temp.pdf";
-    private static final Logger LOGGER = Logger.getLogger(PDFWriter.class.getName());
     private static PDDocument pdDocument;
-    private static final String DATUMFIELDACROFROM = "datum";
 
     private PDFWriter() {
         //not called

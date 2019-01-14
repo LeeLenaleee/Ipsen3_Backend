@@ -8,7 +8,8 @@ package nl.hsleiden;
  * @since 1.0
  */
 public class View {
-    private View(){}
+    private View() {
+    }
 
     public static class Internal extends Private {
     }
@@ -16,9 +17,9 @@ public class View {
     public static class Private extends Protected {
     }
 
-    public static class Protected extends Public {
+    public static class Protected implements Public {
     }
 
-    public static class Public {
+    public interface Public {
     }
 }

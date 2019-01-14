@@ -5,9 +5,6 @@ import nl.hsleiden.model.ContactPersoonModel;
 import org.hibernate.SessionFactory;
 
 import javax.inject.Singleton;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -22,28 +19,15 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
     }
 
     public List<ContactPersoonModel> findByBedrijf(String bedrijf) {
-
-        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> buildQuery = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
-            @Override
-            public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
-                criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%"));
-            }
-        };
-
-        return super.findBy(buildQuery);
+        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
+                criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")));
     }
 
     public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) {
-        TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> buildQuery = new TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>>() {
-            @Override
-            public void apply(CriteriaBuilder criteriaBuilder, CriteriaQuery<?> criteriaQuery, Root<?> root) {
+        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
                 criteriaQuery.where(criteriaBuilder.and(
                         criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
                         criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
-                ));
-            }
-        };
-
-        return super.findBy(buildQuery);
+                )));
     }
 }

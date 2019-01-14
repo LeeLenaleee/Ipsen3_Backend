@@ -28,7 +28,15 @@ public class PDFWriterTest  {
     public void setUp(){
         factuurModel = new FactuurModel("14-01-2019","14-01-2019","Albert 2.0 gemaakt",10,10,1.0,11.0);
         factuurModel.setId(1);
-        offerteModel = new OfferteModel("14-01-2019","1","pjeter","5","5","5","5","5");
+        offerteModel = new OfferteModel();
+        offerteModel.setDatum("14-01-2019");
+        offerteModel.setCorrespondentienummer("1");
+        offerteModel.setNaamklant("pjeter");
+        offerteModel.setUren("5");
+        offerteModel.setBtwPercentage("5");
+        offerteModel.setKostenBruto("5");
+        offerteModel.setKostenBTW("5");
+        offerteModel.setKostenNetto("5");
         offerteModel.setId(1);
         briefModel = new BriefModel("14-01-2019","123","pjeter","zernikdreef 11","deze story is toooooooo dam good fuur you");
         briefModel.setId(1);
