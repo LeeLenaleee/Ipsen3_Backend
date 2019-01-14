@@ -21,7 +21,7 @@ public class ContactPersoonDAO extends CrudFindableDAOimpl<ContactPersoonModel> 
     public List<ContactPersoonModel> findByBedrijf(String bedrijf) {
         return super.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
-                    criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")),
+                        criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")),
                 (query) -> query.list()
         );
     }
@@ -29,10 +29,10 @@ public class ContactPersoonDAO extends CrudFindableDAOimpl<ContactPersoonModel> 
     public List<ContactPersoonModel> findByNaam(String voornaam, String achternaam) {
         return super.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
-                    criteriaQuery.where(criteriaBuilder.and(
-                            criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
-                            criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
-                    )),
+                        criteriaQuery.where(criteriaBuilder.and(
+                                criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
+                                criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
+                        )),
                 query -> query.list()
         );
     }

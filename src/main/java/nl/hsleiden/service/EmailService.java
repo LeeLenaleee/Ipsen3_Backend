@@ -1,7 +1,6 @@
 package nl.hsleiden.service;
 
 import nl.hsleiden.model.EmailModel;
-import nl.hsleiden.persistence.CrudDAOImpl;
 import nl.hsleiden.persistence.EmailDAO;
 
 import javax.inject.Inject;

@@ -1,7 +1,6 @@
 package nl.hsleiden.service;
 
 import nl.hsleiden.model.TelefoonnummerModel;
-import nl.hsleiden.persistence.CrudDAOImpl;
 import nl.hsleiden.persistence.TelefoonnummerDAO;
 
 import javax.inject.Inject;

@@ -1,14 +1,12 @@
 package nl.hsleiden.service;
 
-import com.google.inject.Inject;
 import nl.hsleiden.model.BaseModel;
-import nl.hsleiden.persistence.CrudDAO;
 import nl.hsleiden.persistence.CrudFindableDAOimpl;
 
 import javax.ws.rs.NotFoundException;
 import java.util.List;
 
-public class CrudFindableServiceImpl<M extends BaseModel, D extends CrudFindableDAOimpl<M>> implements CrudService<M>  {
+public class CrudFindableServiceImpl<M extends BaseModel, D extends CrudFindableDAOimpl<M>> implements CrudService<M> {
     protected D dao;
 
     public CrudFindableServiceImpl(D dao) {

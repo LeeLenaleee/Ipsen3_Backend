@@ -21,7 +21,7 @@ public class OnkostenDAO extends CrudFindableDAOimpl<OnkostenModel> {
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
         return super.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
-                    criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")),
+                        criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")),
                 query -> query.list()
         );
     }

@@ -7,7 +7,6 @@ import io.dropwizard.hibernate.UnitOfWork;
 import nl.hsleiden.View;
 import nl.hsleiden.model.BaseModel;
 import nl.hsleiden.persistence.CrudDAO;
-import nl.hsleiden.service.BaseService;
 import nl.hsleiden.service.CrudService;
 
 import javax.validation.Valid;

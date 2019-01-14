@@ -1,7 +1,6 @@
 package nl.hsleiden.service;
 
 import nl.hsleiden.model.FactuurModel;
-import nl.hsleiden.persistence.CrudDAOImpl;
 import nl.hsleiden.persistence.FactuurDAO;
 
 import javax.inject.Inject;
