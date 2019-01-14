@@ -29,6 +29,19 @@ public class FactuurModel extends BaseModel {
     @Column(name = "netto_kosten")
     private double nettoKosten;
 
+    public FactuurModel() {
+    }
+
+    public FactuurModel(String datum, String afleverDatum, String factuurOmschrijving, double brutoKosten, int btwPercentage, double btwKosten, double nettoKosten) {
+        this.datum = datum;
+        this.afleverDatum = afleverDatum;
+        this.factuurOmschrijving = factuurOmschrijving;
+        this.brutoKosten = brutoKosten;
+        this.btwPercentage = btwPercentage;
+        this.btwKosten = btwKosten;
+        this.nettoKosten = nettoKosten;
+    }
+
     public String getDatum() {
         return datum;
     }

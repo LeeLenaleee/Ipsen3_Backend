@@ -26,7 +26,7 @@ public class ClientFilter implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        //Deze moet blijkbaar empty zijn anders juicy code smell
     }
 
     @Override
@@ -61,6 +61,6 @@ public class ClientFilter implements Filter {
 
     @Override
     public void destroy() {
-
+        //Deze moet blijkbaar empty zijn anders juicy code smell
     }
 }

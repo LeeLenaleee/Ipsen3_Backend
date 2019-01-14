@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 
 @Singleton
 @Path("/btwpercentage")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class BtwPercentageResource extends BaseResource<BtwPercentageModel, BtwPercentageDAO, BtwPercentageService> {
 
     @Inject

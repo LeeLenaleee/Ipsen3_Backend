@@ -18,10 +18,16 @@ public class GebruikerModel extends BaseModel implements Principal {
     @JsonView(View.Public.class)
     private String emailAdres;
 
+    @Column(name = "gebruikersnaam")
+    @NotEmpty
+    @Email
+    @JsonView(View.Public.class)
+    private String gebruikersnaam;
+
     @Column(name = "wachtwoord")
     @NotEmpty
     @Length(min = 8)
-    @JsonView(View.Protected.class)
+    @JsonView(View.Private.class)
     private String wachtwoord;
 
 
@@ -70,5 +76,13 @@ public class GebruikerModel extends BaseModel implements Principal {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public String getGebruikersnaam() {
+        return gebruikersnaam;
+    }
+
+    public void setGebruikersnaam(String gebruikersnaam) {
+        this.gebruikersnaam = gebruikersnaam;
     }
 }

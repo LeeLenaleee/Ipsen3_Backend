@@ -1,27 +1,27 @@
 package nl.hsleiden.resource;
 
 import io.dropwizard.hibernate.UnitOfWork;
-import nl.hsleiden.model.OfferteModel;
-import nl.hsleiden.persistence.OfferteDAO;
-import nl.hsleiden.service.OfferteService;
+import nl.hsleiden.model.BriefModel;
+import nl.hsleiden.persistence.BriefDAO;
+import nl.hsleiden.service.BriefService;
 import nl.hsleiden.utility.PDFWriter;
 
-import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import java.io.File;
 
 @Singleton
-@Path("/offerte")
-@RolesAllowed("USER")
-public class OfferteResource extends BaseResource<OfferteModel, OfferteDAO, OfferteService> {
+@Path("/brief")
+@Produces(MediaType.APPLICATION_JSON)
+public class BriefResource extends BaseResource<BriefModel, BriefDAO, BriefService> {
 
     @Inject
-    public OfferteResource(OfferteService service) {
+    public BriefResource(BriefService service) {
         super(service);
     }
 
@@ -30,6 +30,6 @@ public class OfferteResource extends BaseResource<OfferteModel, OfferteDAO, Offe
     @UnitOfWork
     @Produces({"application/pdf"})
     public File getFile(@QueryParam("id") int id) {
-        return PDFWriter.maakOfferte(super.findById(id));
+        return PDFWriter.maakBrief(super.findById(id));
     }
 }

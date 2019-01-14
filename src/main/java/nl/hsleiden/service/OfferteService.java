@@ -8,7 +8,6 @@ import javax.inject.Singleton;
 
 @Singleton
 public class OfferteService extends BaseService<OfferteModel, OfferteDAO> {
-
     @Inject
     public OfferteService(OfferteDAO dao) {
         super(dao);
