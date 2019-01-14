@@ -25,6 +25,14 @@ public class BriefModel extends BaseModel {
     public BriefModel() {
     }
 
+    public BriefModel(String datum, String correspondentie, String betreft, String adresering, String verhaal) {
+        this.datum = datum;
+        this.correspondentie = correspondentie;
+        this.betreft = betreft;
+        this.adresering = adresering;
+        this.verhaal = verhaal;
+    }
+
     public String getDatum() {
         return datum;
     }

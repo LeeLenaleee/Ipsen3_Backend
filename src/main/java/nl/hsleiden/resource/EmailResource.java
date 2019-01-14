@@ -11,7 +11,7 @@ import javax.ws.rs.Path;
 
 @Singleton
 @Path("/email")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class EmailResource extends BaseResource<EmailModel, EmailDAO, EmailService> {
 
     @Inject

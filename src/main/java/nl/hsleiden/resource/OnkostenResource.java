@@ -23,7 +23,7 @@ import java.util.List;
 
 @Singleton
 @Path("/onkosten")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class OnkostenResource extends BaseResource<OnkostenModel, OnkostenDAO, OnkostenService> {
 
     @Inject

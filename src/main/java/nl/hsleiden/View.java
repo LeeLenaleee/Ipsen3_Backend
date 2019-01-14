@@ -8,6 +8,8 @@ package nl.hsleiden;
  * @since 1.0
  */
 public class View {
+    private View(){}
+
     public static class Internal extends Private {
     }
 

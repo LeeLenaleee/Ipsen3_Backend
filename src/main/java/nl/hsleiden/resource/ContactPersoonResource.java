@@ -16,7 +16,7 @@ import java.util.List;
 
 @Singleton
 @Path("/contacten")
-@RolesAllowed("user")
+@RolesAllowed("USER")
 public class ContactPersoonResource extends BaseResource<ContactPersoonModel, ContactPersoonDAO, ContactPersoonService> {
 
     @Inject
