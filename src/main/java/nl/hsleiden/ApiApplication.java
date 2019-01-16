@@ -79,14 +79,15 @@ public class ApiApplication extends Application<ApiConfiguration> {
     }
 
     private void enableCorsHeaders(Environment environment) {
-        final FilterRegistration.Dynamic filter = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
+        final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
 
-        filter.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        filter.setInitParameter("allowedOrigins", "http://localhost:4200");    // hier het server ip invullen waar angular op draait, kan meerdere ips doen door comma gescheiden
-        filter.setInitParameter("allowedHeaders", "X-Requested-With,Content-Type,Accept,Origin");
-        filter.setInitParameter("allowedMethods", "GET,PUT,POST,DELETE,OPTIONS");
-        filter.setInitParameter("preflightMaxAge", "5184000"); // 2 months
-        filter.setInitParameter("allowCredentials", "true");
+        cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM,"GET,PUT,POST,DELETE,OPTIONS");
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://localhost:4200");
+        //cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_CREDENTIALS_HEADER,"true"); met deze aan gaf cross origin header fout dus uitlaten I guess
+        cors.setInitParameter("allowCredentials", "true");
+        cors.setInitParameter("allowedHeaders","Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
+        cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM,Boolean.FALSE.toString());
     }
 
     private GuiceBundle createGuiceBundle(Class<ApiConfiguration> configurationClass, Module module) {

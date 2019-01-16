@@ -36,7 +36,6 @@ public class ContactPersoonResource extends BaseResource<ContactPersoonModel, Co
         if (results.isEmpty()) {
             throw new NotFoundException();
         }
-
         return results;
     }
 

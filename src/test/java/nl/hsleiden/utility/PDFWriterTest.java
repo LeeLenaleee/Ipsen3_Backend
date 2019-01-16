@@ -18,6 +18,7 @@ import static org.junit.Assert.assertEquals;
 
 /***
  * @author Jacco
+ * test de PDF writer class of hij een factuur. offerte en brief kan returnen
  */
 public class PDFWriterTest  {
     FactuurModel factuurModel;
