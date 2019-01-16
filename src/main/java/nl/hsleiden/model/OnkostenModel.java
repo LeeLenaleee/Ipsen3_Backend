@@ -1,8 +1,6 @@
 package nl.hsleiden.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @Author Simon van Kouteren
@@ -17,8 +15,9 @@ public class OnkostenModel extends BaseModel {
     @Column(name = "onkosten_datum")
     private String onkostenDatum;
 
-    @Column(name = "onkosten_kostenpost")
-    private String onkostenKostenpost;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "onkost_id")
+    private KostenpostModel onkostenKostenpost;
 
     @Column(name = "onkosten_omschrijving")
     private String onkostenOmschrijving;
@@ -34,7 +33,6 @@ public class OnkostenModel extends BaseModel {
 
     @Column(name = "onkosten_netto_kosten")
     private double onkostenNettoKosten;
-
 
     public String getOnkostenBedrijf() {
         return onkostenBedrijf;
@@ -52,11 +50,11 @@ public class OnkostenModel extends BaseModel {
         this.onkostenDatum = onkostenDatum;
     }
 
-    public String getOnkostenKostenpost() {
+    public KostenpostModel getOnkostenKostenpost() {
         return onkostenKostenpost;
     }
 
-    public void setOnkostenKostenpost(String onkostenKostenpost) {
+    public void setOnkostenKostenpost(KostenpostModel onkostenKostenpost) {
         this.onkostenKostenpost = onkostenKostenpost;
     }
 
