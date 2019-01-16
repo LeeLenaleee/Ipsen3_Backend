@@ -32,7 +32,7 @@ public class OnkostenResource extends BaseResource<OnkostenModel, OnkostenDAO, O
     }
 
     @GET
-    @Path("/expenses/")
+    @Path("/zoek/")
     @UnitOfWork
     @JsonView(View.Protected.class)
     @Produces(MediaType.APPLICATION_JSON)
