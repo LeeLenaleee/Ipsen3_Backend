@@ -30,13 +30,14 @@ public class ContactPersoonResource extends BaseResource<ContactPersoonModel, Co
     @JsonView(View.Protected.class)
     @Produces(MediaType.APPLICATION_JSON)
     public List<ContactPersoonModel> findByBedrijf(@QueryParam("bedrijf") String bedrijf) {
+        System.err.println("FUCK DIT");
         List<ContactPersoonModel> results = service.findByBedrijf(bedrijf);
 
         // Didn't find any matches.
         if (results.isEmpty()) {
             throw new NotFoundException();
         }
-
+        System.err.println(results.get(0).getContactBedrijf());
         return results;
     }
 

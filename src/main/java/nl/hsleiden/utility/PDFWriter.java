@@ -63,7 +63,6 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-
             datumField.setReadOnly(true);
             datum2Field.setReadOnly(true);
             omschrijvingField.setReadOnly(true);

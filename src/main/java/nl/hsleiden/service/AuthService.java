@@ -35,6 +35,7 @@ public class AuthService implements Authenticator<BasicCredentials, GebruikerMod
 
     @Override
     public boolean authorize(GebruikerModel model, String rolname) {
+        System.err.println("pjeter"+model.hasRole(Role.valueOf(rolname)));
         return model.hasRole(Role.valueOf(rolname));
     }
 
