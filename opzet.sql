@@ -73,7 +73,7 @@ CREATE TABLE onkosten (
 CREATE TABLE kostenpost (
   id int not null auto_increment,
   kostenpost_kostenpost VARCHAR(50),
-  primary key(id),
+  primary key(id)
 );
 
 CREATE TABLE brief (

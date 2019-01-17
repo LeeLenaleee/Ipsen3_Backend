@@ -16,7 +16,7 @@ public class OnkostenModel extends BaseModel {
     private String onkostenDatum;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "onkost_id")
+    @JoinColumn(name = "id")
     private KostenpostModel onkostenKostenpost;
 
     @Column(name = "onkosten_omschrijving")
