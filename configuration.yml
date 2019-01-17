@@ -20,7 +20,7 @@ database:
   driverClass: com.mysql.cj.jdbc.Driver
   url: "jdbc:mysql://localhost:3306/ipsen3?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC"
   user: root
-  password: goudvis
+  password: spiegel
   properties:
       hibernate.dialect:  org.hibernate.dialect.MySQL5Dialect
       hibernate.hbm2ddl.auto: none
