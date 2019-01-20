@@ -30,13 +30,34 @@ public final class PDFWriter {
         //not called
     }
 
-    public static File maakFactuur(FactuurModel factuur) {
-        File file = new File(template + "factuurtemplate.pdf");
+    private static void loadDoc(File file){
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
             LOGGER.log(Level.FINE, e.toString(), e);
         }
+    }
+
+    private static File safe(){
+        File temp = new File(tempfileLoc);
+        try {
+            pdDocument.save(temp);
+            pdDocument.close();
+        } catch (IOException e) {
+            LOGGER.log(Level.FINE, e.toString(), e);
+        }
+        return temp;
+    }
+
+    private static void makePrivate(PDField[] array){
+        for (PDField x : array){
+            x.setReadOnly(true);
+        }
+    }
+
+    public static File maakFactuur(FactuurModel factuur) {
+        File file = new File(template + "factuurtemplate.pdf");
+        loadDoc(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
@@ -63,33 +84,16 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-            datumField.setReadOnly(true);
-            datum2Field.setReadOnly(true);
-            omschrijvingField.setReadOnly(true);
-            brutoKostenField.setReadOnly(true);
-            btwKostenField.setReadOnly(true);
-            nettoKostenField.setReadOnly(true);
-            btwPercentageField.setReadOnly(true);
-            factuurNummerField.setReadOnly(true);
+            PDField[] fieldArray = {datum2Field,datumField,omschrijvingField,brutoKostenField,btwKostenField,nettoKostenField,btwPercentageField,factuurNummerField};
+            makePrivate(fieldArray);
 
         }
-        File temp = new File(tempfileLoc);
-        try {
-            pdDocument.save(temp);
-            pdDocument.close();
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE, e.toString(), e);
-        }
-        return temp;
+        return safe();
     }
 
     public static File maakOfferte(OfferteModel offerte) {
         File file = new File(template + "offertetemplate.pdf");
-        try {
-            pdDocument = PDDocument.load(file);
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE, e.toString(), e);
-        }
+        loadDoc(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
@@ -118,34 +122,15 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-
-            datumField.setReadOnly(true);
-            corespondentieNummerField.setReadOnly(true);
-            naamKlantField.setReadOnly(true);
-            offerteNummerField.setReadOnly(true);
-            urenField.setReadOnly(true);
-            btwPercentageField.setReadOnly(true);
-            kostenBrutoField.setReadOnly(true);
-            kostenBTWField.setReadOnly(true);
-            kostenNettoField.setReadOnly(true);
+            PDField[] fieldArray = {datumField,corespondentieNummerField,naamKlantField,offerteNummerField,urenField,btwPercentageField,kostenBrutoField,kostenBrutoField,kostenNettoField};
+            makePrivate(fieldArray);
         }
-        File temp = new File(tempfileLoc);
-        try {
-            pdDocument.save(temp);
-            pdDocument.close();
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE, e.toString(), e);
-        }
-        return temp;
+        return safe();
     }
 
     public static File maakBrief(BriefModel brief) {
         File file = new File(template + "brief.pdf");
-        try {
-            pdDocument = PDDocument.load(file);
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE, e.toString(), e);
-        }
+        loadDoc(file);
 
         PDDocumentCatalog pdDocumentCatalog = pdDocument.getDocumentCatalog();
         PDAcroForm pdAcroForm = pdDocumentCatalog.getAcroForm();
@@ -164,20 +149,10 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-
-            date.setReadOnly(true);
-            recierver.setReadOnly(true);
-            adres.setReadOnly(true);
-            letter.setReadOnly(true);
+            PDField[] fieldArray = {date,recierver,adres,letter};
+            makePrivate(fieldArray);
         }
-        File temp = new File(tempfileLoc);
-        try {
-            pdDocument.save(temp);
-            pdDocument.close();
-        } catch (IOException e) {
-            LOGGER.log(Level.FINE, e.toString(), e);
-        }
-        return temp;
+        return safe();
     }
 
 }

@@ -1,6 +1,8 @@
 package nl.hsleiden.resource;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
+import nl.hsleiden.View;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 import nl.hsleiden.service.FactuurService;
@@ -9,11 +11,10 @@ import nl.hsleiden.utility.PDFWriter;
 import javax.annotation.security.RolesAllowed;
 import javax.inject.Inject;
 import javax.inject.Singleton;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.io.File;
+import java.util.List;
 
 @Singleton
 @Path("/factuur")
