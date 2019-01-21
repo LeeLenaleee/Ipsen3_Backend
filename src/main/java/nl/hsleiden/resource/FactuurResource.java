@@ -20,21 +20,14 @@ import java.io.File;
 
 @Singleton
 @Path("/factuur")
-//@RolesAllowed("USER")
+@RolesAllowed("USER")
 public class FactuurResource extends BaseResource<FactuurModel, FactuurDAO, FactuurService> {
 
     @Inject
     public FactuurResource(FactuurService service) {
         super(service);
     }
-
-    /*@Path("/download")
-    @GET
-    @UnitOfWork
-    @Produces({"application/pdf"})
-    public File getFile(@QueryParam("id") int id) {
-        return PDFWriter.maakFactuur(super.findById(id));
-    }*/
+    
 
     @Path("/download")
     @GET
