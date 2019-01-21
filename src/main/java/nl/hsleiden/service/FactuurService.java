@@ -5,6 +5,7 @@ import nl.hsleiden.persistence.FactuurDAO;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
+import java.util.List;
 
 @Singleton
 public class FactuurService extends BaseService<FactuurModel, FactuurDAO> {

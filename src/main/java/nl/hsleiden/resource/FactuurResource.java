@@ -1,6 +1,8 @@
 package nl.hsleiden.resource;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
+import nl.hsleiden.View;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 import nl.hsleiden.service.FactuurService;
