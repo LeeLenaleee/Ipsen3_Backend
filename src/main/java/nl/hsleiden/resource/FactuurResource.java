@@ -27,7 +27,7 @@ public class FactuurResource extends BaseResource<FactuurModel, FactuurDAO, Fact
     public FactuurResource(FactuurService service) {
         super(service);
     }
-    
+
 
     @Path("/download")
     @GET
