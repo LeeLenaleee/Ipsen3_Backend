@@ -26,10 +26,10 @@ VALUES (DEFAULT, 'morris@park.nl', 1),
 (DEFAULT, 'info@notenkoor.nl', 5);
 
 insert into offerte values
-(DEFAULT,'03-02-1990','124','piet','55','41','55','9','999'),
-(DEFAULT,'05-12-2000','98','Klaas','555','34','3','91','7'),
-(DEFAULT,'03-05-2136','12','Jan','96','4','74','95','77'),
-(DEFAULT,'22-12-5845','95','Melanie','02','7','8','19','23');
+(DEFAULT,'03-02-1990',124,'piet',55,41,55,9,999),
+(DEFAULT,'05-12-2000',98,'Klaas',555,34,3,91,7),
+(DEFAULT,'03-05-2136',12,'Jan',96,4,74,95,77),
+(DEFAULT,'22-12-5845',95,'Melanie',02,7,8,19,23);
 
 INSERT INTO brief VALUES
 (DEFAULT,'01-02-2020','1288','Kasper van den Berg','duckstad 11','Pietje ging vissen en ving een karper '),
