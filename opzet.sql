@@ -34,13 +34,13 @@ CREATE TABLE email (
 CREATE TABLE offerte (
     id int not null auto_increment,
 		datum VARCHAR(12),
-		correspondentienummer VARCHAR(25),
+		correspondentienummer INT(25),
 		naamklant VARCHAR(25),
-		uren VARCHAR(4),
-		btwPercentage VARCHAR(3),
-		kostenBruto VARCHAR(10),
-		kostenBTW VARCHAR(10),
-		kostenNetto VARCHAR(10),
+		uren DOUBLE(9, 2),
+		btwPercentage DOUBLE(9, 2),
+		kostenBruto DOUBLE(9, 2),
+		kostenBTW DOUBLE(9, 2),
+		kostenNetto DOUBLE(9, 2),
     primary key(id)
 );
 
