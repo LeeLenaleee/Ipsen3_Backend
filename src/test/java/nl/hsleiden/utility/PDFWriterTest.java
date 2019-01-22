@@ -31,13 +31,13 @@ public class PDFWriterTest  {
         factuurModel.setId(1);
         offerteModel = new OfferteModel();
         offerteModel.setDatum("14-01-2019");
-        offerteModel.setCorrespondentienummer("1");
+        offerteModel.setCorrespondentienummer(1);
         offerteModel.setNaamklant("pjeter");
-        offerteModel.setUren("5");
-        offerteModel.setBtwPercentage("5");
-        offerteModel.setKostenBruto("5");
-        offerteModel.setKostenBTW("5");
-        offerteModel.setKostenNetto("5");
+        offerteModel.setUren(5);
+        offerteModel.setBtwPercentage(5);
+        offerteModel.setKostenBruto(5);
+        offerteModel.setKostenBTW(5);
+        offerteModel.setKostenNetto(5);
         offerteModel.setId(1);
         briefModel = new BriefModel("14-01-2019","123","pjeter","zernikdreef 11","deze story is toooooooo dam good fuur you");
         briefModel.setId(1);
@@ -59,6 +59,8 @@ public class PDFWriterTest  {
         try {
             daadwerkelijkeResultaat2 = FileUtils.readFileToString(daadwerkelijkeResultaat,"utf-8");
             verwachteResultaat2 = FileUtils.readFileToString(verwachteResultaat,"utf-8");
+            System.err.println(daadwerkelijkeResultaat2);
+            System.err.println(verwachteResultaat2);
         } catch (IOException e) {
             e.printStackTrace();
         }

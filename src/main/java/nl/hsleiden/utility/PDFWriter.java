@@ -30,7 +30,7 @@ public final class PDFWriter {
         //not called
     }
 
-    private static void loadDoc(File file){
+    private static void loadDoc(File file) {
         try {
             pdDocument = PDDocument.load(file);
         } catch (IOException e) {
@@ -38,7 +38,7 @@ public final class PDFWriter {
         }
     }
 
-    private static File safe(){
+    private static File safe() {
         File temp = new File(tempfileLoc);
         try {
             pdDocument.save(temp);
@@ -49,8 +49,8 @@ public final class PDFWriter {
         return temp;
     }
 
-    private static void makePrivate(PDField[] array){
-        for (PDField x : array){
+    private static void makePrivate(PDField[] array) {
+        for (PDField x : array) {
             x.setReadOnly(true);
         }
     }
@@ -84,7 +84,7 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-            PDField[] fieldArray = {datum2Field,datumField,omschrijvingField,brutoKostenField,btwKostenField,nettoKostenField,btwPercentageField,factuurNummerField};
+            PDField[] fieldArray = {datum2Field, datumField, omschrijvingField, brutoKostenField, btwKostenField, nettoKostenField, btwPercentageField, factuurNummerField};
             makePrivate(fieldArray);
 
         }
@@ -111,18 +111,18 @@ public final class PDFWriter {
 
             try {
                 datumField.setValue(offerte.getDatum());
-                corespondentieNummerField.setValue(offerte.getCorrespondentienummer());
+                corespondentieNummerField.setValue(Integer.toString(offerte.getCorrespondentienummer()));
                 naamKlantField.setValue(offerte.getNaamklant());
                 offerteNummerField.setValue(Integer.toString(offerte.getId()));
-                urenField.setValue(offerte.getUren());
-                btwPercentageField.setValue(offerte.getBtwPercentage());
-                kostenBrutoField.setValue(offerte.getKostenBruto());
-                kostenBTWField.setValue(offerte.getKostenBTW());
-                kostenNettoField.setValue(offerte.getKostenNetto());
+                urenField.setValue(Double.toString(offerte.getUren()));
+                btwPercentageField.setValue(Double.toString(offerte.getBtwPercentage()));
+                kostenBrutoField.setValue(Double.toString(offerte.getKostenBruto()));
+                kostenBTWField.setValue(Double.toString(offerte.getKostenBTW()));
+                kostenNettoField.setValue(Double.toString(offerte.getKostenNetto()));
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-            PDField[] fieldArray = {datumField,corespondentieNummerField,naamKlantField,offerteNummerField,urenField,btwPercentageField,kostenBrutoField,kostenBrutoField,kostenNettoField};
+            PDField[] fieldArray = {datumField, corespondentieNummerField, naamKlantField, offerteNummerField, urenField, btwPercentageField, kostenBrutoField, kostenBTWField, kostenNettoField};
             makePrivate(fieldArray);
         }
         return safe();
@@ -149,7 +149,7 @@ public final class PDFWriter {
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);
             }
-            PDField[] fieldArray = {date,recierver,adres,letter};
+            PDField[] fieldArray = {date, recierver, adres, letter};
             makePrivate(fieldArray);
         }
         return safe();

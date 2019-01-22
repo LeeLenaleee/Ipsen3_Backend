@@ -11,6 +11,9 @@ public class View {
     private View() {
     }
 
+    public interface Public {
+    }
+
     public static class Internal extends Private {
     }
 
@@ -18,8 +21,5 @@ public class View {
     }
 
     public static class Protected implements Public {
-    }
-
-    public interface Public {
     }
 }

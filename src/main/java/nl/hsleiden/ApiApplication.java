@@ -82,12 +82,12 @@ public class ApiApplication extends Application<ApiConfiguration> {
         final FilterRegistration.Dynamic cors = environment.servlets().addFilter("CORS", CrossOriginFilter.class);
 
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
-        cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM,"GET,PUT,POST,DELETE,OPTIONS");
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, "GET,PUT,POST,DELETE,OPTIONS");
         cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://localhost:4200");
-        cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_CREDENTIALS_HEADER,"true"); //met deze aan gaf cross origin header fout dus uitlaten I guess, nu niet meer I guess
+        cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_CREDENTIALS_HEADER, "true"); //met deze aan gaf cross origin header fout dus uitlaten I guess, nu niet meer I guess
         cors.setInitParameter("allowCredentials", "true");
-        cors.setInitParameter("allowedHeaders","Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
-        cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM,Boolean.FALSE.toString());
+        cors.setInitParameter("allowedHeaders", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
+        cors.setInitParameter(CrossOriginFilter.CHAIN_PREFLIGHT_PARAM, Boolean.FALSE.toString());
     }
 
     private GuiceBundle createGuiceBundle(Class<ApiConfiguration> configurationClass, Module module) {

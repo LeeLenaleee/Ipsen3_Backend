@@ -1,8 +1,6 @@
 package nl.hsleiden.resource;
 
-import com.fasterxml.jackson.annotation.JsonView;
 import io.dropwizard.hibernate.UnitOfWork;
-import nl.hsleiden.View;
 import nl.hsleiden.model.FactuurModel;
 import nl.hsleiden.persistence.FactuurDAO;
 import nl.hsleiden.service.FactuurService;
@@ -36,8 +34,7 @@ public class FactuurResource extends BaseResource<FactuurModel, FactuurDAO, Fact
     public Response getFile(@QueryParam("id") int id) {
         File file = PDFWriter.maakFactuur(super.findById(id));
         Response.ResponseBuilder response = Response.ok(file);
-        response.header("Content-Disposition","attachment; filename=test.pdf");
-        System.err.println("kap");
+        response.header("Content-Disposition", "attachment; filename=test.pdf");
         return response.build();
     }
 
