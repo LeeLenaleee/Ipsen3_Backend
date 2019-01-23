@@ -61,7 +61,19 @@ CREATE TABLE onkosten (
   id int not null auto_increment,
   onkosten_bedrijf         VARCHAR(50),
   onkosten_datum           VARCHAR(20),
-	kostenpost_id            integer REFERENCES kostenpost(id) ON DELETE CASCADE,
+	-- We can't refer to the P-key of kostenpost,
+	-- if a `kostenpost` is deleted,
+	-- we still want to see onkosten with the deleted kostenpost,
+	-- but we dont want deleted kostenposten
+	-- to show op in the list we show them in
+	--
+	-- Having said that, its possible to simulate
+	-- a deletion with an `is_dead` column on the kostenpost,
+	-- however this requires extra space, and is a little bit weird also.
+	--
+	-- Now we just copy the VARCHAR from the kostenpost into here,
+	-- So we can delete a kostenpost, while it still remains here.
+	kostenpost_kostenpost        VARCHAR(50),
   onkosten_omschrijving    VARCHAR(250),
   onkosten_bruto_kosten    DOUBLE(9,2),
 	onkosten_btw_percentage	 INT(2),

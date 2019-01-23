@@ -15,9 +15,11 @@ public class OnkostenModel extends BaseModel {
     @Column(name = "onkosten_datum")
     private String onkostenDatum;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
-    private KostenpostModel onkostenKostenpost;
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "id")
+
+    @Column(name = "kostenpost_kostenpost")
+    private String onkostenKostenpost;
 
     @Column(name = "onkosten_omschrijving")
     private String onkostenOmschrijving;
@@ -50,11 +52,11 @@ public class OnkostenModel extends BaseModel {
         this.onkostenDatum = onkostenDatum;
     }
 
-    public KostenpostModel getOnkostenKostenpost() {
+    public String getOnkostenKostenpost() {
         return onkostenKostenpost;
     }
 
-    public void setOnkostenKostenpost(KostenpostModel onkostenKostenpost) {
+    public void setOnkostenKostenpost(String onkostenKostenpost) {
         this.onkostenKostenpost = onkostenKostenpost;
     }
 

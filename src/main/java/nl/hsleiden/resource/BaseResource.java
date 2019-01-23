@@ -75,6 +75,8 @@ public class BaseResource<M extends BaseModel, D extends CrudDAO<M>, S extends C
     @JsonView(View.Protected.class)
     @Produces(MediaType.APPLICATION_JSON)
     public List<M> findAll() {
+
+        System.out.println("JHADF");
         return service.findAll();
     }
 }

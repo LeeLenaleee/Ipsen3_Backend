@@ -59,17 +59,17 @@ VALUES
 (DEFAULT, 'xd');
 
 INSERT INTO onkosten
-VALUES (DEFAULT, 'hema', '2018-07-17', 0, 'tekenpennen rood zwart', 6, 10, 1, 156),
-(DEFAULT, 'bedrijf', '2018-07-18', 1, 'reizen naar klant', 25, 20, 3, 112.3),
-(DEFAULT, 'vogeltre', '2018-07-19', 2, 'ruimte om te tekenen', 55, 18, 5, 245.32),
-(DEFAULT, 'what', '2018-07-20', 3, 'papier', 6, 17, 1, 3.99),
-(DEFAULT, 'ok', '2018-08-07', 4, 'bellen met klant',12, 19, 4, 2),
-(DEFAULT, 'wtf', '2018-08-11', 5, 'papier', 9, 30, 1, 1234),
-(DEFAULT, 'iets', '2018-08-13', 6, 'reizen naar klant',30, 10, 3, 1094.21),
-(DEFAULT, 'vjdfi', '2018-07-18', 7, 'koffie met vrouw',10, 10, 2, 123.1),
-(DEFAULT, 'fjdiv', '2018-07-19', 8, 'pennen',13, 21, 1, 92.12),
-(DEFAULT, 'fjswo', '2018-08-13', 9, 'bellen met klant',13, 5, 4, 14.12),
-(DEFAULT, 'idk', '2018-09-17', 10, 'reizen naar klant', 50, 21, 3, 14.15);
+VALUES (DEFAULT, 'hema', '2018-07-17', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
+(DEFAULT, 'bedrijf', '2018-07-18', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
+(DEFAULT, 'vogeltre', '2018-07-19', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
+(DEFAULT, 'what', '2018-07-20', 'die', 'papier', 6, 17, 1, 3.99),
+(DEFAULT, 'ok', '2018-08-07', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
+(DEFAULT, 'wtf', '2018-08-11', 'aantoont', 'papier', 9, 30, 1, 1234),
+(DEFAULT, 'iets', '2018-08-13', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
+(DEFAULT, 'vjdfi', '2018-07-18', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
+(DEFAULT, 'fjdiv', '2018-07-19', 'frontend', 'pennen',13, 21, 1, 92.12),
+(DEFAULT, 'fjswo', '2018-08-13', 'werkt', 'bellen met klant',13, 5, 4, 14.12),
+(DEFAULT, 'idk', '2018-09-17', 'xd', 'reizen naar klant', 50, 21, 3, 14.15);
 
 INSERT INTO btw_percentage
 VALUES (DEFAULT, 21, 6);
