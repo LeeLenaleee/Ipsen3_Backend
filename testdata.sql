@@ -47,7 +47,7 @@ VALUES
 INSERT INTO onkosten
 VALUES (DEFAULT, 'hema', '17-03-2018', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
 (DEFAULT, 'bedrijf', '22-02-2018', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
-(DEFAULT, 'vogeltre', '1-01-2018', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
+(DEFAULT, 'vogeltre', '01-01-2018', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
 (DEFAULT, 'what', '21-12-2018', 'die', 'papier', 6, 17, 1, 3.99),
 (DEFAULT, 'ok', '02-02-2018', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
 (DEFAULT, 'wtf', '03-03-2018', 'aantoond', 'papier', 9, 30, 1, 1234),
