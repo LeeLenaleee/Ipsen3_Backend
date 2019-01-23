@@ -73,9 +73,9 @@ CREATE TABLE onkosten (
 CREATE TABLE brief (
 	 id int not null auto_increment,
     datum				VARCHAR(12),
-    correspondentie			VARCHAR(12),
+    correspondentie			int,
     betreft   		VARCHAR(25),
-    adresering			VARCHAR(50),
+    adressering			VARCHAR(50),
     verhaal			TEXT,
     primary key(id)
 );
