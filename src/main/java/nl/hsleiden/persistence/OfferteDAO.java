@@ -16,7 +16,6 @@ public class OfferteDAO extends BaseDAO<OfferteModel> {
     }
 
     public List<OfferteModel> findByCorrespondentieNummer(int correspondentie) {
-        System.err.println("wtf");
         return super.findBy((criteriaBuilder, criteriaQuery, root) ->
                 criteriaQuery.where(criteriaBuilder.equal(root.get("correspondentienummer"), correspondentie)));
     }
