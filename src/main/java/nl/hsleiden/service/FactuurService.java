@@ -13,4 +13,8 @@ public class FactuurService extends BaseService<FactuurModel, FactuurDAO> {
     public FactuurService(FactuurDAO dao) {
         super(dao);
     }
+
+    public List<FactuurModel> findByOmschrijving(String omschrijving) {
+        return this.dao.findByOmschrijving(omschrijving);
+    }
 }

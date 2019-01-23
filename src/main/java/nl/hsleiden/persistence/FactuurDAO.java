@@ -12,4 +12,9 @@ public class FactuurDAO extends BaseDAO<FactuurModel> {
         super(FactuurModel.class, sessionFactory);
     }
 
+    public List<FactuurModel> findByOmschrijving(String omschrijving) {
+        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
+                criteriaQuery.where(criteriaBuilder.like(root.get("factuurOmschrijving"), "%" + omschrijving + "%")));
+    }
+
 }

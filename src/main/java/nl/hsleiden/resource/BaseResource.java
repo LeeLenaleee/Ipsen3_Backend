@@ -54,12 +54,14 @@ public class BaseResource<M extends BaseModel, D extends BaseDAO<M>, S extends B
         service.update(model, id);
     }
 
+
     @DELETE
+    @Path("/{id}")
     @UnitOfWork
     @JsonView(View.Public.class)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void delete(@Valid M model) {
-        service.delete(model);
+    public void delete(@PathParam("id") int id) {
+        service.delete(service.findById(id));
     }
 
     @POST

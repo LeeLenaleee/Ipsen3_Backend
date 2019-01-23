@@ -11,13 +11,13 @@ public class BriefModel extends BaseModel {
     private String datum;
 
     @Column(name = "correspondentie")
-    private String correspondentie;
+    private int correspondentie;
 
     @Column(name = "betreft")
     private String betreft;
 
-    @Column(name = "adresering")
-    private String adresering;
+    @Column(name = "adressering")
+    private String adressering;
 
     @Column(name = "verhaal", columnDefinition = "TEXT")
     private String verhaal;
@@ -25,11 +25,11 @@ public class BriefModel extends BaseModel {
     public BriefModel() {
     }
 
-    public BriefModel(String datum, String correspondentie, String betreft, String adresering, String verhaal) {
+    public BriefModel(String datum, int correspondentie, String betreft, String adressering, String verhaal) {
         this.datum = datum;
         this.correspondentie = correspondentie;
         this.betreft = betreft;
-        this.adresering = adresering;
+        this.adressering = adressering;
         this.verhaal = verhaal;
     }
 
@@ -41,11 +41,11 @@ public class BriefModel extends BaseModel {
         this.datum = datum;
     }
 
-    public String getCorrespondentie() {
+    public int getCorrespondentie() {
         return correspondentie;
     }
 
-    public void setCorrespondentie(String correspondentie) {
+    public void setCorrespondentie(int correspondentie) {
         this.correspondentie = correspondentie;
     }
 
@@ -57,12 +57,12 @@ public class BriefModel extends BaseModel {
         this.betreft = betreft;
     }
 
-    public String getAdresering() {
-        return adresering;
+    public String getAdressering() {
+        return adressering;
     }
 
-    public void setAdresering(String adresering) {
-        this.adresering = adresering;
+    public void setAdressering(String adressering) {
+        this.adressering = adressering;
     }
 
     public String getVerhaal() {
