@@ -45,17 +45,17 @@ VALUES
 (DEFAULT, '08-01-2017', '08-01-2020', 'winrar gekocht', 5665564.6,21,4645656,554456);
 
 INSERT INTO onkosten
-VALUES (DEFAULT, 'hema', '2018-07-17', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
-(DEFAULT, 'bedrijf', '2018-07-18', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
-(DEFAULT, 'vogeltre', '2018-07-19', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
-(DEFAULT, 'what', '2018-07-20', 'die', 'papier', 6, 17, 1, 3.99),
-(DEFAULT, 'ok', '2018-08-07', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
-(DEFAULT, 'wtf', '2018-08-11', 'aantoond', 'papier', 9, 30, 1, 1234),
-(DEFAULT, 'iets', '2018-08-13', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
-(DEFAULT, 'vjdfi', '2018-07-18', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
-(DEFAULT, 'fjdiv', '2018-07-19', 'frontend', 'pennen',13, 21, 1, 92.12),
-(DEFAULT, 'fjswo', '2018-08-13', 'werkt', 'bellen met klant',13, 5, 4, 14.12),
-(DEFAULT, 'idk', '2018-09-17', 'xd', 'reizen naar klant', 50, 21, 3, 14.15);
+VALUES (DEFAULT, 'hema', '17-3-2018', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
+(DEFAULT, 'bedrijf', '22-2-2018', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
+(DEFAULT, 'vogeltre', '1-1-2018', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
+(DEFAULT, 'what', '21-12-2018', 'die', 'papier', 6, 17, 1, 3.99),
+(DEFAULT, 'ok', '02-02-2018', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
+(DEFAULT, 'wtf', '03-03-2018', 'aantoond', 'papier', 9, 30, 1, 1234),
+(DEFAULT, 'iets', '15-04-2018', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
+(DEFAULT, 'vjdfi', '12-05-2018', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
+(DEFAULT, 'fjdiv', '30-06-2018', 'frontend', 'pennen',13, 21, 1, 92.12),
+(DEFAULT, 'fjswo', '01-07-2016', 'werkt', 'bellen met klant',13, 5, 4, 14.12),
+(DEFAULT, 'idk', '17-07-2019', 'xd', 'reizen naar klant', 50, 21, 3, 14.15);
 
 INSERT INTO btw_percentage
 VALUES (DEFAULT, 21, 6);
