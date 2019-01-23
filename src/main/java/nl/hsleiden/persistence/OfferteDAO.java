@@ -9,14 +9,18 @@ import java.util.List;
 
 @Singleton
 public class OfferteDAO extends BaseDAO<OfferteModel> {
+    Finder<OfferteModel, OfferteDAO> finder;
 
     @Inject
     public OfferteDAO(SessionFactory factory) {
         super(OfferteModel.class, factory);
+        this.finder = new Finder(OfferteModel.class, this);
     }
 
     public List<OfferteModel> findByCorrespondentieNummer(int correspondentie) {
-        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
-                criteriaQuery.where(criteriaBuilder.equal(root.get("correspondentienummer"), correspondentie)));
+        return this.finder.findBy((criteriaBuilder, criteriaQuery, root) ->
+                        criteriaQuery.where(criteriaBuilder.equal(root.get("correspondentienummer"), correspondentie)),
+                query -> query.list()
+        );
     }
 }

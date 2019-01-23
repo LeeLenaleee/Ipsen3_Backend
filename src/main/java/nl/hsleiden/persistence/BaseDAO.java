@@ -3,11 +3,9 @@ package nl.hsleiden.persistence;
 import nl.hsleiden.model.BaseModel;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import java.util.List;
 
 /**
@@ -52,18 +50,4 @@ public class BaseDAO<T extends BaseModel> {
     public void update(T obj) {
         currentSession().update(obj);
     }
-
-    public List<T> findBy(TriFunction<CriteriaBuilder, CriteriaQuery<?>, Root<?>> buildQuery) {
-        Session session = currentSession();
-        CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
-        CriteriaQuery<T> criteriaQuery = criteriaBuilder.createQuery(type);
-        Root<T> root = criteriaQuery.from(type);
-
-        buildQuery.apply(criteriaBuilder, criteriaQuery, root);
-
-        Query<T> q = session.createQuery(criteriaQuery);
-
-        return q.list();
-    }
-
 }

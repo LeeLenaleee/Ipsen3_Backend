@@ -12,14 +12,19 @@ import java.util.List;
  */
 @Singleton
 public class OnkostenDAO extends BaseDAO<OnkostenModel> {
+    Finder<OnkostenModel, OnkostenDAO> finder;
 
     @Inject
     public OnkostenDAO(SessionFactory factory) {
         super(OnkostenModel.class, factory);
+        this.finder = new Finder(OnkostenModel.class, this);
     }
 
     public List<OnkostenModel> findByOmschrijving(String omschrijving) {
-        return super.findBy((criteriaBuilder, criteriaQuery, root) ->
-                criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")));
+        return this.finder.findBy(
+                (criteriaBuilder, criteriaQuery, root) ->
+                        criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")),
+                query -> query.list()
+        );
     }
 }
