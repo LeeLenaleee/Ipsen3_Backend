@@ -144,7 +144,7 @@ public final class PDFWriter {
             try {
                 date.setValue(brief.getDatum());
                 recierver.setValue(brief.getBetreft());
-                adres.setValue(brief.getAdresering());
+                adres.setValue(brief.getAdressering());
                 letter.setValue(brief.getVerhaal());
             } catch (IOException e) {
                 LOGGER.log(Level.FINE, e.toString(), e);

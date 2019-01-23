@@ -39,7 +39,7 @@ public class PDFWriterTest  {
         offerteModel.setKostenBTW(5);
         offerteModel.setKostenNetto(5);
         offerteModel.setId(1);
-        briefModel = new BriefModel("14-01-2019","123","pjeter","zernikdreef 11","deze story is toooooooo dam good fuur you");
+        briefModel = new BriefModel("14-01-2019",123,"pjeter","zernikdreef 11","deze story is toooooooo dam good fuur you");
         briefModel.setId(1);
     }
 
