@@ -26,10 +26,10 @@ VALUES (DEFAULT, 'morris@park.nl', 1),
 (DEFAULT, 'info@notenkoor.nl', 5);
 
 insert into offerte values
-(DEFAULT,'03-02-1990',124,'piet',55,41,55,9,999),
-(DEFAULT,'05-12-2000',98,'Klaas',555,34,3,91,7),
-(DEFAULT,'03-05-2136',12,'Jan',96,4,74,95,77),
-(DEFAULT,'22-12-5845',95,'Melanie',02,7,8,19,23);
+(DEFAULT,'03-02-1990','124','piet','55','41','55','9','999'),
+(DEFAULT,'05-12-2000','98','Klaas','555','34','3','91','7'),
+(DEFAULT,'03-05-2136','12','Jan','96','4','74','95','77'),
+(DEFAULT,'22-12-5845','95','Melanie','02','7','8','19','23');
 
 INSERT INTO brief VALUES
 (DEFAULT,'01-02-2020','1288','Kasper van den Berg','duckstad 11','Pietje ging vissen en ving een karper '),
@@ -44,18 +44,32 @@ VALUES
 (DEFAULT, '07-02-2019', '08-03-2019', 'notapd++ gekocht', 40.1,6,2.4,42.5),
 (DEFAULT, '08-01-2017', '08-01-2020', 'winrar gekocht', 5665564.6,21,4645656,554456);
 
+INSERT INTO kostenpost
+VALUES
+(DEFAULT, 'nuttige'),
+(DEFAULT, 'test'),
+(DEFAULT, 'data'),
+(DEFAULT, 'die'),
+(DEFAULT, 'daadwerkelijk'),
+(DEFAULT, 'aantoont'),
+(DEFAULT, 'of'),
+(DEFAULT, 'de'),
+(DEFAULT, 'frontend'),
+(DEFAULT, 'werkt'),
+(DEFAULT, 'xd');
+
 INSERT INTO onkosten
-VALUES (DEFAULT, 'hema', '17-03-2018', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
-(DEFAULT, 'bedrijf', '22-02-2018', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
-(DEFAULT, 'vogeltre', '01-01-2018', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
-(DEFAULT, 'what', '21-12-2018', 'die', 'papier', 6, 17, 1, 3.99),
-(DEFAULT, 'ok', '02-02-2018', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
-(DEFAULT, 'wtf', '03-03-2018', 'aantoond', 'papier', 9, 30, 1, 1234),
-(DEFAULT, 'iets', '15-04-2018', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
-(DEFAULT, 'vjdfi', '12-05-2018', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
-(DEFAULT, 'fjdiv', '30-06-2018', 'frontend', 'pennen',13, 21, 1, 92.12),
-(DEFAULT, 'fjswo', '01-07-2016', 'werkt', 'bellen met klant',13, 5, 4, 14.12),
-(DEFAULT, 'idk', '17-07-2019', 'xd', 'reizen naar klant', 50, 21, 3, 14.15);
+VALUES (DEFAULT, 'hema', '2018-07-17', 'nuttige', 'tekenpennen rood zwart', 6, 10, 1, 156),
+(DEFAULT, 'bedrijf', '2018-07-18', 'test', 'reizen naar klant', 25, 20, 3, 112.3),
+(DEFAULT, 'vogeltre', '2018-07-19', 'data', 'ruimte om te tekenen', 55, 18, 5, 245.32),
+(DEFAULT, 'what', '2018-07-20', 'die', 'papier', 6, 17, 1, 3.99),
+(DEFAULT, 'ok', '2018-08-07', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
+(DEFAULT, 'wtf', '2018-08-11', 'aantoont', 'papier', 9, 30, 1, 1234),
+(DEFAULT, 'iets', '2018-08-13', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
+(DEFAULT, 'vjdfi', '2018-07-18', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
+(DEFAULT, 'fjdiv', '2018-07-19', 'frontend', 'pennen',13, 21, 1, 92.12),
+(DEFAULT, 'fjswo', '2018-08-13', 'werkt', 'bellen met klant',13, 5, 4, 14.12),
+(DEFAULT, 'idk', '2018-09-17', 'xd', 'reizen naar klant', 50, 21, 3, 14.15);
 
 INSERT INTO btw_percentage
 VALUES (DEFAULT, 21, 6);
