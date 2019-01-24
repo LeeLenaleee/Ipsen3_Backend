@@ -1,9 +1,9 @@
 INSERT INTO contactpersoon
-VALUES (DEFAULT, 'Park', 'Morris', 'Bake Shop', 'Bazuinpad', '6295AH', 'Leuven', 'Nederland', 'klant', 'morrisss.nl'),
-(DEFAULT, 'Langley', 'Gracie', 'The Movable Feast', 'Tjalkmeen', '5921VR', 'Amersfort', 'Nederland', 'vriend', 'themovablefeast.nl'),
-(DEFAULT, 'Kane', 'Johnathan', 'Trendkoo', 'Hanzemeen', '9372CE', 'Den Bosch', 'Nederland', 'leverancier', 'jfiofg.nlfd'),
-(DEFAULT, 'Millar', 'Derek', 'Vogeltre', 'Busken Huetlaan', '0563ZN', 'Zutphen', 'Nederland', 'kennis', 'asdfghj.com'),
-(DEFAULT, 'Blanchard', 'Zavier', 'Notenkoor', 'Weisteeg', '2479KD', 'Deventer', 'Nederland', 'klant', 'dfigovdfjgiv.nl');
+VALUES (DEFAULT, 'Park', 'Morris', 'Bake Shop', 'Bazuinpad 3', '6295AH', 'Leuven', 'Nederland', 'klant', 'morrisss.nl'),
+(DEFAULT, 'Langley', 'Gracie', 'The Movable Feast', 'Tjalkmeen 2', '5921VR', 'Amersfort', 'Nederland', 'vriend', 'themovablefeast.nl'),
+(DEFAULT, 'Kane', 'Johnathan', 'Trendkoo', 'Hanzemeen 67', '9372CE', 'Den Bosch', 'Nederland', 'leverancier', 'jfiofg.nlfd'),
+(DEFAULT, 'Millar', 'Derek', 'Vogeltre', 'Busken Huetlaan 12', '0563ZN', 'Zutphen', 'Nederland', 'kennis', 'asdfghj.com'),
+(DEFAULT, 'Blanchard', 'Zavier', 'Notenkoor', 'Weisteeg 98', '2479KD', 'Deventer', 'Nederland', 'klant', 'dfigovdfjgiv.nl');
 
 INSERT INTO telefoonnummer
 VALUES (DEFAULT, '12345678', 1),
