@@ -70,6 +70,12 @@ CREATE TABLE onkosten (
 	primary key(id)
 );
 
+CREATE TABLE kostenpost (
+  id int not null auto_increment,
+  kostenpost_kostenpost VARCHAR(50),
+  primary key(id)
+);
+
 CREATE TABLE brief (
 	 id int not null auto_increment,
     datum				VARCHAR(12),
