@@ -16,7 +16,7 @@ public class BriefDAO extends BaseDAO<BriefModel> {
     @Inject
     public BriefDAO(SessionFactory sessionFactory) {
         super(BriefModel.class, sessionFactory);
-        this.finder = new Finder(BaseModel.class, this);
+        this.finder = new Finder(BriefModel.class, this);
     }
 
     public List<BriefModel> findByGeadreseerde(String geadreseerde) {
