@@ -66,7 +66,7 @@ VALUES (DEFAULT, 'hema', '15-05-2018', 'nuttige', 'tekenpennen rood zwart', 6, 1
 (DEFAULT, 'ok', '24-01-2018', 'daadwerkelijk', 'bellen met klant',12, 19, 4, 2),
 (DEFAULT, 'wtf', '19-09-2015', 'aantoont', 'papier', 9, 30, 1, 1234),
 (DEFAULT, 'iets', '18-08-2018', 'of', 'reizen naar klant',30, 10, 3, 1094.21),
-(DEFAULT, 'vjdfi', '8-08-2018', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
+(DEFAULT, 'vjdfi', '08-08-2018', 'de', 'koffie met vrouw',10, 10, 2, 123.1),
 (DEFAULT, 'fjdiv', '12-02-2018', 'frontend', 'pennen',13, 21, 1, 92.12),
 (DEFAULT, 'fjswo', '06-08-2012', 'werkt', 'bellen met klant',13, 5, 4, 14.12);
 
