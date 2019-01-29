@@ -83,7 +83,8 @@ public class ApiApplication extends Application<ApiConfiguration> {
 
         cors.addMappingForUrlPatterns(EnumSet.allOf(DispatcherType.class), true, "/*");
         cors.setInitParameter(CrossOriginFilter.ALLOWED_METHODS_PARAM, "GET,PUT,POST,DELETE,OPTIONS");
-        cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://195.181.246.85,http://localhost:4200");
+	//hahaha, origins are weird... (*_*)
+        cors.setInitParameter(CrossOriginFilter.ALLOWED_ORIGINS_PARAM, "http://ipsen3.tk, http://localhost:4200, http://195.181.246.85");
         cors.setInitParameter(CrossOriginFilter.ACCESS_CONTROL_ALLOW_CREDENTIALS_HEADER, "true"); //met deze aan gaf cross origin header fout dus uitlaten I guess, nu niet meer I guess
         cors.setInitParameter("allowCredentials", "true");
         cors.setInitParameter("allowedHeaders", "Content-Type,Authorization,X-Requested-With,Content-Length,Accept,Origin");
