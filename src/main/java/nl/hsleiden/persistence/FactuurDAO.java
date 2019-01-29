@@ -2,6 +2,7 @@ package nl.hsleiden.persistence;
 
 import nl.hsleiden.model.FactuurModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -20,7 +21,7 @@ public class FactuurDAO extends BaseDAO<FactuurModel> {
         return this.finder.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.like(root.get("factuurOmschrijving"), "%" + omschrijving + "%")),
-                query -> query.list()
+                Query::list
         );
     }
 

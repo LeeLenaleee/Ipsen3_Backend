@@ -1,8 +1,8 @@
 package nl.hsleiden.persistence;
 
-import nl.hsleiden.model.BaseModel;
 import nl.hsleiden.model.BriefModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -23,7 +23,7 @@ public class BriefDAO extends BaseDAO<BriefModel> {
         return finder.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.like(root.get("betreft"), "%" + geadreseerde + "%")),
-                query -> query.list()
+                Query::list
         );
     }
 }

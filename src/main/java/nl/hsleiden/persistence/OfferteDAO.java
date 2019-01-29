@@ -2,6 +2,7 @@ package nl.hsleiden.persistence;
 
 import nl.hsleiden.model.OfferteModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Inject;
 import javax.inject.Singleton;
@@ -20,7 +21,7 @@ public class OfferteDAO extends BaseDAO<OfferteModel> {
     public List<OfferteModel> findByCorrespondentieNummer(int correspondentie) {
         return this.finder.findBy((criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.equal(root.get("correspondentienummer"), correspondentie)),
-                query -> query.list()
+                Query::list
         );
     }
 }

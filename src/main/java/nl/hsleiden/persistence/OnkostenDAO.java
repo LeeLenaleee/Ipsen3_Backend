@@ -3,6 +3,7 @@ package nl.hsleiden.persistence;
 import com.google.inject.Inject;
 import nl.hsleiden.model.OnkostenModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Singleton;
 import java.util.List;
@@ -24,7 +25,7 @@ public class OnkostenDAO extends BaseDAO<OnkostenModel> {
         return this.finder.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.like(root.get("onkostenOmschrijving"), "%" + omschrijving + "%")),
-                query -> query.list()
+                Query::list
         );
     }
 }

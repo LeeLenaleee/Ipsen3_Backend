@@ -105,25 +105,25 @@
     </dependency>
   </dependencies>
   <properties>
-    <sonar.projectName>Workshop API</sonar.projectName>
-    <sonar.language>java</sonar.language>
     <dropwizard.version>1.2.2</dropwizard.version>
-    <maven.compiler.source>1.8</maven.compiler.source>
-    <jacoco.report.ut>${project.build.directory}/jacoco-ut.exec</jacoco.report.ut>
-    <sonar.projectVersion>0.1.0</sonar.projectVersion>
-    <sonar.java.source>1.8</sonar.java.source>
+    <sonar.tests>src/test</sonar.tests>
+    <jacoco.report.it>${project.build.directory}/jacoco-it.exec</jacoco.report.it>
     <sonar.sources>src/main</sonar.sources>
+    <jacoco.report.ut>${project.build.directory}/jacoco-ut.exec</jacoco.report.ut>
     <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <sonar.java.source>1.8</sonar.java.source>
+    <sonar.jacoco.reportPaths>${jacoco.report.ut},${jacoco.report.it}</sonar.jacoco.reportPaths>
     <runSuite>**/*Suite.class</runSuite>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.projectKey>workshop-api</sonar.projectKey>
+    <sonar.language>java</sonar.language>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <sonar.tests>src/test</sonar.tests>
-    <sonar.jacoco.reportPaths>${jacoco.report.ut},${jacoco.report.it}</sonar.jacoco.reportPaths>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.java.binaries>target/classes</sonar.java.binaries>
-    <jacoco.report.it>${project.build.directory}/jacoco-it.exec</jacoco.report.it>
+    <sonar.projectVersion>0.1.0</sonar.projectVersion>
+    <sonar.projectName>Workshop API</sonar.projectName>
+    <sonar.projectKey>workshop-api</sonar.projectKey>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
   </properties>
 </project>
 

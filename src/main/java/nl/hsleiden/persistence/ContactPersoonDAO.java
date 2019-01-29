@@ -3,6 +3,7 @@ package nl.hsleiden.persistence;
 import com.google.inject.Inject;
 import nl.hsleiden.model.ContactPersoonModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Singleton;
 import java.util.List;
@@ -25,7 +26,7 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
         return this.finder.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.like(root.get("contactBedrijf"), "%" + bedrijf + "%")),
-                query -> query.list()
+                Query::list
         );
     }
 
@@ -35,7 +36,7 @@ public class ContactPersoonDAO extends BaseDAO<ContactPersoonModel> {
                                 criteriaBuilder.like(root.get("contactVoornaam"), "%" + voornaam + "%"),
                                 criteriaBuilder.like(root.get("contactAchternaam"), "%" + achternaam + "%")
                         )),
-                query -> query.list()
+                Query::list
         );
     }
 }

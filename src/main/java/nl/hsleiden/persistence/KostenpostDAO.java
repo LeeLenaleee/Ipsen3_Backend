@@ -3,6 +3,7 @@ package nl.hsleiden.persistence;
 import com.google.inject.Inject;
 import nl.hsleiden.model.KostenpostModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ public class KostenpostDAO extends BaseDAO<KostenpostModel> {
         return this.finder.findBy(
                 (criteriaBuilder, criteriaQuery, root) ->
                         criteriaQuery.where(criteriaBuilder.like(root.get("kostenpost"), "%" + name + "%")),
-                query -> query.list()
+                Query::list
         );
     }
 }

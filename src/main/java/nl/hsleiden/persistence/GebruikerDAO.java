@@ -3,6 +3,7 @@ package nl.hsleiden.persistence;
 import com.google.inject.Inject;
 import nl.hsleiden.model.GebruikerModel;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 
 import javax.inject.Singleton;
 import java.util.Optional;
@@ -24,6 +25,6 @@ public class GebruikerDAO extends BaseDAO<GebruikerModel> {
         return this.finder.findBy((criteriaBuilder, criteriaQuery, root) -> criteriaQuery.where(criteriaBuilder.and(
                 criteriaBuilder.equal(root.get("emailAdres"), username),
                 criteriaBuilder.equal(root.get("wachtwoord"), password)
-        )), query -> query.uniqueResultOptional());
+        )), Query::uniqueResultOptional);
     }
 }
