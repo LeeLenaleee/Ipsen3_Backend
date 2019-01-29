@@ -7,6 +7,14 @@
   <build>
     <plugins>
       <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.2.1</version>
+        <configuration>
+          <mainClass>nl.hsleiden.ApiApplication</mainClass>
+        </configuration>
+      </plugin>
+      <plugin>
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.3</version>
         <executions>
@@ -97,25 +105,25 @@
     </dependency>
   </dependencies>
   <properties>
+    <sonar.projectName>Workshop API</sonar.projectName>
+    <sonar.language>java</sonar.language>
     <dropwizard.version>1.2.2</dropwizard.version>
-    <sonar.tests>src/test</sonar.tests>
-    <jacoco.report.it>${project.build.directory}/jacoco-it.exec</jacoco.report.it>
-    <sonar.sources>src/main</sonar.sources>
-    <jacoco.report.ut>${project.build.directory}/jacoco-ut.exec</jacoco.report.ut>
-    <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
+    <jacoco.report.ut>${project.build.directory}/jacoco-ut.exec</jacoco.report.ut>
+    <sonar.projectVersion>0.1.0</sonar.projectVersion>
     <sonar.java.source>1.8</sonar.java.source>
-    <sonar.jacoco.reportPaths>${jacoco.report.ut},${jacoco.report.it}</sonar.jacoco.reportPaths>
+    <sonar.sources>src/main</sonar.sources>
+    <sonar.junit.reportPaths>${project.build.directory}/surefire-reports</sonar.junit.reportPaths>
+    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     <runSuite>**/*Suite.class</runSuite>
     <sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
-    <sonar.language>java</sonar.language>
-    <maven.compiler.target>1.8</maven.compiler.target>
-    <sonar.java.binaries>target/classes</sonar.java.binaries>
-    <sonar.projectVersion>0.1.0</sonar.projectVersion>
-    <sonar.projectName>Workshop API</sonar.projectName>
     <sonar.projectKey>workshop-api</sonar.projectKey>
-    <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <sonar.tests>src/test</sonar.tests>
+    <sonar.jacoco.reportPaths>${jacoco.report.ut},${jacoco.report.it}</sonar.jacoco.reportPaths>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.java.binaries>target/classes</sonar.java.binaries>
+    <jacoco.report.it>${project.build.directory}/jacoco-it.exec</jacoco.report.it>
   </properties>
 </project>
 
